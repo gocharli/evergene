@@ -1,0 +1,11 @@
+[03-Aug-2018 12:35:19 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::post() in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/Signup.php on line 79
+[03-Aug-2018 12:36:27 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::post() in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/Signup.php on line 79
+[03-Aug-2018 12:36:53 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ozajd95xt6f8/public_html/demo/evergene/index.php on line 77
+[03-Aug-2018 12:37:23 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::post() in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/Signup.php on line 79
+[12-Sep-2018 05:05:03 UTC] PHP Fatal error:  Call to a member function row() on boolean in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/cron/Results.php on line 72
+[12-Sep-2018 05:10:04 UTC] PHP Fatal error:  Call to a member function row() on boolean in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/cron/Results.php on line 72
+[12-Sep-2018 05:15:03 UTC] PHP Fatal error:  Call to a member function row() on boolean in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/cron/Results.php on line 72
+[29-Sep-2018 11:10:45 UTC] PHP Fatal error:  Call to a member function result() on boolean in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/Orders.php on line 34
+[05-Oct-2018 16:10:33 UTC] PHP Fatal error:  Call to a member function result() on boolean in /home/ozajd95xt6f8/public_html/demo/evergene/application/controllers/cron/Results.php on line 56
+[29-Jan-2020 14:05:33 UTC] PHP Fatal error:  Cannot redeclare Account::cancel_membership() in /home/v8w1s7ybqbg1/public_html/evergene/application/controllers/Account.php on line 270
+[27-Feb-2020 13:05:16 UTC] PHP Fatal error:  Cannot declare class General_model, because the name is already in use in /home/v8w1s7ybqbg1/public_html/evergene/application/models/Qrisk_model.php on line 367
