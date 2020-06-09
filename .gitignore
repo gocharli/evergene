@@ -31,5 +31,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 application/third_party/azure/
+.env
 uploads/
 application/config/
