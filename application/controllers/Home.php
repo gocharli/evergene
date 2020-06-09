@@ -11,7 +11,7 @@ class Home extends CI_Controller{
 	
 	public function index() {
 
-		$this->response['page_title']="Home";
+		$this->response['page_title']="Home - Convenient at home health testing with expert health advice.";
 		$tests=$this->db->query('select tests.*,categories.categoryName,categories.catSlug from tests
  		LEFT JOIN categories ON tests.categoryId=categories.categoryId
  		WHERE productType="Test" and testStatus = "Active" and tests.isPopular > 0')->result();
