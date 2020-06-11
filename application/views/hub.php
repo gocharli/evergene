@@ -92,16 +92,28 @@ border: 2px solid #a19c9b !important;
 
 									
 									
-									<?php if($row){ if($row->updatedAt!='0000-00-00 00:00:00') { ?>
+									<?php if($row){ 
+										
+										if($row->updatedAt!='0000-00-00 00:00:00') { ?>
 
-										<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Update</a>
+											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Update</a>
 
-										<p class="update-date">
+											<p class="update-date">
 
-										<u style="text-decoration: underline solid red;">The date when the questionnaire was last updated: <?=date('d/m/y',strtotime($row->updatedAt))?> </u> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
-										</p>
+											<u style="text-decoration: underline solid red;">The date when the questionnaire was last updated: <?=date('d/m/y',strtotime($row->updatedAt))?> </u> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
+											</p>
 
-										<?php } }else{ ?>
+										<?php } else{  ?>
+
+											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Questionnaire</a>
+
+												<p class="update-date">
+												<u style="text-decoration: underline solid red;">Take the quiz to update your member hub</u>
+											</p>
+
+										<?php } 
+									
+									}else{ ?>
 
 											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Questionnaire</a>
 
