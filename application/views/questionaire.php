@@ -85,6 +85,11 @@
 
 												</ul>
 											</div>
+										    <div class="col-lg-12 p-0">
+                    							<div class="questionnaire-info-box">
+                    							    Please complete what you know, if you do not know it please leave blank.
+                    							</div>
+                    						</div>
 
 											<form role="form" id="frm_1" action="<?=base_url('questionaire/process')?>">
 												<div class="tab-content">
@@ -146,7 +151,21 @@
 																		<label>Ethnicity</label>
 																		<select name="ethnicity" class="form-control ethnicity">
 																			<option value="" selected="selected" disabled="disabled">-- select one --</option>
-																			<optgroup label="White">
+																			
+																			
+																			<option value="White or not stated">White or not stated</option>
+																			<option value="Asian Indian">Indian</option>
+																			<option value="Asian Pakistani">Pakistani</option>
+																			<option value="Asian Bangladeshi">Bangladeshi</option>
+																			<option value="Other Asian">Other Asian</option>
+
+																			<option value="Black Caribbean">Black Caribbean</option>
+																			<option value="Black African">Black African</option>
+																			<option value="Asian Chinese">Chinese</option>
+																			<option value="Other">Other ethnic group</option>
+																				
+
+																			<!-- <optgroup label="White">
 																				<option value="White English">English</option>
 																				<option value="White Welsh">Welsh</option>
 																				<option value="White Scottish">Scottish</option>
@@ -180,7 +199,7 @@
 																				<option value="Native American">Native American</option>
 																				<option value="Pacific Islander">Pacific Islander</option>
 																				<option value="Other">Any other ethnic group</option>
-																			</optgroup>
+																			</optgroup> -->
 																		</select>
 
 																	</div>

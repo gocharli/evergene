@@ -43,8 +43,9 @@
 											<h1 class="pricing-plan__price">£<span id="plan_price1_<?php echo $row->mpId; ?>"><?=$row->planAmount?></span></h1>
 											<?php } ?>
 
-											<small class="pricing-plan__disclosure">charged on a <?=$row->planPeriod?> basis</small>
+										<!--	<small class="pricing-plan__disclosure"></small>-->
 											<ul class="pricing-plan__feature-list">
+											    <li class="pricing-plan__feature">charged on a <?=$row->planPeriod?> basis</li>
 												<li class="pricing-plan__feature"><?=$row->planOrders?> orders per <?=$row->planOrderPeriod?></li>
 											</ul><br />
 											<div class="col-md-12">

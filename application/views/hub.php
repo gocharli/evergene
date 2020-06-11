@@ -17,6 +17,11 @@ color: #fa5442 !important;
 border: 2px solid #fa5442 !important;
 }
 
+.gray-color{
+color: #a19c9b !important;
+border: 2px solid #a19c9b !important;
+}
+
 </style>
 
 
@@ -85,12 +90,27 @@ border: 2px solid #fa5442 !important;
 								<div class="product-header">
 									<h6><img src="<?=base_url('assets/front/')?>images/product/Cholesterol.png" alt=""/> You</h6>
 
-									<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Update</a>
-									<p class="update-date">
-										<?php if($row){ if($row->updatedAt!='0000-00-00 00:00:00') { ?>
-										Last Updated: <?=date('d/m/y',strtotime($row->updatedAt))?> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
-										<?php } } ?>
-									</p>
+									
+									
+									<?php if($row){ if($row->updatedAt!='0000-00-00 00:00:00') { ?>
+
+										<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Update</a>
+
+										<p class="update-date">
+
+										<u style="text-decoration: underline solid red;">The date when the questionnaire was last updated: <?=date('d/m/y',strtotime($row->updatedAt))?> </u> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
+										</p>
+
+										<?php } }else{ ?>
+
+											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Questionnaire</a>
+
+											<p class="update-date">
+												<u style="text-decoration: underline solid red;">Take the quiz to update your member hub</u>
+											</p>
+
+										<?php } ?>
+									
 									<div class="clearfix"></div>
 								</div><!--product header-->
 
@@ -248,11 +268,11 @@ border: 2px solid #fa5442 !important;
 
 												<?php if($row->gender == 'Female'){ ?>   
 
-													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'green-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'gray-color';  ?>"> <div>
 
 												<?php }else{ ?>
 
-													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'green-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'gray-color';  ?>"> <div>
 												
 												<?php } ?>
 
@@ -272,12 +292,12 @@ border: 2px solid #fa5442 !important;
 													</div>
 												</div><!--Hip/Waist Ratio-->
 
-												<div class="QRISK">
+												<div class="QRISK gray-color">
 													<div>
 													    	<span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">QRISK is an algorithm for predicting cardiovascular risk. It estimates the risk of a person developing cardiovascular disease (CVD) over the next 10 years and can be applied to those aged between 35 and 74 years. Those with a score of 20 per cent or more are considered to be at high risk of developing CVD.</span></span>
 						
 														QRISK 
-														<span>2.5 .</span>
+														<span style="color: #a19c9b">2.5 .</span>
 													</div>
 												</div><!--QRISK-->
 
@@ -297,7 +317,7 @@ border: 2px solid #fa5442 !important;
 														$bmi=floatval((($row->weight/$row->height)/$row->height)*10000);
 												} ?>
 
-												<div class="BMI <?php if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; ?>">
+												<div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>">
 													<div>
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">If your BMI (Body mass index) is 18.5 to <25, it falls within the normal. If your BMI is 25.0 to <30, it falls within the overweight range. If your BMI is 30.0 or higher, it falls within the obese range.</span></span>
 						
@@ -311,12 +331,12 @@ border: 2px solid #fa5442 !important;
 													</div>
 												</div><!--Weight-->
 
-												<div class="Heart-Age">
+												<div class="Heart-Age gray-color">
 													<div>
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">Heart age is a way to understand your risk of a heart attack or stroke. Your heart age is calculated based on your risk factors for heart disease, such as age and family history, as well as diet, physical activity and smoking. A younger heart age means a lower risk of heart disease.</span></span>
 						
 														Heart Age
-														<span>###</span>
+														<span style="color: #a19c9b">###</span>
 													</div>
 												</div><!--Heart Age-->
 
