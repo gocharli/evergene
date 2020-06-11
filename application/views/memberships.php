@@ -74,7 +74,7 @@
 
 												<?php }elseif(isset($this->session_data->userId)){?>
 																<input type="hidden" id="plan_price_<?php echo $row->mpId; ?>" value="<?=$row->planAmount-$bonus?>" />
-									                            <a style="<?php if($subbb=='active') echo 'background: #f3eded;pointer-events: none;'; ?>" id="pay_<?php echo $row->mpId; ?>" href="<?php if($subbb=='active') echo 'script:;'; else echo base_url().'memberships/buy_memb/'.$row->mpId; ?>" class="tran3s custom-btn small-btn cart-button btn-pay block hvr-trim-two">BUY NOW</a>
+									                            <a style="<?php if($subbb=='active') echo 'background: #f3eded;pointer-events: none;'; ?>" id="pay_<?php echo $row->mpId; ?>" href="<?php if($subbb=='active') echo 'script:;'; else echo base_url().'memberships/buy_memb/'.$row->mpId; ?>" class="mt-39 tran3s custom-btn small-btn cart-button btn-pay block hvr-trim-two">BUY NOW</a>
 												<?php }else{?>
 									                           <a href="javascript:;" onclick="update_current_url(<?php echo $row->mpId; ?>)" class="tran3s custom-btn small-btn cart-button btn-pay block hvr-trim-two loginBtn">BUY NOW</a>
 												<?php } ?>
@@ -84,7 +84,7 @@
 											</div>
 
 											<div class="col-md-12">
-											<a href="javascript:;" onclick="find_out_more(<?php echo $row->mpId; ?>)" class="tran3s primary-btn small-btn cart-button btn-pay block hvr-trim-two"> Find Out More </a>
+											<a href="javascript:;" onclick="find_out_more(<?php echo $row->mpId; ?>)" class="mt-39 tran3s primary-btn small-btn cart-button btn-pay block hvr-trim-two"> Find Out More </a>
 											</div>
 
 										</div>

@@ -117,11 +117,11 @@
 																				<label>Gender*</label>
 																		<div class="radio-group">
 																			<div class="md-radio md-radio-inline">
-																				<input disabled class="alergies rc" <?php if($row->gender=='Male' || $row->gender=='') { echo 'checked'; } ?> id="male" value="Male" type="radio" name="gender" >
+																				<input disabled class="alergies rc" <?php if($user->userGender=='Male' || $user->userGender=='') { echo 'checked'; } ?> id="male" value="Male" type="radio" name="gender" >
 																				<label for="male">Male </label>
 																			</div>
 																			<div class="md-radio md-radio-inline">
-																				<input  class="alergies rc" <?php if($row->gender=='Female') { echo 'checked'; } ?>
+																				<input  class="alergies rc" <?php if($user->userGender=='Female') { echo 'checked'; } ?>
 																					   id="female" value="Female" type="radio" name="gender" disabled>
 																				<label for="female" disabled>Female</label>
 																			</div>
@@ -1126,7 +1126,7 @@
 															</div>
 
 
-													<?php if($row->gender=='Male'){ ?>
+													<?php if($user->userGender=='Male'){ ?>
 
 
 																<div class="form-group">
@@ -1286,7 +1286,7 @@
 													<?php } ?>
 
 
-													<?php if($row->gender=='Female'){ ?>
+													<?php if($user->userGender=='Female'){ ?>
 														<div class="form-group">
 															<div class="row">
 																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -1441,7 +1441,7 @@
 	<script type="text/javascript" src="<?=base_url('assets/plugins/bootstrap-datepicker-master/moment.js')?>"></script>
 	<script type="text/javascript" src="<?=base_url('assets/plugins/bootstrap-datepicker-master/bootstrap-datetimepicker.min.js')?>"></script>
 	<script type="text/javascript">
-		$('.gender option[value="<?=$row->gender?>"]').prop('selected', true);
+		$('.gender option[value="<?=$user->userGender?>"]').prop('selected', true);
 		$('.bodyType option[value="<?=$row->bodyType?>"]').prop('selected', true);
 		$('.smoker option[value="<?=$row->smoker?>"]').prop('selected', true);
 		$('.diabetesStatus option[value="<?=$row->diabetesStatus?>"]').prop('selected', true);

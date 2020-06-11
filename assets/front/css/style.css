@@ -3615,7 +3615,10 @@ hr{
 	background: #86c44c;
 	width: 100%;
 	padding: 0 20px;
-	margin-top:39px;
+	margin-top:14px;
+}
+.mt-39{
+    margin-top: 39px !important;
 }
 .btn-defualt{
 	 padding: 0 20px;
