@@ -85,13 +85,50 @@ class Questionaire extends CI_Controller {
 			
 			$upd['trackMedical']=$this->input->post('medical');
 
+			// if(isset($this->input->post('medical_conditions'))){
+			// 	echo 'yes';
+			// }else{
+			// 	echo 'no';
+			// }
+
 			$medical_conditions = $this->input->post('medical_conditions');
 
-			if($medical_conditions != '') {
+			$str="";
+			if(NULL != $medical_conditions ) {
 
-				$upd['medical_conditions']= implode(',', $medical_conditions);
-			}		
-			
+				$str= implode(',', $medical_conditions);
+				$upd['medical_conditions'] = $str;
+			}else{
+				$upd['medical_conditions'] = $str;
+			}
+
+			// Added 12 June for Qrisk // new field medical_conditions_json
+
+				$medi_cond['diabetes type 1'] = 0;
+				$medi_cond['diabetes type 2'] = 0;
+				$medi_cond['overactive thyroid'] = 0;
+				$medi_cond['high blood pressure'] = 0;
+				$medi_cond['heart disease'] = 0;
+				$medi_cond['Atrial fibrillation'] = 0;
+				$medi_cond['Rheumatoid arthritis'] = 0;
+				$medi_cond['Severe mental illness'] = 0;
+				$medi_cond['On blood pressure treatment'] = 0;
+				$medi_cond['On atypical antipsychotic medication'] = 0;
+				$medi_cond['A diagnosis of or treatment for erectile disfunction'] = 0;
+				$medi_cond['Are you on regular steroid tablets?'] = 0;
+				$medi_cond['Do you have migraines'] = 0;
+
+				foreach($medi_cond as $key=>$val){
+
+					if(strpos($str, $key) !== false) {   // this option is yes
+						$medi_cond[$key] = 1;
+					}
+				}
+
+				$upd['medical_conditions_json'] = json_encode($medi_cond);
+
+			// End Added 12 June for Qrisk // new field medical_conditions_json
+
 			$upd['track_family_med']=$this->input->post('track_family_med');
 
 			$family_medical = $this->input->post('family_medical');

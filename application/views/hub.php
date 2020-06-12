@@ -100,7 +100,7 @@ border: 2px solid #a19c9b !important;
 
 											<p class="update-date">
 
-											<u style="text-decoration: underline solid red;">The date when the questionnaire was last updated: <?=date('d/m/y',strtotime($row->updatedAt))?> </u> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
+											<span>The date when the questionnaire was last updated: <?=date('d/m/y',strtotime($row->updatedAt))?> </span> <?php //=date('d,F Y',strtotime($row->updatedAt))?>
 											</p>
 
 										<?php } else{  ?>
@@ -108,7 +108,7 @@ border: 2px solid #a19c9b !important;
 											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Questionnaire</a>
 
 												<p class="update-date">
-												<u style="text-decoration: underline solid red;">Take the quiz to update your member hub</u>
+												<span>Take the quiz to update your member hub</span>
 											</p>
 
 										<?php } 
@@ -118,7 +118,7 @@ border: 2px solid #a19c9b !important;
 											<a href="<?=base_url('questionaire')?>" class="tran3s custom-btn">Questionnaire</a>
 
 											<p class="update-date">
-												<u style="text-decoration: underline solid red;">Take the quiz to update your member hub</u>
+												<span>Take the quiz to update your member hub</span>
 											</p>
 
 										<?php } ?>
@@ -143,11 +143,11 @@ border: 2px solid #a19c9b !important;
 											
 											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
 											
-											if($max_excericseAvgWeek < 2){
+											if($max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
 											}
 
-											if($max_excericseAvgWeek > 3){  // 3 is not included
+											if($max_excericseAvgWeek >= 3){  // 3 is included
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Green.png';
 											}
 										?>
@@ -168,11 +168,11 @@ border: 2px solid #a19c9b !important;
 										
 											$spn_img = base_url().'assets/front/images/icons/Sleep-icon-amber.png';
 											
-											if($row->sleepPerNight < 5){ // 5 is not included
+											if($row->sleepPerNight <= 5){ // 5 is included
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-red.png';
 											}
 
-											if($row->sleepPerNight > 8){  // 8 is not included
+											if($row->sleepPerNight >= 8){  // 8 is included
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-green.png';
 											}
 										?>
@@ -225,11 +225,11 @@ border: 2px solid #a19c9b !important;
 											
 											$wad_img = base_url().'assets/front/images/icons/water icon - amber.png';
 											
-											if($max_waterAvgDay < 1.2){
+											if($max_waterAvgDay <= 1.2){
 												$wad_img = base_url().'assets/front/images/icons/water icon - Red.png';
 											}
 
-											if($max_waterAvgDay > 2){  // 2 is not included
+											if($max_waterAvgDay >= 2){  // 2 is included
 												$wad_img = base_url().'assets/front/images/icons/water icon - Green.png';
 											}
 										?>
@@ -276,7 +276,7 @@ border: 2px solid #a19c9b !important;
 												</div><!--height-->
 
 												<?php $ratiom = 0; 
-												if($row->waistMeasurment > 0) { $ratiom = floatval($row->hipMeasurment/$row->waistMeasurment); };  // by default is green < 0.90 or 0.85 ?>
+												if($row->hipMeasurment > 0) { $ratiom = floatval($row->waistMeasurment/$row->hipMeasurment); };  // by default is green < 0.90 or 0.85 ?>
 
 												<?php if($row->gender == 'Female'){ ?>   
 
@@ -296,7 +296,7 @@ border: 2px solid #a19c9b !important;
 														Hip/Waist Ratio
 														<span>
 															<?php if($row->waistMeasurment>0 && $row->hipMeasurment>0) {
-																$wh=$row->hipMeasurment/$row->waistMeasurment;
+																$wh=$row->waistMeasurment/$row->hipMeasurment;
 																echo number_point_format($wh,1) . '';
 															} ?>
 														</span>
@@ -585,6 +585,12 @@ border: 2px solid #a19c9b !important;
 									   <div class="row">
 									    <h6 class="chart_heading m-0">Monthly Report  </h6>
 										
+										<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+										 <div id="graph_loaderr" style="display:none">
+											<i class="fa fa-spinner fa-spin"></i>Loading
+										 </div>
+
 										 <select id="m_report" class="form-control float-right" style="width: 20%" onchange="get_report(this.value)">
 										 <option value="ALL">All</option>
 											<option value="BMI">BMI</option>
@@ -627,10 +633,17 @@ border: 2px solid #a19c9b !important;
 
 												});
 
+												setTimeout(function(){ $("#graph_loaderr").hide(); }, 400);
+
 											}
 
 
 											function get_report(type){
+
+												//$("#graph_loaderr").css("display", "block");
+												$("#graph_loaderr").show();
+
+												//return;
         
     												$.ajax({
                                 						url: '<?=base_url('hub/filter_chart')?>',
@@ -645,6 +658,8 @@ border: 2px solid #a19c9b !important;
 
 												if(type == 'ALL'){
 													load_chart();
+													//$("#graph_loaderr").css("display", "none");
+													setTimeout(function(){ $("#graph_loaderr").hide(); }, 400);
 													return;
 												}    
                                 					    
@@ -674,7 +689,11 @@ border: 2px solid #a19c9b !important;
                                 					
                                 					}).fail(function(){
                                 						
-                                					});
+													});
+													
+													//$("#graph_loaderr").css("display", "none");
+													setTimeout(function(){ $("#graph_loaderr").hide(); }, 400);
+													//$("#graph_loaderr").fadeOut();
 
 											}
 

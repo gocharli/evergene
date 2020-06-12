@@ -111,7 +111,7 @@ border-radius: 15px;
 }
 /*end */
 a.custom-btn {
-  padding: 0 25px;
+  padding: 0 24px;
   line-height: 51px;
   border: 2px solid rgba(0,0,0,0.07);
   border-radius: 5px;
@@ -122,10 +122,9 @@ a.custom-btn {
   color: #00000a;
 	background: #FFF;
 }
+
 a.custom-btn:hover {color: #fff; background: #86c44c;}
-a.request-btn{
-	margin-left: 10px;
-}
+
 a.request-btn span {
 	border-left: 2px solid rgba(0,0,0,0.07);
 	display: inline-block;

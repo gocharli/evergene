@@ -535,6 +535,7 @@
 																			<option value="6">6</option>
 																			<option value="7">7</option>
 																			<option value="8">8</option>
+																			<option value="9">9</option>
 																			<option value="10">10</option>
 																			<option value="11">11</option>
 																			<option value="12+">12+</option>
@@ -1190,50 +1191,50 @@
                     													<div class="add_detail medical_detail <?php if($row->trackMedical=='Yes') { echo 'show'; } ?>" style="display:block;margin:0px">
                     
                     													<ul>
-                    														<li>
-                    														<input type="checkbox" value="diabetes type 1" name="medical_conditions[]"> Diabetes type 1
+                    														<!-- <li>
+                    														<input type="checkbox" value="diabetes type 1" <?php if (strpos($row->medical_conditions, 'diabetes type 1') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 1
                     													    </li>
                     
                     													    <li>
-                    														<input type="checkbox" value="diabetes type 2" name="medical_conditions[]"> Diabetes type 2, uts
+                    														<input type="checkbox" value="diabetes type 2" <?php if (strpos($row->medical_conditions, 'diabetes type 2') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 2 
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="overactive thyroid" name="medical_conditions[]"> Overactive thyroid
+                    														<input type="checkbox" value="overactive thyroid" <?php if (strpos($row->medical_conditions, 'overactive thyroid') !== false) echo 'checked'; ?> name="medical_conditions[]"> Overactive thyroid
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="high blood pressure" name="medical_conditions[]"> Systemic lupus erythematosus (SLE)
+                    														<input type="checkbox" value="high blood pressure" <?php if (strpos($row->medical_conditions, 'high blood pressure') !== false) echo 'checked'; ?> name="medical_conditions[]"> Systemic lupus erythematosus (SLE)
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="heart disease" name="medical_conditions[]"> Chronic Kidney Disease (Stage 3, 4 or 5)?
+                    														<input type="checkbox" value="heart disease" <?php if (strpos($row->medical_conditions, 'heart disease') !== false) echo 'checked'; ?> name="medical_conditions[]"> Chronic Kidney Disease (Stage 3, 4 or 5) 
                     														</li>
                     													
                     														<li>
-                    														<input type="checkbox" value="Atrial fibrillation" name="medical_conditions[]"> Atrial fibrillation
+                    														<input type="checkbox" value="Atrial fibrillation" <?php if (strpos($row->medical_conditions, 'Atrial fibrillation') !== false) echo 'checked'; ?> name="medical_conditions[]"> Atrial fibrillation
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Rheumatoid arthritis" name="medical_conditions[]"> Rheumatoid arthritis
+                    														<input type="checkbox" value="Rheumatoid arthritis" <?php if (strpos($row->medical_conditions, 'Rheumatoid arthritis') !== false) echo 'checked'; ?> name="medical_conditions[]"> Rheumatoid arthritis
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Severe mental illness" name="medical_conditions[]"> Severe mental illness
+                    														<input type="checkbox" value="Severe mental illness" <?php if (strpos($row->medical_conditions, 'Severe mental illness') !== false) echo 'checked'; ?> name="medical_conditions[]"> Severe mental illness
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="On blood pressure treatment" name="medical_conditions[]"> On blood pressure treatment
+                    														<input type="checkbox" value="On blood pressure treatment" <?php if (strpos($row->medical_conditions, 'On blood pressure treatment') !== false) echo 'checked'; ?> name="medical_conditions[]"> On blood pressure treatment
                     														</li>
-                    														<!--<li>
+                    														<!-<li>
                     														<input type="checkbox" value="Atrial migraines" name="medical_conditions[]"> Atrial migraines
-                    														</li>-->
+                    														</li>->
                     														<li>
-                    														<input type="checkbox" value="On atypical antipsychotic medication" name="medical_conditions[]"> On atypical antipsychotic medication
+                    														<input type="checkbox" value="On atypical antipsychotic medication" <?php if (strpos($row->medical_conditions, 'On atypical antipsychotic medication') !== false) echo 'checked'; ?> name="medical_conditions[]"> On atypical antipsychotic medication
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="A diagnosis of or treatment for erectile disfunction" name="medical_conditions[]"> A diagnosis of or treatment for erectile disfunction
+                    														<input type="checkbox" value="A diagnosis of or treatment for erectile disfunction" <?php if (strpos($row->medical_conditions, 'A diagnosis of or treatment for erectile disfunction') !== false) echo 'checked'; ?> name="medical_conditions[]"> A diagnosis of or treatment for erectile disfunction
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Are you on regular steroid tablets?" name="medical_conditions[]"> Are you on regular steroid tablets?
+                    														<input type="checkbox" value="Are you on regular steroid tablets?" <?php if (strpos($row->medical_conditions, 'Are you on regular steroid tablets?') !== false) echo 'checked'; ?> name="medical_conditions[]"> Are you on regular steroid tablets?
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Do you have migraines" name="medical_conditions[]"> Do you have migraines?
-                    														</li>
+                    														<input type="checkbox" value="Do you have migraines" <?php if (strpos($row->medical_conditions, 'Do you have migraines') !== false) echo 'checked'; ?> name="medical_conditions[]"> Do you have migraines?
+                    														</li> -->
                     														
                     													</ul>
                     
@@ -1262,17 +1263,17 @@
                         
                         													<ul>
                         														<li>
-                        														<input type="checkbox" value="angina or heart attack aged <60" name="family_medical[]"> Angina or heart attack aged &lt;60
+                        														<input type="checkbox" value="angina or heart attack aged <60" <?php if (strpos($row->family_medical, 'angina or heart attack aged <60') !== false) echo 'checked'; ?> name="family_medical[]"> Angina or heart attack aged &lt;60
                         													    </li>
                         
                         													    <li>
-                        														<input type="checkbox" value="dementia" name="family_medical[]"> Dementia 
+                        														<input type="checkbox" value="dementia" <?php if (strpos($row->family_medical, 'dementia') !== false) echo 'checked'; ?> name="family_medical[]"> Dementia 
                         														</li>
                         														<li>
-                        														<input type="checkbox" value="diabetes" name="family_medical[]"> Diabetes
+                        														<input type="checkbox" value="diabetes" <?php if (strpos($row->family_medical, 'diabetes') !== false) echo 'checked'; ?> name="family_medical[]"> Diabetes
                         														</li>
                         														<li>
-                        														<input type="checkbox" value="high blood pressure" name="family_medical[]"> High blood pressure
+                        														<input type="checkbox" value="high blood pressure" <?php if (strpos($row->family_medical, 'high blood pressure') !== false) echo 'checked'; ?> name="family_medical[]"> High blood pressure
                         														</li>
                         													
                         														

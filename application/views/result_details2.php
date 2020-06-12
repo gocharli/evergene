@@ -493,7 +493,7 @@ function formatDate(date) {
 											{
 												if($setting_qry->settingValue==1)
 												{
-											?>   	<a href="javascript:;" onclick="call_request('nurse')" class="tran3s custom-btn request-btn pull-right">
+											?>   	<a href="javascript:;" onclick="call_request('nurse')" class="tran3s custom-btn request-btn">
 														Request Call From Nurse
 														<span><?=$order_details->callNurseType?></span>
 													</a>
@@ -506,7 +506,7 @@ function formatDate(date) {
 													if($call_doctor_price){
 														if($call_doctor_price->settingValue>0){
 													?>
-													<a href="javascript:;" onclick="call_request('doctor')" class="tran3s custom-btn request-btn pull-right">
+													<a href="javascript:;" onclick="call_request('doctor')" class="tran3s custom-btn request-btn">
 														Request Call From Doctor
 														<span>£<?=$call_doctor_price->settingValue?></span>
 													</a>

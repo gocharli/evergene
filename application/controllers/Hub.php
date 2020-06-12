@@ -41,7 +41,12 @@ class Hub extends CI_Controller {
 		$this->session->set_userdata('current_url', base_url().'hub');
 		//$this->check_login();
 		$this->response['page_title']="Hub";
-		$this->response['row']=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
+		$row=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
+		
+		
+		//echo $row->medical_conditions; exit;
+
+		$this->response['row'] = $row;
 		// recomended //
 		$this->response['recommended_products']=$this->db->query('SELECT tests.* ,(SELECT sum(detailQty) FROM order_details LIMIT 1) as cqty  FROM `order_details`
 						LEFT JOIN tests ON order_details.testId=tests.testId where tests.productType="Test" and tests.testStatus = "Active" 
@@ -123,17 +128,17 @@ class Hub extends CI_Controller {
 		//echo '<pre>'; print_r($user_track_graph); 
 		
 		 if($_POST['type']=='BMI'){
-		foreach ($user_track_graph as $r) {
-			foreach ($daily_analytics as $key=>$row) {
-				if(date('Y-m',strtotime($row['y']))==date('Y-m',strtotime($r->date))) {
-				   
-					$daily_analytics[$key]['x']=$r->bmi;
-				  
+			foreach ($user_track_graph as $r) {
+				foreach ($daily_analytics as $key=>$row) {
+					if(date('Y-m',strtotime($row['y']))==date('Y-m',strtotime($r->date))) {
+					
+						$daily_analytics[$key]['x']=$r->bmi;
+					
+					}
 				}
+			
 			}
-		
-		}
-	}else if($_POST['type']=='Hip/Waist Ratio'){
+		}else if($_POST['type']=='Hip/Waist Ratio'){
 	    foreach ($user_track_graph as $r) {
 			foreach ($daily_analytics as $key=>$row) {
 				if(date('Y-m',strtotime($row['y']))==date('Y-m',strtotime($r->date))) {
