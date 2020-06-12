@@ -5,8 +5,6 @@
 <?php if($order_details->testResultType=='Result 3' || $order_details->testResultType=='Result 2'){ ?>
 	<link rel="stylesheet" href="<?=base_url('assets/plugins/morris')?>/morris.css">
 	
-	
-
 <?php } ?>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -727,6 +725,7 @@ function formatDate(date) {
 
 		function generate()
 		{
+			$(".morris-hover").addClass('d-print-none');
 			var divToPrint=document.getElementById('html-2-pdfwrapper');
 
 			var newWin=window.open('','Print-Window');
