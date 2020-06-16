@@ -8,17 +8,17 @@
 <style>
 
 .amber-color{
-color: #d9f210 !important;
+/* color: #d9f210 !important; */
 border: 2px solid #d9f210 !important;
 }
 
 .red-color{
-color: #fa5442 !important;
+/* color: #fa5442 !important; */
 border: 2px solid #fa5442 !important;
 }
 
 .gray-color{
-color: #a19c9b !important;
+/* color: #a19c9b !important; */
 border: 2px solid #a19c9b !important;
 }
 
@@ -158,7 +158,7 @@ border: 2px solid #a19c9b !important;
 												<label>Exercise</label>
 												<!-- <div class="b_ans"><?php if($row->excericseAvgWeek>0){ echo number_format($row->excericseAvgWeek).'/Week';}else{ echo '---';} ?></div> -->
 																			
-												<? $e_unit = 'hour'; if(trim($row->excericseAvgWeek) != '0-1') $e_unit .='s'; ?>
+												<?php $e_unit = 'hour'; if(trim($row->excericseAvgWeek) != '0-1') $e_unit .='s'; ?>
 												<div class="b_ans"><?php  if($row->excericseAvgWeek != "" ){ echo $row->excericseAvgWeek.' '.$e_unit.'/Week';}else{ echo '---';} ?></div>
 
 											</div><!--body info-->
@@ -276,7 +276,7 @@ border: 2px solid #a19c9b !important;
 												</div><!--height-->
 
 												<?php $ratiom = 0; 
-												if($row->hipMeasurment > 0) { $ratiom = floatval($row->waistMeasurment/$row->hipMeasurment); };  // by default is green < 0.90 or 0.85 ?>
+												if($row->hipMeasurment > 0) { $ratiom = floatval($row->waistMeasurment/$row->hipMeasurment); $ratiom = number_format($ratiom, 2); };  // by default is green < 0.90 or 0.85 ?>
 
 												<?php if($row->gender == 'Female'){ ?>   
 
@@ -297,7 +297,7 @@ border: 2px solid #a19c9b !important;
 														<span>
 															<?php if($row->waistMeasurment>0 && $row->hipMeasurment>0) {
 																$wh=$row->waistMeasurment/$row->hipMeasurment;
-																echo number_point_format($wh,1) . '';
+																echo number_point_format($wh,2) . '';
 															} ?>
 														</span>
 														
@@ -309,7 +309,7 @@ border: 2px solid #a19c9b !important;
 													    	<span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">QRISK is an algorithm for predicting cardiovascular risk. It estimates the risk of a person developing cardiovascular disease (CVD) over the next 10 years and can be applied to those aged between 35 and 74 years. Those with a score of 20 per cent or more are considered to be at high risk of developing CVD.</span></span>
 						
 														QRISK 
-														<span style="color: #a19c9b">2.5 .</span>
+														<span style="color: #a19c9b"><?php echo $row->qriskk; ?></span>
 													</div>
 												</div><!--QRISK-->
 
@@ -329,7 +329,8 @@ border: 2px solid #a19c9b !important;
 														$bmi=floatval((($row->weight/$row->height)/$row->height)*10000);
 												} ?>
 
-												<div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>">
+												<!-- <div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>"> -->
+												<div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5){ echo 'green-color'; }else if($bmi > 24.9){ echo 'red-color'; }else if($bmi >= 18.5 && $bmi <= 24.9){ echo 'amber-color'; }else{ echo 'gray-color'; } } ?>">
 													<div>
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">If your BMI (Body mass index) is 18.5 to <25, it falls within the normal. If your BMI is 25.0 to <30, it falls within the overweight range. If your BMI is 30.0 or higher, it falls within the obese range.</span></span>
 						

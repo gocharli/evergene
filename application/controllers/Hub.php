@@ -10,6 +10,8 @@ class Hub extends CI_Controller {
 		$session_data=$this->session->userdata('users');
 		$this->session_data=$session_data;
 
+		$this->load->model('qrisk_model');
+
 		$this->membership_data = new stdClass();
 		$this->membership_data->expire = true;
 		
@@ -30,8 +32,6 @@ class Hub extends CI_Controller {
 		}
 	}
 
-
-
 	public function index() {
 
 		$this->check_login();
@@ -41,11 +41,10 @@ class Hub extends CI_Controller {
 		$this->session->set_userdata('current_url', base_url().'hub');
 		//$this->check_login();
 		$this->response['page_title']="Hub";
-		$row=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
-		
-		
-		//echo $row->medical_conditions; exit;
 
+		$row=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
+		$gender=$this->db->query('select userGender from users WHERE userId='.$this->session_data->userId)->row()->userGender; 
+		$row->qriskk = $this->qrisk_model->get_qrisk($this->session_data->userId, $gender);
 		$this->response['row'] = $row;
 		// recomended //
 		$this->response['recommended_products']=$this->db->query('SELECT tests.* ,(SELECT sum(detailQty) FROM order_details LIMIT 1) as cqty  FROM `order_details`
@@ -54,9 +53,6 @@ class Hub extends CI_Controller {
 						order by cqty desc
 						LIMIT 4')->result();
 
-		//echo '<pre>'; print_r($this->response['recommended_products']); exit;
-
-		
 		//track//
 		$daily_analytics=array();
 		$last_year=date("Y-m-d",strtotime("-1 year"));
@@ -278,4 +274,5 @@ class Hub extends CI_Controller {
 			exit();
 		}
 	}
+
 }

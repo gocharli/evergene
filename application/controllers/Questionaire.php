@@ -10,6 +10,7 @@ class Questionaire extends CI_Controller {
 		parent::__construct();
 		$session_data=$this->session->userdata('users');
 		$this->session_data=$session_data;
+		$this->load->model('qrisk_model');
 	}
 
 
@@ -217,6 +218,11 @@ class Questionaire extends CI_Controller {
 
 				$this_month = $this->db->query("SELECT count(*) as cnt, trackId FROM `user_track_graph` WHERE MONTH(date) = MONTH(CURRENT_DATE())
 				AND YEAR(date) = YEAR(CURRENT_DATE()) and userId=".$this->session_data->userId)->row();
+				
+				$gender=$this->db->query('select userGender from users WHERE userId='.$this->session_data->userId)->row()->userGender; 
+				$track['qrisk'] = $this->qrisk_model->get_qrisk($this->session_data->userId, $gender);
+				
+				
 				//echo $this->db->last_query();
 				if($this_month->cnt > 0){
 					$this->db->where('trackId', $this_month->trackId)->update("user_track_graph", $track);

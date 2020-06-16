@@ -1191,50 +1191,50 @@
                     													<div class="add_detail medical_detail <?php if($row->trackMedical=='Yes') { echo 'show'; } ?>" style="display:block;margin:0px">
                     
                     													<ul>
-                    														<!-- <li>
-                    														<input type="checkbox" value="diabetes type 1" <?php if (strpos($row->medical_conditions, 'diabetes type 1') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 1
+																			<li>
+                    															<input type="checkbox" value="diabetes type 1" <?php if (strpos($row->medical_conditions, 'diabetes type 1') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 1
                     													    </li>
                     
                     													    <li>
-                    														<input type="checkbox" value="diabetes type 2" <?php if (strpos($row->medical_conditions, 'diabetes type 2') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 2 
+                    															<input type="checkbox" value="diabetes type 2" <?php if (strpos($row->medical_conditions, 'diabetes type 2') !== false) echo 'checked'; ?> name="medical_conditions[]"> Diabetes type 2 <!--, uts-->
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="overactive thyroid" <?php if (strpos($row->medical_conditions, 'overactive thyroid') !== false) echo 'checked'; ?> name="medical_conditions[]"> Overactive thyroid
+                    															<input type="checkbox" value="overactive thyroid" <?php if (strpos($row->medical_conditions, 'overactive thyroid') !== false) echo 'checked'; ?> name="medical_conditions[]"> Overactive thyroid
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="high blood pressure" <?php if (strpos($row->medical_conditions, 'high blood pressure') !== false) echo 'checked'; ?> name="medical_conditions[]"> Systemic lupus erythematosus (SLE)
+                    															<input type="checkbox" value="high blood pressure" <?php if (strpos($row->medical_conditions, 'high blood pressure') !== false) echo 'checked'; ?> name="medical_conditions[]"> Systemic lupus erythematosus (SLE)
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="heart disease" <?php if (strpos($row->medical_conditions, 'heart disease') !== false) echo 'checked'; ?> name="medical_conditions[]"> Chronic Kidney Disease (Stage 3, 4 or 5) 
+                    															<input type="checkbox" value="heart disease" <?php if (strpos($row->medical_conditions, 'heart disease') !== false) echo 'checked'; ?> name="medical_conditions[]"> Chronic Kidney Disease (Stage 3, 4 or 5) <!--? -->
                     														</li>
                     													
                     														<li>
-                    														<input type="checkbox" value="Atrial fibrillation" <?php if (strpos($row->medical_conditions, 'Atrial fibrillation') !== false) echo 'checked'; ?> name="medical_conditions[]"> Atrial fibrillation
+                    															<input type="checkbox" value="Atrial fibrillation" <?php if (strpos($row->medical_conditions, 'Atrial fibrillation') !== false) echo 'checked'; ?> name="medical_conditions[]"> Atrial fibrillation
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Rheumatoid arthritis" <?php if (strpos($row->medical_conditions, 'Rheumatoid arthritis') !== false) echo 'checked'; ?> name="medical_conditions[]"> Rheumatoid arthritis
+                    															<input type="checkbox" value="Rheumatoid arthritis" <?php if (strpos($row->medical_conditions, 'Rheumatoid arthritis') !== false) echo 'checked'; ?> name="medical_conditions[]"> Rheumatoid arthritis
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Severe mental illness" <?php if (strpos($row->medical_conditions, 'Severe mental illness') !== false) echo 'checked'; ?> name="medical_conditions[]"> Severe mental illness
+                    															<input type="checkbox" value="Severe mental illness" <?php if (strpos($row->medical_conditions, 'Severe mental illness') !== false) echo 'checked'; ?> name="medical_conditions[]"> Severe mental illness
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="On blood pressure treatment" <?php if (strpos($row->medical_conditions, 'On blood pressure treatment') !== false) echo 'checked'; ?> name="medical_conditions[]"> On blood pressure treatment
+                    															<input type="checkbox" value="On blood pressure treatment" <?php if (strpos($row->medical_conditions, 'On blood pressure treatment') !== false) echo 'checked'; ?> name="medical_conditions[]"> On blood pressure treatment
                     														</li>
-                    														<!-<li>
+                    														<!--<li>
                     														<input type="checkbox" value="Atrial migraines" name="medical_conditions[]"> Atrial migraines
-                    														</li>->
+                    														</li>-->
                     														<li>
-                    														<input type="checkbox" value="On atypical antipsychotic medication" <?php if (strpos($row->medical_conditions, 'On atypical antipsychotic medication') !== false) echo 'checked'; ?> name="medical_conditions[]"> On atypical antipsychotic medication
+                    															<input type="checkbox" value="On atypical antipsychotic medication" <?php if (strpos($row->medical_conditions, 'On atypical antipsychotic medication') !== false) echo 'checked'; ?> name="medical_conditions[]"> On atypical antipsychotic medication
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="A diagnosis of or treatment for erectile disfunction" <?php if (strpos($row->medical_conditions, 'A diagnosis of or treatment for erectile disfunction') !== false) echo 'checked'; ?> name="medical_conditions[]"> A diagnosis of or treatment for erectile disfunction
+                    															<input type="checkbox" value="A diagnosis of or treatment for erectile disfunction" <?php if (strpos($row->medical_conditions, 'A diagnosis of or treatment for erectile disfunction') !== false) echo 'checked'; ?> name="medical_conditions[]"> A diagnosis of or treatment for erectile disfunction
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Are you on regular steroid tablets?" <?php if (strpos($row->medical_conditions, 'Are you on regular steroid tablets?') !== false) echo 'checked'; ?> name="medical_conditions[]"> Are you on regular steroid tablets?
+                    															<input type="checkbox" value="Are you on regular steroid tablets?" <?php if (strpos($row->medical_conditions, 'Are you on regular steroid tablets?') !== false) echo 'checked'; ?> name="medical_conditions[]"> Are you on regular steroid tablets?
                     														</li>
                     														<li>
-                    														<input type="checkbox" value="Do you have migraines" <?php if (strpos($row->medical_conditions, 'Do you have migraines') !== false) echo 'checked'; ?> name="medical_conditions[]"> Do you have migraines?
-                    														</li> -->
+                    															<input type="checkbox" value="Do you have migraines" <?php if (strpos($row->medical_conditions, 'Do you have migraines') !== false) echo 'checked'; ?> name="medical_conditions[]"> Do you have migraines?
+                    														</li>
                     														
                     													</ul>
                     
