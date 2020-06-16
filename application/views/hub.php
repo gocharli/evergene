@@ -314,7 +314,7 @@ border: 2px solid #86c44c !important;
 													    	<span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">QRISK is an algorithm for predicting cardiovascular risk. It estimates the risk of a person developing cardiovascular disease (CVD) over the next 10 years and can be applied to those aged between 35 and 74 years. Those with a score of 20 per cent or more are considered to be at high risk of developing CVD.</span></span>
 						
 														QRISK 
-														<span style="color: #a19c9b"><?php echo $row->qriskk; ?></span>
+														<span style="color: #a19c9b"><?php if(is_numeric($row->qriskk)) echo $row->qriskk; else echo '---'; ?></span>
 													</div>
 												</div><!--QRISK-->
 
