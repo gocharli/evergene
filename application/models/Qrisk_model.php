@@ -183,7 +183,7 @@ class Qrisk_model extends CI_Model {
 		/* Calculate the score itself */
 		//return $survivor[$surv];
 		$score = 100.0 * (1 - pow($survivor[$surv], exp($a)) );
-        return $score;
+        return number_format($score,2);
 
 	}
 	
@@ -372,7 +372,7 @@ class Qrisk_model extends CI_Model {
 
 		/* Calculate the score itself */
 		$score = 100.0 * (1 - pow($survivor[$surv], exp($a)) );
-		return $score;
+		return number_format($score, 2);
 	}
 
 	public function get_qrisk($id, $gender){

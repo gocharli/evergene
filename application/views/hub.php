@@ -22,6 +22,11 @@ border: 2px solid #fa5442 !important;
 border: 2px solid #a19c9b !important;
 }
 
+.green-color{
+/* color: #a19c9b !important; */
+border: 2px solid #86c44c !important;
+}
+
 </style>
 
 
@@ -280,11 +285,11 @@ border: 2px solid #a19c9b !important;
 
 												<?php if($row->gender == 'Female'){ ?>   
 
-													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 
 												<?php }else{ ?>
 
-													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 												
 												<?php } ?>
 
