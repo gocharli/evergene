@@ -628,21 +628,16 @@ function formatDate(date) {
 
 	<script type="text/javascript">
     <?php
-	
+	//echo '<pre>'; print_r($kkk);
 	$IndexToMonth = '[';
+	
 	foreach($kkk as $month) {
 		$m = date('M', strtotime($month['y']));
 		$IndexToMonth.='"'.$m.'",';
+		
 	}
 	$IndexToMonth = substr($IndexToMonth, 0, -1).']';
-	//echo $IndexToMonth;
-    // $result_analytics1 = [];
-    // foreach($result_analytics as $idx => $row) {
-    //     if ($row['x'] != 0) {
-    //         $result_analytics1[] = $row;
-    //     }
-    // }
-    
+	
     //echo 'vvvvvvvv'; echo '<pre>'; print_r($result_analytics1); //if($order_details->resultHistory=='Yes'){ ?>
 		// Use Morris.Bar
 		Morris.Line({
@@ -653,36 +648,15 @@ function formatDate(date) {
 					echo json_encode($month).',';
 				}?>],
 			xkey: 'y',
-			//xmax: <?php echo $results[0]->no_of_markers; ?>, // set this value according to your liking
-
-			//ykeys: ['x'],
-			//labels: ['Result Value'] ,
-
+			
 			<?php 
 			
 			$ykeys = "['x'";
 
-
-			// $labels="['";
-			// $mrkrs = $this->db->query("select tm_title from test_markers_value where tm_test_id where tm_test_idssss")->result();
-			// foreach($mrkrs as $t){
-			// 	$labels.=$t->tm_title."','";
-			// }
-
-			// $labels = substr($labels, 0,-2);
-			// $labels .= "']"; 
-
-			// echo $labels; exit;
-			
-			//$labels = "['Result Vlaue'";
-
 			for($i=1; $i < $results[0]->no_of_markers; $i++){
 
 				$ykeys.=", 'x".$i."'";
-				$labels.=", 'Result Vlaue'";
-				//array_push($ykeys,'x'.$i);
-				//array_push($labels,'Result Vlaue');
-
+				$labels.=", 'Result Vlaue'";				
 			}
 			
 			$ykeys.="]";
@@ -695,6 +669,23 @@ function formatDate(date) {
 
 			padding: 100,
 
+<?php  // 22 June 2020
+			
+			foreach($results as $r){
+				if($r->resultValue < $r->lower_value || $r->resultValue > $r->upper_value){ ?> // Abnormal range
+					pointFillColors:['red','green'],
+					//pointStrokeColors: ['black'],
+					//goals: [$r->resultValue],
+    				//goalLineColors: ['red'],
+					//lineColors: ['red', 'green'],
+					goals: [<?php echo $r->resultValue; ?>],
+					goalStrokeWidth: 2,
+					goalLineColors: ['red'],
+				<?php }
+			}
+			
+?> // End 22 June 2020
+
 			//xLabelMargin: 10,
 			//pointFillColors:['#green'],
 			// pointStrokeColors: ['black'],
@@ -705,17 +696,9 @@ function formatDate(date) {
 			//behaveLikeLine: true,
 
 			xLabelFormat: function (x) {
-				// var IndexToMonth = <?php //echo $IndexToMonth; ?> [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-				// var month = IndexToMonth[ x.getMonth() ];
-				// var year = x.getFullYear();
-				// return year + ' ' + month;
 				return formatDate(new Date(x));
 			},
 			dateFormat: function (x) {
-				// var IndexToMonth = <?php //echo $IndexToMonth; ?> [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-				// var month = IndexToMonth[ new Date(x).getMonth() ];
-				// var year = new Date(x).getFullYear();
-				// return year + ' ' + month;
 				return formatDate(new Date(x));
 			},
 			resize: true
