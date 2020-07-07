@@ -109,14 +109,16 @@
 					<table border="0" align="center" width="510" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="container590 bodybg_color">					
 						<tr>
 							<td align="center" class="section-img">
-								<a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="510" border="0" style="display: block; margin: 60px 0px 20px 0px; width: 130px;" src="<?=base_url('assets/front/images/logo/logo.png')?>" alt="Evergene" /></a>
+								<a href="" style="display: block; border-style: none !important; border: 0 !important;">
+									<img width="510" border="0" style="display: block; margin: 60px 0px 20px 0px; width: 130px;" src="https://appvelo.com/evergene/assets/front/images/logo/logo.png" alt="Evergene" />
+								</a>
 							</td>			
 						</tr>					
 						<tr>
 							<td height="35" style="font-size: 35px; line-height: 35px;">&nbsp;</td>
 						</tr>					
 						<tr>
-							<td align="center" style="color: #1c2029; font-size: 24px; font-family: 'Varela Round', sans-serif; mso-line-height-rule: exactly; line-height: 30px;" class="title_color main-header">							
+							<td align="center" style="color: #1c2029; font-size: 24px; font-family: 'Times New Roman', Times, serif; mso-line-height-rule: exactly; line-height: 30px;" class="title_color main-header">							
 								<div style="line-height: 30px;">	        					
 		        					<?=$title?>	        					
 								</div>
@@ -129,7 +131,7 @@
 							<td>
 								<table border="0" width="440" align="center" cellpadding="0" cellspacing="0" class="container580">		
 									<tr>
-										<td align="center" style="color: #737b8c; font-size: 16px; font-family: 'Varela Round', sans-serif; mso-line-height-rule: exactly; line-height: 24px;" class="resize-text text_color">
+										<td align="center" style="color: #737b8c; font-size: 16px; font-family: 'Times New Roman', Times, serif; mso-line-height-rule: exactly; line-height: 24px;" class="resize-text text_color">
 											<div style="line-height: 24px">
 												<?=$body?>
 											</div>
@@ -147,12 +149,12 @@
 						
 								<tr>
 									<td align="center">									
-										<table border="0" align="center" width="220" cellpadding="0" cellspacing="0" bgcolor="86c44c" style="margin: 5px 0px 15px 0px; border-radius: 50px; box-shadow: 0 1px 2px rgba(0,0,0,.3);" class="cta-button main_color">										
+										<table border="0" align="center" width="220" cellpadding="0" cellspacing="0" bgcolor="86c44c" style="margin: 5px 0px 15px 0px; box-shadow: 0 1px 2px rgba(0,0,0,.3);" class="cta-button main_color">										
 											<tr>
 												<td height="13" style="font-size: 13px; line-height: 13px;">&nbsp;</td>
 											</tr>										
 											<tr>											
-				                				<td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Varela Round', sans-serif;" class="cta-text">
+				                				<td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Times New Roman', Times, serif" class="cta-text">
 					                    			<div style=" line-height: 24px;">
 						                    			<a href="<?=$link?>" target="_blank" style="font-size: 17px; color: #ffffff; text-decoration: none;"><?=$link_name?></a> 
 					                    			</div>		                            
