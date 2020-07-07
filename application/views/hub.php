@@ -49,7 +49,7 @@ border: 2px solid #86c44c !important;
 		<div class="row">
 			<div class="col-lg-12 p-0 m-p-15">
 				<div class="title">
-					<h5 class="pull-left" style="padding: 15px 0;">Welcome back <?=$this->session_data->userFirstName?></h5>
+					<h5 class="pull-left" style="padding: 15px 0;">Welcome <?=$this->session_data->userFirstName?></h5>
 					<?php $this->load->view('includes/recommend_friend');   ?>
 					<?php $this->load->view('includes/upgarde_premium');   ?>
 					<div class="clearfix"></div>
@@ -148,7 +148,7 @@ border: 2px solid #86c44c !important;
 											
 											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
 											
-											if($max_excericseAvgWeek <= 2){
+											if($max_excericseAvgWeek > 0 && $max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
 											}
 
@@ -254,7 +254,18 @@ border: 2px solid #86c44c !important;
 
 											<div class="human-body <?php if($row->gender == 'Male') echo 'human-body-male'; else echo 'human-body-female'; ?> ">
 
-												<div class="age">
+
+												<div class="age"
+												
+													<?php
+														if(age($row->dob) == 0 || age($row->dob) == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+
+												>
 													<div>
 													
 														Years Old
@@ -268,7 +279,15 @@ border: 2px solid #86c44c !important;
 													</div>
 												</div><!--age-->
 
-												<div class="height">
+												<div class="height" 
+													<?php
+														if($row->height == 0 || $row->height == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+												>
 													<div>
 													
 														Height
@@ -285,11 +304,11 @@ border: 2px solid #86c44c !important;
 
 												<?php if($row->gender == 'Female'){ ?>   
 
-													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom > 0 && $ratiom <= 0.84 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 
 												<?php }else{ ?>
 
-													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom > 0 && $ratiom <= 0.89 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 												
 												<?php } ?>
 
@@ -318,7 +337,15 @@ border: 2px solid #86c44c !important;
 													</div>
 												</div><!--QRISK-->
 
-												<div class="Weight">
+												<div class="Weight"
+													<?php
+														if($row->weight == 0 || $row->weight == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+												>
 													<div>
 												
 														Weight
@@ -334,8 +361,8 @@ border: 2px solid #86c44c !important;
 														$bmi=floatval((($row->weight/$row->height)/$row->height)*10000);
 												} ?>
 
-												<!-- <div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>"> -->
-												<div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5){ echo 'green-color'; }else if($bmi > 24.9){ echo 'red-color'; }else if($bmi >= 18.5 && $bmi <= 24.9){ echo 'amber-color'; }else{ echo 'gray-color'; } } ?>">
+												<!-- <div class="BMI <?php //if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>"> -->
+												<div class="BMI <?php if($row->weight>=0 && $row->height>=0){ if($bmi > 0 && $bmi <= 18.4){ echo 'green-color'; }elseif($bmi > 24.9){ echo 'red-color'; }elseif($bmi >= 18.5 && $bmi <= 24.9){ echo 'amber-color'; }else{ echo 'gray-color'; } } ?>">
 													<div>
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">If your BMI (Body mass index) is 18.5 to <25, it falls within the normal. If your BMI is 25.0 to <30, it falls within the overweight range. If your BMI is 30.0 or higher, it falls within the obese range.</span></span>
 						

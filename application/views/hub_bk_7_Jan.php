@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-lg-12 p-0 m-p-15">
 				<div class="title">
-					<h5 class="pull-left" style="padding: 15px 0;">Hello <?=$this->session_data->userFirstName?> / Welcome back <?=$this->session_data->userFirstName?></h5>
+					<h5 class="pull-left" style="padding: 15px 0;">Hello <?=$this->session_data->userFirstName?> / Welcome <?=$this->session_data->userFirstName?></h5>
 					<?php $this->load->view('includes/recommend_friend');   ?>
 					<?php $this->load->view('includes/upgarde_premium');   ?>
 					<div class="clearfix"></div>
