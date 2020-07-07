@@ -597,6 +597,7 @@ $(window).load(function () {
 					text: 'Ok',
 					btnClass: 'btn-green',
 					action: function(){
+						this.close();
 						$('.loginBtn').click();
 					}
 				}
