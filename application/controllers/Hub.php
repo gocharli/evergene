@@ -45,6 +45,7 @@ class Hub extends CI_Controller {
 		$row=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
 		$gender=$this->db->query('select userGender from users WHERE userId='.$this->session_data->userId)->row()->userGender; 
 		$row->qriskk = $this->qrisk_model->get_qrisk($this->session_data->userId, $gender);
+		$row->heart_age=$this->db->query('select heart_age from user_track_graph WHERE userId='.$this->session_data->userId)->row()->heart_age;
 		$this->response['row'] = $row;
 		// recomended //
 		$this->response['recommended_products']=$this->db->query('SELECT tests.* ,(SELECT sum(detailQty) FROM order_details LIMIT 1) as cqty  FROM `order_details`

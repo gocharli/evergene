@@ -38,8 +38,7 @@ class Qrisk_model extends CI_Model {
 	*/
 
 	//function cvd_male_raw(int age,int b_AF,int b_atypicalantipsy,int b_corticosteroids,int b_impotence2,int b_migraine,int b_ra,int b_renal,int b_semi,int b_sle,int b_treatedhyp,int b_type1,int b_type2,$bmi,int ethrisk,int fh_cvd,$rati,$sbp,$sbps5,int smoke_cat,int surv,$town)
-	public function cvd_male_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town)
-	{
+	public function cvd_male_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town) {
 		$surv = 10;
 		$survivor = [
 			0,
@@ -229,9 +228,7 @@ class Qrisk_model extends CI_Model {
 
 
 	//function cvd_female_raw(int age,int b_AF,int b_atypicalantipsy,int b_corticosteroids,int b_migraine,int b_ra,int b_renal,int b_semi,int b_sle,int b_treatedhyp,int b_type1,int b_type2,$bmi,int ethrisk,int fh_cvd,$rati,$sbp,$sbps5,int smoke_cat,int surv,$town)
-	public function cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town)
-
-	{
+	public function cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town) {
 
 		$surv = 10;
 		$survivor = [
@@ -375,9 +372,14 @@ class Qrisk_model extends CI_Model {
 		return number_format($score, 2);
 	}
 
+
+
 	public function get_qrisk($id, $gender){
+
 		$row=$this->db->query('select * from user_details WHERE userId='.$this->session_data->userId)->row();
+
 		if($row){
+			
 			$medi_cond = (array)json_decode($row->medical_conditions_json);
 		
 			//echo '<pre>'; print_r($medi_cond);
@@ -504,7 +506,7 @@ class Qrisk_model extends CI_Model {
 				$qrisk = $this->cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town);
 			}
 
-			return $qrisk;
+			return $qrisk/100;
 
 		}else{
 			return '';

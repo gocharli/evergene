@@ -221,7 +221,232 @@ class Questionaire extends CI_Controller {
 				
 				$gender=$this->db->query('select userGender from users WHERE userId='.$this->session_data->userId)->row()->userGender; 
 				$track['qrisk'] = $this->qrisk_model->get_qrisk($this->session_data->userId, $gender);
-				
+
+				if($gender=='Male'){
+
+					if($track['qrisk'] < 0.3) $track['heart_age'] = '< 30';
+
+					if($track['qrisk'] >= 0.3 && $track['qrisk'] < 0.4428) $track['heart_age'] = '31';
+
+					if($track['qrisk'] >= 0.4428 && $track['qrisk'] < 0.5262) $track['heart_age'] = '32';
+
+					if($track['qrisk'] >= 0.5262 && $track['qrisk'] < 0.6196) $track['heart_age'] = '33';
+
+					if($track['qrisk'] >= 0.6196 && $track['qrisk'] < 0.7234) $track['heart_age'] = '34';
+
+					if($track['qrisk'] >= 0.7234 && $track['qrisk'] < 0.8382) $track['heart_age'] = '35';
+
+					if($track['qrisk'] >= 0.8382 && $track['qrisk'] < 0.9643) $track['heart_age'] = '36';
+					
+					if($track['qrisk'] >= 0.9643 && $track['qrisk'] < 1.1023) $track['heart_age'] = '37';
+					
+					if($track['qrisk'] >= 1.1023 && $track['qrisk'] < 1.2527) $track['heart_age'] = '38';
+					
+					if($track['qrisk'] >= 1.2527 && $track['qrisk'] < 1.4159) $track['heart_age'] = '39';
+					
+					if($track['qrisk'] >= 1.4159 && $track['qrisk'] < 1.5986) $track['heart_age'] = '40';
+					
+					if($track['qrisk'] >= 1.5986 && $track['qrisk'] < 1.7893) $track['heart_age'] = '41';
+					
+					if($track['qrisk'] >= 1.7893 && $track['qrisk'] < 1.9944) $track['heart_age'] = '42';
+					
+					if($track['qrisk'] >= 1.9944 && $track['qrisk'] < 2.2145) $track['heart_age'] = '43';
+					
+					if($track['qrisk'] >= 2.2145 && $track['qrisk'] < 2.4502) $track['heart_age'] = '44';
+					
+					if($track['qrisk'] >= 2.4502 && $track['qrisk'] < 2.7022) $track['heart_age'] = '45';
+					
+					if($track['qrisk'] >= 2.7022 && $track['qrisk'] < 2.9711) $track['heart_age'] = '46';
+					
+					if($track['qrisk'] >= 2.9711 && $track['qrisk'] < 3.2577) $track['heart_age'] = '47';
+					
+					if($track['qrisk'] >= 3.2577 && $track['qrisk'] < 3.5629) $track['heart_age'] = '48';
+					
+					if($track['qrisk'] >= 3.5629 && $track['qrisk'] < 3.8875) $track['heart_age'] = '49';
+					
+					if($track['qrisk'] >= 3.8875 && $track['qrisk'] < 4.2255) $track['heart_age'] = '50';
+					
+					if($track['qrisk'] >= 4.2255 && $track['qrisk'] < 4.5919) $track['heart_age'] = '51';
+					
+					if($track['qrisk'] >= 4.5919 && $track['qrisk'] < 4.981) $track['heart_age'] = '52';
+					
+					if($track['qrisk'] >= 4.981 && $track['qrisk'] < 5.3937) $track['heart_age'] = '53';
+					
+					if($track['qrisk'] >= 5.3937 && $track['qrisk'] < 5.8314) $track['heart_age'] = '54';
+					
+					if($track['qrisk'] >= 5.8314 && $track['qrisk'] < 6.2955) $track['heart_age'] = '55';
+
+					if($track['qrisk'] >= 6.2955 && $track['qrisk'] < 6.7874) $track['heart_age'] = '56';
+
+					if($track['qrisk'] >= 6.7874 && $track['qrisk'] < 7.3088) $track['heart_age'] = '57';
+
+					if($track['qrisk'] >= 7.3088 && $track['qrisk'] < 7.8613) $track['heart_age'] = '58';
+
+					if($track['qrisk'] >= 7.8613 && $track['qrisk'] < 8.4468) $track['heart_age'] = '59';
+
+					if($track['qrisk'] >= 8.4468 && $track['qrisk'] < 9.0596) $track['heart_age'] = '60';
+					
+					if($track['qrisk'] >= 9.0596 && $track['qrisk'] < 9.7188) $track['heart_age'] = '61';
+					
+					if($track['qrisk'] >= 9.7188 && $track['qrisk'] < 10.4174) $track['heart_age'] = '62';
+					
+					if($track['qrisk'] >= 10.4174 && $track['qrisk'] < 11.1577) $track['heart_age'] = '63';
+					
+					if($track['qrisk'] >= 11.1577 && $track['qrisk'] < 11.9424) $track['heart_age'] = '64';
+					
+					if($track['qrisk'] >= 11.9424 && $track['qrisk'] < 12.7741) $track['heart_age'] = '65';
+					
+					if($track['qrisk'] >= 12.7741 && $track['qrisk'] < 13.6557) $track['heart_age'] = '66';
+					
+					if($track['qrisk'] >= 13.6557 && $track['qrisk'] < 14.5901) $track['heart_age'] = '67';
+					
+					if($track['qrisk'] >= 14.5901 && $track['qrisk'] < 15.5805) $track['heart_age'] = '68';
+					
+					if($track['qrisk'] >= 15.5805 && $track['qrisk'] < 16.6303) $track['heart_age'] = '69';
+					
+					if($track['qrisk'] >= 16.6303 && $track['qrisk'] < 17.784) $track['heart_age'] = '70';
+					
+					if($track['qrisk'] >= 17.784 && $track['qrisk'] < 18.9698) $track['heart_age'] = '71';
+					
+					if($track['qrisk'] >= 18.9698 && $track['qrisk'] < 20.2259) $track['heart_age'] = '72';
+					
+					if($track['qrisk'] >= 20.2259 && $track['qrisk'] < 21.5561) $track['heart_age'] = '73';
+					
+					if($track['qrisk'] >= 21.5561 && $track['qrisk'] < 22.9643) $track['heart_age'] = '74';
+					
+					if($track['qrisk'] >= 22.9643 && $track['qrisk'] < 24.4542) $track['heart_age'] = '75';
+					
+					if($track['qrisk'] >= 24.4542 && $track['qrisk'] < 26.0298) $track['heart_age'] = '76';
+					
+					if($track['qrisk'] >= 26.0298 && $track['qrisk'] < 27.6947) $track['heart_age'] = '77';
+					
+					if($track['qrisk'] >= 27.6947 && $track['qrisk'] < 29.4526) $track['heart_age'] = '78';
+					
+					if($track['qrisk'] >= 29.4526 && $track['qrisk'] < 31.3069) $track['heart_age'] = '79';
+
+					if($track['qrisk'] >= 31.3069 && $track['qrisk'] < 33.367) $track['heart_age'] = '80';
+					
+					if($track['qrisk'] >= 33.367 && $track['qrisk'] < 35.4301) $track['heart_age'] = '81';
+					
+					if($track['qrisk'] >= 35.4301 && $track['qrisk'] < 37.5969) $track['heart_age'] = '82';
+					
+					if($track['qrisk'] >= 37.5969 && $track['qrisk'] < 39.8685) $track['heart_age'] = '83';
+					
+					if($track['qrisk'] >= 39.8685) $track['heart_age'] = '> 84';
+
+				}
+				else{
+
+					if($track['qrisk'] < 0.25) $track['heart_age'] = '< 30';
+
+					if($track['qrisk'] >= 0.25 && $track['qrisk'] < 0.3159) $track['heart_age'] = '31';
+
+					if($track['qrisk'] >= 0.3159 && $track['qrisk'] < 0.3582) $track['heart_age'] = '32';
+
+					if($track['qrisk'] >= 0.3582 && $track['qrisk'] < 0.4046) $track['heart_age'] = '33';
+
+					if($track['qrisk'] >= 0.4046 && $track['qrisk'] < 0.4554) $track['heart_age'] = '34';
+
+					if($track['qrisk'] >= 0.4554 && $track['qrisk'] < 0.511) $track['heart_age'] = '35';
+
+					if($track['qrisk'] >= 0.511 && $track['qrisk'] < 0.5717) $track['heart_age'] = '36';
+					
+					if($track['qrisk'] >= 0.5717 && $track['qrisk'] < 0.6381) $track['heart_age'] = '37';
+					
+					if($track['qrisk'] >= 0.6381 && $track['qrisk'] < 0.7106) $track['heart_age'] = '38';
+					
+					if($track['qrisk'] >= 0.7106 && $track['qrisk'] < 0.7898) $track['heart_age'] = '39';
+					
+					if($track['qrisk'] >= 0.7898 && $track['qrisk'] < 0.8761) $track['heart_age'] = '40';
+					
+					if($track['qrisk'] >= 0.8761 && $track['qrisk'] < 0.9702) $track['heart_age'] = '41';
+					
+					if($track['qrisk'] >= 0.9702 && $track['qrisk'] < 1.0728) $track['heart_age'] = '42';
+					
+					if($track['qrisk'] >= 1.0728 && $track['qrisk'] < 1.1846) $track['heart_age'] = '43';
+					
+					if($track['qrisk'] >= 1.1846 && $track['qrisk'] < 1.3063) $track['heart_age'] = '44';
+					
+					if($track['qrisk'] >= 1.3063 && $track['qrisk'] < 1.4389) $track['heart_age'] = '45';
+					
+					if($track['qrisk'] >= 1.4389 && $track['qrisk'] < 1.5832) $track['heart_age'] = '46';
+					
+					if($track['qrisk'] >= 1.5832 && $track['qrisk'] < 1.7402) $track['heart_age'] = '47';
+					
+					if($track['qrisk'] >= 1.7402 && $track['qrisk'] < 1.911) $track['heart_age'] = '48';
+					
+					if($track['qrisk'] >= 1.911 && $track['qrisk'] < 2.0966) $track['heart_age'] = '49';
+					
+					if($track['qrisk'] >= 2.0966 && $track['qrisk'] < 2.2984) $track['heart_age'] = '50';
+					
+					if($track['qrisk'] >= 2.2984 && $track['qrisk'] < 2.5177) $track['heart_age'] = '51';
+					
+					if($track['qrisk'] >= 2.5177 && $track['qrisk'] < 2.7559) $track['heart_age'] = '52';
+					
+					if($track['qrisk'] >= 2.7559 && $track['qrisk'] < 3.0146) $track['heart_age'] = '53';
+					
+					if($track['qrisk'] >= 3.0146 && $track['qrisk'] < 3.2953) $track['heart_age'] = '54';
+					
+					if($track['qrisk'] >= 3.2953 && $track['qrisk'] < 3.5999) $track['heart_age'] = '55';
+
+					if($track['qrisk'] >= 3.5999 && $track['qrisk'] < 3.9303) $track['heart_age'] = '56';
+
+					if($track['qrisk'] >= 3.9303 && $track['qrisk'] < 4.2885) $track['heart_age'] = '57';
+
+					if($track['qrisk'] >= 4.2885 && $track['qrisk'] < 4.6766) $track['heart_age'] = '58';
+
+					if($track['qrisk'] >= 4.6766 && $track['qrisk'] < 5.0971) $track['heart_age'] = '59';
+
+					if($track['qrisk'] >= 5.0971 && $track['qrisk'] < 5.5523) $track['heart_age'] = '60';
+					
+					if($track['qrisk'] >= 5.5523 && $track['qrisk'] < 6.0448) $track['heart_age'] = '61';
+					
+					if($track['qrisk'] >= 6.0448 && $track['qrisk'] < 6.5776) $track['heart_age'] = '62';
+					
+					if($track['qrisk'] >= 6.5776 && $track['qrisk'] < 7.1535) $track['heart_age'] = '63';
+					
+					if($track['qrisk'] >= 7.1535 && $track['qrisk'] < 7.7756) $track['heart_age'] = '64';
+					
+					if($track['qrisk'] >= 7.7756 && $track['qrisk'] < 8.4472) $track['heart_age'] = '65';
+					
+					if($track['qrisk'] >= 8.4472 && $track['qrisk'] < 9.1717) $track['heart_age'] = '66';
+					
+					if($track['qrisk'] >= 9.1717 && $track['qrisk'] < 9.9528) $track['heart_age'] = '67';
+					
+					if($track['qrisk'] >= 9.9528 && $track['qrisk'] < 10.7942) $track['heart_age'] = '68';
+					
+					if($track['qrisk'] >= 10.7942 && $track['qrisk'] < 11.6997) $track['heart_age'] = '69';
+					
+					if($track['qrisk'] >= 11.6997 && $track['qrisk'] < 12.6733) $track['heart_age'] = '70';
+					
+					if($track['qrisk'] >= 12.6733 && $track['qrisk'] < 13.7192) $track['heart_age'] = '71';
+					
+					if($track['qrisk'] >= 13.7192 && $track['qrisk'] < 14.8415) $track['heart_age'] = '72';
+					
+					if($track['qrisk'] >= 14.8415 && $track['qrisk'] < 16.0444) $track['heart_age'] = '73';
+					
+					if($track['qrisk'] >= 16.0444 && $track['qrisk'] < 17.332) $track['heart_age'] = '74';
+					
+					if($track['qrisk'] >= 17.332 && $track['qrisk'] < 18.7086) $track['heart_age'] = '75';
+					
+					if($track['qrisk'] >= 18.7086 && $track['qrisk'] < 20.1781) $track['heart_age'] = '76';
+					
+					if($track['qrisk'] >= 20.1781 && $track['qrisk'] < 21.7443) $track['heart_age'] = '77';
+					
+					if($track['qrisk'] >= 21.7443 && $track['qrisk'] < 23.4108) $track['heart_age'] = '78';
+					
+					if($track['qrisk'] >= 23.4108 && $track['qrisk'] < 25.1808) $track['heart_age'] = '79';
+
+					if($track['qrisk'] >= 25.1808 && $track['qrisk'] < 27.0569) $track['heart_age'] = '80';
+					
+					if($track['qrisk'] >= 27.0569 && $track['qrisk'] < 29.0413) $track['heart_age'] = '81';
+					
+					if($track['qrisk'] >= 29.0413 && $track['qrisk'] < 31.1353) $track['heart_age'] = '82';
+					
+					if($track['qrisk'] >= 31.1353 && $track['qrisk'] < 33.3395) $track['heart_age'] = '83';
+					
+					if($track['qrisk'] >= 33.3395) $track['heart_age'] = '> 84';
+				}
 				
 				//echo $this->db->last_query();
 				if($this_month->cnt > 0){
