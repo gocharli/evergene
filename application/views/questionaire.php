@@ -163,50 +163,9 @@
 																			<option value="Black African">Black African</option>
 																			<option value="Asian Chinese">Chinese</option>
 																			<option value="Other">Other ethnic group</option>
-																				
-
-																			<!-- <optgroup label="White">
-																				<option value="White English">English</option>
-																				<option value="White Welsh">Welsh</option>
-																				<option value="White Scottish">Scottish</option>
-																				<option value="White Northern Irish">Northern Irish</option>
-																				<option value="White Irish">Irish</option>
-																				<option value="White Gypsy or Irish Traveller">Gypsy or Irish Traveller</option>
-																				<option value="White Other">Any other White background</option>
-																			</optgroup>
-																			<optgroup label="Mixed or Multiple ethnic groups">
-																				<option value="Mixed White and Black Caribbean">White and Black Caribbean</option>
-																				<option value="Mixed White and Black African">White and Black African</option>
-																				<option value="Mixed White Other">Any other Mixed or Multiple background</option>
-																			</optgroup>
-																			<optgroup label="Asian">
-																				<option value="Asian Indian">Indian</option>
-																				<option value="Asian Pakistani">Pakistani</option>
-																				<option value="Asian Bangladeshi">Bangladeshi</option>
-																				<option value="Asian Chinese">Chinese</option>
-																				<option value="Asian Other">Any other Asian background</option>
-																			</optgroup>
-																			<optgroup label="Black">
-																				<option value="Black African">African</option>
-																				<option value="Black African American">African American</option>
-																				<option value="Black Caribbean">Caribbean</option>
-																				<option value="Black Other">Any other Black background</option>
-																			</optgroup>
-																			<optgroup label="Other ethnic groups">
-																				<option value="Arab">Arab</option>
-																				<option value="Hispanic">Hispanic</option>
-																				<option value="Latino">Latino</option>
-																				<option value="Native American">Native American</option>
-																				<option value="Pacific Islander">Pacific Islander</option>
-																				<option value="Other">Any other ethnic group</option>
-																			</optgroup> -->
 																		</select>
 
 																	</div>
-
-
-																
-
 
 																</div>
 															</div>
@@ -287,66 +246,6 @@
 
 															</div>
 
-																	
-
-
-
-
-														
-														<!--	<div class="form-group">
-																<div class="row">
-
-																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-																		<label>Do you actively track this?</label>
-																		<div class="radio-group">
-																			<div class="md-radio md-radio-inline">
-																				<input class="activelyTrack rc" <?php if($row->activelyTrack=='Yes') { echo 'checked=""'; } ?> id="activelyTrack_Yes" value="Yes" type="radio" name="activelyTrack" >
-																				<label for="activelyTrack_Yes">Yes</label>
-																			</div>
-																			<div class="md-radio md-radio-inline">
-																				<input class="activelyTrack rc" <?php if($row->activelyTrack=='No' || $row->activelyTrack=='') { echo 'checked=""'; } ?> id="activelyTrack_No" value="No" type="radio" name="activelyTrack">
-																				<label for="activelyTrack_No">No</label>
-																			</div>
-																		</div>
-																		<div class="add_detail activelyTrack_detail <?php if($row->activelyTrack=='Yes') { echo 'show'; } ?>">
-																		<textarea placeholder="Please write Detail" class="form-control activelyTrack_inp" name="activelyDetail"><?=$row->activelyDetail?></textarea>
-																		</div>
-																	</div>
-																</div>
-															</div> -->
-														
-														
-													
-															<!--<div class="form-group">
-																<div class="row">
-											
-
-																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-																		<label>Medication</label>
-																		<div class="radio-group">
-																			<div class="md-radio md-radio-inline">
-																				<input class="medication rc" <?php if($row->medication=='Yes') { echo 'checked=""'; } ?> id="medication_Yes" value="Yes" type="radio" name="medication" >
-																				<label for="medication_Yes">Yes</label>
-																			</div>
-																			<div class="md-radio md-radio-inline">
-																				<input class="medication rc" <?php if($row->medication=='No' || $row->medication=='') { echo 'checked=""'; } ?>  id="medication_No" value="No" type="radio" name="medication">
-																				<label for="medication_No">No</label>
-																			</div>
-																		</div>
-																		<div class="add_detail medication_detail <?php if($row->medication=='Yes') { echo 'show'; } ?>">
-																			<textarea placeholder="Please write Detail" class="form-control medication_inp" name="medicationDetails"><?=$row->medicationDetails?></textarea>
-																		</div>
-																	</div>
-
-																	<div class="clearfix"></div>
-
-																</div>
-
-															</div>-->
-
-
-
-
 														</div>
 														<ul class="list-inline pull-right">
 															<li><button type="button" class="tran3s cart-button btn-defualt block hvr-trim-two prev-step">Previous</button></li>
@@ -357,35 +256,21 @@
 
 													<div class="tab-pane" role="tabpanel" id="step3">
 														<div class="single-service m-bottom0">
-													
-														
-
-
-
-
 
 																<div class="form-group">
 																<div class="row">
 																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																		<label>Avg exercise a week (Hours)</label>
 																		<select name="excericseAvgWeek" class="form-control">
-																		
-																		<?php if($row->excericseAvgWeek){ ?>
-																			<option value="<?=$row->excericseAvgWeek?>" selected ><?=$row->excericseAvgWeek?> <?php echo 'hour'; if($row->excericseAvgWeek != '0-1') echo 's'; ?></option>
-																		<?php } ?>
-																			<!-- <option value="0">0</option>
-																			<option value="1">1 hour</option>
-																			<option value="2">2 hours</option>
-																			<option value="3">3 hours</option>
-																			<option value="4">4 hours</option>
-																			<option value="5">5 hours</option>
-																			<option value="6">6 hours</option>
-																			<option value="7">7 hours</option>
-																			<option value="8">8 hours</option>
-																			<option value="10">10 hours</option>
-																			<option value="11">11 hours</option>
-																			<option value="12">12+ hours</option> -->
 
+																			<option value="<?php echo $row->excericseAvgWeek; ?>" selected hidden>
+																				<?php 
+																					if($row->excericseAvgWeek!=''){
+																						echo $row->excericseAvgWeek; echo ' hour'; if($row->excericseAvgWeek != '0-1'){echo 's'; } 
+																					}
+																					
+																				?>
+																			</option>
 																			<option value="0-1" >0-1  hour</option>
 																			<option value="1 – 1.5">1 – 1.5  hours</option>
 																			<option value="1.5 - 2">1.5 - 2  hours</option>
@@ -403,17 +288,8 @@
 																		<label>Avg steps per day</label>
 
 																	<select name="stepAvgDay" class="form-control">
-																			
-																			<?php if($row->stepAvgDay){ ?>
-																					<option value="<?php echo $row->stepAvgDay; ?>" selected hidden><?php if(trim($row->stepAvgDay) == '15000-20000') echo '15000+'; else echo $row->stepAvgDay; ?></option>
-																			<?php } ?>
-																			<!-- <option value="0000-2999 ">0-2999 </option>
-																			<option value="3000-5999 ">3000-5999 </option>
-																			<option value="6000-9999 ">6000-9999 </option>
-																			<option value="10000-12999 ">9999-12999 </option>
-																			<option value="13000-14999 ">13000-14999</option>
-																			<option value="15000-20000 ">15000+</option> -->
-
+																		
+																			<option value="<?php echo $row->stepAvgDay; ?>" selected hidden><?php echo $row->stepAvgDay; ?></option>
 																			<option value="0000-2999 ">0-2999 </option>
 																			<option value="3000-5999 ">3000-5999 </option>
 																			<option value="6000-7999 ">6000-7999 </option>
@@ -421,8 +297,6 @@
 																			<option value="10000-12999 ">10000-12999 </option>
 																			<option value="13000-14999 ">13000-14999</option>
 																			<option value="15000-20000 ">15000+</option>
-																		
-																		
 
 																		</select>
 																	
@@ -431,9 +305,6 @@
 																	<div class="clearfix"></div>
 
 																</div>
-
-
-
 															</div>
 														</div>
 
@@ -524,10 +395,9 @@
 																		<label>Avg Sleep per night (hours)</label>
 
 																		<select  name="sleepPerNight" class="form-control bodyType">
+
+																			<option value="<?php echo $row->sleepPerNight; ?>" selected hidden><?php echo $row->sleepPerNight; ?></option>
 																			
-																			<?php if($row->waterAvgDay){ ?>
-																				<option value="<?php echo $row->sleepPerNight; ?>" selected hidden><?php if($row->sleepPerNight == 2) echo 'Less than 3'; else if($row->sleepPerNight == 12) echo '12+'; else echo intval($row->sleepPerNight); ?></option>
-																			<?php } ?>
 																			<option value="2">Less than 3</option>
 																			<option value="3">3</option>
 																			<option value="4">4</option>
@@ -539,10 +409,7 @@
 																			<option value="10">10</option>
 																			<option value="11">11</option>
 																			<option value="12+">12+</option>
-																			
-																		
 
-																			
 																		</select>
 																	</div>
 
@@ -551,18 +418,15 @@
 																		<label>Smoking status per day</label>
 
 																		<select  name="per_day_smoking" class="form-control bodyType">
+
 																			<option value="<?php echo $row->smoker; ?>" selected hidden><?php echo $row->smoker; ?></option>
 																			
-																			<option value="">Select Status </option>
 																			<option value="no smoker">No smoker</option>
 																			<option value="ex smoker">Ex smoker</option>
 																			<option value="9">less than 10 </option>
 																			<option value="11">More than 10</option>
 																			<option value="21">More than 20</option>
-																			
-																		
 
-																			
 																		</select>
 																	</div>
 
@@ -627,24 +491,8 @@
 
 																		<select  name="avg_water" class="form-control bodyType">
 
-																			<?php if($row->waterAvgDay){ ?>
-																				<option value="<?php echo $row->waterAvgDay; ?>" selected hidden>  <?php if($row->waterAvgDay == 0.5) echo 'Less than 1'; else if($row->waterAvgDay == '3.6+') echo '3.6+'; else echo $row->waterAvgDay;  //echo $row->waterAvgDay; ?></option>
-																			<?php } ?>
-																			<!-- <option value="<?php echo $row->waterAvgDay; ?>" selected hidden><?php echo $row->waterAvgDay; ?></option>
-																			<option value="0.99">less than 1 </option>
-																			<option value="1">1</option>
-																			<option value="1.5">1.5</option>
-																			<option value="2">2</option>
-																			<option value="2.5">2.5</option>
-																			<option value="3">3</option>
-																			<option value="3.5">3.5</option>
-																			<option value="4">4</option>
-																			<option value=4.5>4.5</option>
-																			<option value="5">5</option>
-																			<option value="5.3">5.3</option>
-																			<option value="5.5">more than 5.3+</option> -->
+																			<option value="<?php echo $row->waterAvgDay; ?>" selected hidden><?php echo $row->waterAvgDay; ?></option>
 
-																			
 																			<option value="0.5">less than 1 </option>
 																			<option value="1 – 1.2">1 – 1.2</option>
 																			<option value="1.3 – 1.9">1.3 – 1.9</option>

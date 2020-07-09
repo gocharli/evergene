@@ -49,7 +49,7 @@ border: 2px solid #86c44c !important;
 		<div class="row">
 			<div class="col-lg-12 p-0 m-p-15">
 				<div class="title">
-					<h5 class="pull-left" style="padding: 15px 0;">Welcome back <?=$this->session_data->userFirstName?></h5>
+					<h5 class="pull-left" style="padding: 15px 0;">Welcome <?=$this->session_data->userFirstName?></h5>
 					<?php $this->load->view('includes/recommend_friend');   ?>
 					<?php $this->load->view('includes/upgarde_premium');   ?>
 					<div class="clearfix"></div>
@@ -146,9 +146,10 @@ border: 2px solid #86c44c !important;
 												$max_excericseAvgWeek = $min_excericseAvgWeek;
 											}
 											
-											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
+											// $ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
+											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-GREY.png';
 											
-											if($max_excericseAvgWeek <= 2){
+											if($max_excericseAvgWeek > 0 && $max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
 											}
 
@@ -171,9 +172,10 @@ border: 2px solid #86c44c !important;
 
 										<?php 
 										
-											$spn_img = base_url().'assets/front/images/icons/Sleep-icon-amber.png';
+											// $spn_img = base_url().'assets/front/images/icons/Sleep-icon-amber.png';
+											$spn_img = base_url().'assets/front/images/icons/Sleep-icon-GREY.png';
 											
-											if($row->sleepPerNight <= 5){ // 5 is included
+											if($row->sleepPerNight >0 && $row->sleepPerNight <= 5){ // 5 is included
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-red.png';
 											}
 
@@ -197,13 +199,14 @@ border: 2px solid #86c44c !important;
 											$min_stepAvgDay = intval($sad[0]); 
 											$max_stepAvgDay = intval($sad[1]);
 											
-											$step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
+											// $step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
+											$step_img = base_url().'assets/front/images/icons/Steps-icon-GREY.png';
 											
 											if($min_stepAvgDay < 8000){  // Less than 8000
 												$step_img = base_url().'assets/front/images/icons/Steps-icon-Red.png';
 											}
 
-											if($min_stepAvgDay > 9999){  // 9999 is not included
+											if($min_stepAvgDay >= 8000){  // 9999 is not included
 												$step_img = base_url().'assets/front/images/icons/Steps icon - Green.png';
 											}
 										?>
@@ -228,9 +231,10 @@ border: 2px solid #86c44c !important;
 
 											//echo '<pre>'; print_r($wad);
 											
-											$wad_img = base_url().'assets/front/images/icons/water icon - amber.png';
+											// $wad_img = base_url().'assets/front/images/icons/water icon - amber.png';
+											$wad_img = base_url().'assets/front/images/icons/water icon - GREY.png';
 											
-											if($max_waterAvgDay <= 1.2){
+											if($max_waterAvgDay>0 && $max_waterAvgDay <= 1.2){
 												$wad_img = base_url().'assets/front/images/icons/water icon - Red.png';
 											}
 
@@ -254,7 +258,18 @@ border: 2px solid #86c44c !important;
 
 											<div class="human-body <?php if($row->gender == 'Male') echo 'human-body-male'; else echo 'human-body-female'; ?> ">
 
-												<div class="age">
+
+												<div class="age"
+												
+													<?php
+														if(age($row->dob) == 0 || age($row->dob) == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+
+												>
 													<div>
 													
 														Years Old
@@ -268,7 +283,15 @@ border: 2px solid #86c44c !important;
 													</div>
 												</div><!--age-->
 
-												<div class="height">
+												<div class="height" 
+													<?php
+														if($row->height == 0 || $row->height == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+												>
 													<div>
 													
 														Height
@@ -285,11 +308,11 @@ border: 2px solid #86c44c !important;
 
 												<?php if($row->gender == 'Female'){ ?>   
 
-													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.85 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.85 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom > 0 && $ratiom <= 0.84 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 
 												<?php }else{ ?>
 
-													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom < 0.90 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
+													<div class="hip-waist <?php if($ratiom >= 0.9 && $ratiom <= 1 ) echo 'amber-color'; if($ratiom > 1 ) echo 'red-color'; if($ratiom > 0 && $ratiom <= 0.89 ) echo 'green-color'; else echo 'gray-color';  ?>"> <div>
 												
 												<?php } ?>
 
@@ -314,11 +337,19 @@ border: 2px solid #86c44c !important;
 													    	<span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">QRISK is an algorithm for predicting cardiovascular risk. It estimates the risk of a person developing cardiovascular disease (CVD) over the next 10 years and can be applied to those aged between 35 and 74 years. Those with a score of 20 per cent or more are considered to be at high risk of developing CVD.</span></span>
 						
 														QRISK 
-														<span style="color: #a19c9b"><?php if(is_numeric($row->qriskk)) echo $row->qriskk; else echo '---'; ?></span>
+														<span style="color: #a19c9b"><?php if($row->qriskk!='') echo $row->qriskk.' %'; else echo '---'; ?></span>
 													</div>
 												</div><!--QRISK-->
 
-												<div class="Weight">
+												<div class="Weight"
+													<?php
+														if($row->weight == 0 || $row->weight == ''){
+													?>
+															style="border-color: grey;"
+													<?php
+														}
+													?>
+												>
 													<div>
 												
 														Weight
@@ -334,8 +365,8 @@ border: 2px solid #86c44c !important;
 														$bmi=floatval((($row->weight/$row->height)/$row->height)*10000);
 												} ?>
 
-												<!-- <div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>"> -->
-												<div class="BMI <?php if($row->weight>0 && $row->height>0){ if($bmi < 18.5){ echo 'green-color'; }else if($bmi > 24.9){ echo 'red-color'; }else if($bmi >= 18.5 && $bmi <= 24.9){ echo 'amber-color'; }else{ echo 'gray-color'; } } ?>">
+												<!-- <div class="BMI <?php //if($row->weight>0 && $row->height>0){ if($bmi < 18.5 || $bmi > 24.9) echo 'red-color'; }else{ echo 'gray-color'; } ?>"> -->
+												<div class="BMI <?php if($row->weight>=0 && $row->height>=0){ if($bmi > 0 && $bmi <= 18.4){ echo 'green-color'; }elseif($bmi > 24.9){ echo 'red-color'; }elseif($bmi >= 18.5 && $bmi <= 24.9){ echo 'amber-color'; }else{ echo 'gray-color'; } } ?>">
 													<div>
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">If your BMI (Body mass index) is 18.5 to <25, it falls within the normal. If your BMI is 25.0 to <30, it falls within the overweight range. If your BMI is 30.0 or higher, it falls within the obese range.</span></span>
 						
@@ -354,7 +385,7 @@ border: 2px solid #86c44c !important;
 													    <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">Heart age is a way to understand your risk of a heart attack or stroke. Your heart age is calculated based on your risk factors for heart disease, such as age and family history, as well as diet, physical activity and smoking. A younger heart age means a lower risk of heart disease.</span></span>
 						
 														Heart Age
-														<span style="color: #a19c9b">###</span>
+														<span style="color: #a19c9b"><?php if($row->heart_age!='') echo $row->heart_age; else echo '---'; ?></span>
 													</div>
 												</div><!--Heart Age-->
 
@@ -367,7 +398,8 @@ border: 2px solid #86c44c !important;
 
 										<?php
 
-											$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Amber.png';
+											// $hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Amber.png';
+											$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Grey.png';
 												
 											if($row->restHeartRate > 59 && $row->restHeartRate <= 100){  // 60-100 BPM 
 												$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Green.png';
@@ -387,9 +419,12 @@ border: 2px solid #86c44c !important;
 
 										<?php
 										
-											$bp_img = base_url().'assets/front/images/icons/blood pressure icon - Red.png';
-											if($row->systolic_bp < 140 && $row->bloodPressure < 90){  // If systolic < 140 & Diastolic < 90 then the symbol is the green one
+											$bp_img = base_url().'assets/front/images/icons/bloodpressure-icon-Grey.png';
+											if($row->systolic_bp > 0 && $row->systolic_bp < 140 && $row->bloodPressure > 0 && $row->bloodPressure < 90){  // If systolic < 140 & Diastolic < 90 then the symbol is the green one
 												$bp_img = base_url().'assets/front/images/icons/bloodpressure-icon-Green.png';
+											}
+											if($row->systolic_bp > 140 && $row->bloodPressure > 90){
+												$bp_img = base_url().'assets/front/images/icons/blood pressure icon - Red.png';
 											}
 
 										?>
@@ -406,9 +441,10 @@ border: 2px solid #86c44c !important;
 
 										<?php
 										
-											$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon -amber.png';
+											// $cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon -amber.png';
+											$cholesterol_img = base_url().'assets/front/images/icons/cholesterol icon - Grey.png';
 											
-											if($row->cholesterol < 200){  // 200 not included
+											if($row->cholesterol >0 && $row->cholesterol < 200){  // 200 not included
 												$cholesterol_img = base_url().'assets/front/images/icons/cholesterol icon - green.png';
 											}
 

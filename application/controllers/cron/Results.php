@@ -1,9 +1,9 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-include APPPATH.'third_party/azure/vendor/autoload.php';
-use WindowsAzure\Common\ServicesBuilder;
-use WindowsAzure\Common\ServiceException;
+// include APPPATH.'third_party/azure/vendor/autoload.php';
+// use WindowsAzure\Common\ServicesBuilder;
+// use WindowsAzure\Common\ServiceException;
 class Results extends CI_Controller
 {
 	public function __construct()
