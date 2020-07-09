@@ -224,8 +224,9 @@
 												<p class="mb-15" style="margin-top:15px;"><?php echo $res->bottomText; ?></p>
 
 												<div class="clearfix"></div>
-											</div></div> <!-- /.single-service -->
-                                            </div>  
+											</div>
+											</div> <!-- /.single-service -->
+                                             
 											<?php  $p++; } 
 											
 											$lbls = substr($lbls, 0, -3)."']";
@@ -330,6 +331,9 @@
 														</select> 
 													
 													<?php } ?>
+
+
+													
 
 												<div class="single-service">
 
@@ -625,8 +629,90 @@ function formatDate(date) {
     
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" rel="stylesheet"/>
 
 	<script type="text/javascript">
+
+
+
+(function () {
+    var $, MyMorris;
+
+    MyMorris = window.MyMorris = {};
+    $ = jQuery;
+
+    MyMorris = Object.create(Morris);
+
+    MyMorris.Grid.prototype.gridDefaults["checkYValues"] = "";
+    MyMorris.Grid.prototype.gridDefaults["yValueCheck"] = 0;
+    MyMorris.Grid.prototype.gridDefaults["yValueCheckColor"] = "";
+
+    MyMorris.Line.prototype.colorFor = function (row, sidx, type) {
+        if (typeof this.options.lineColors === 'function') {
+            return this.options.lineColors.call(this, row, sidx, type);
+        } else if (type === 'point') {
+            switch (this.options.checkYValues) {
+                case "eq":
+                    if (row.y[sidx] == this.options.yValueCheck) {
+                        return this.options.yValueCheckColor;
+                    }
+                    break;
+                case "gt":
+                    if (row.y[sidx] > this.options.yValueCheck) {
+                        return this.options.yValueCheckColor;
+                    }
+                    break;
+                case "lt":
+                    if (row.y[sidx] < this.options.yValueCheck) {
+                        return this.options.yValueCheckColor;
+                    }
+                    break;
+                default:
+                    return this.options.pointFillColors[sidx % this.options.pointFillColors.length] || this.options.lineColors[sidx % this.options.lineColors.length];
+            }
+
+            return this.options.pointFillColors[sidx % this.options.pointFillColors.length] || this.options.lineColors[sidx % this.options.lineColors.length];                   
+        } else {
+            return this.options.lineColors[sidx % this.options.lineColors.length];
+        }
+    };
+}).call(this);
+
+// Morris.Line({
+//     element: 'graph',
+//     data: [
+//         { y: '2015-01', a: 1, b: 5 },
+//         { y: '2015-02', a: 2,  b: 3 },
+//         { y: '2015-03', a: 2,  b: 9 },
+//         { y: '2015-04', a: 7,  b: 4 },
+//         { y: '2015-05', a: 2,  b: 2 },
+//         { y: '2015-06', a: 3,  b: 3 },
+//         { y: '2015-07', a: 1, b: 2 }
+//       ],
+//     xkey: 'y',
+//     ykeys: ['a', 'b'],
+//     labels: ['Line 1', 'Line 2'],
+//     hideHover: 'auto',
+//     resize: true,
+//     //pointFillColors: ['grey', 'red'],
+//     //pointStrokeColors: ['black', 'blue'],
+//     //lineColors: ['red', 'blue'],
+//     //goals: [3],
+//     //goalLineColors: ['pink'],
+//     checkYValues: "eq",
+//     yValueCheck: 72,
+//     yValueCheckColor: "yellow"
+// });
+
+</script>
+
+
+<script>
+
+
     <?php
 	//echo '<pre>'; print_r($kkk);
 	$IndexToMonth = '[';
@@ -668,19 +754,27 @@ function formatDate(date) {
 			labels: <?php echo $lbls; ?>,
 
 			padding: 100,
+			//lineColors: ['gray', 'green'],
 
 <?php  // 22 June 2020
 			
 			foreach($results as $r){
 				if($r->resultValue < $r->lower_value || $r->resultValue > $r->upper_value){ ?> // Abnormal range
-					pointFillColors:['red','green'],
+					//pointFillColors:['red','green'],
 					//pointStrokeColors: ['black'],
 					//goals: [$r->resultValue],
     				//goalLineColors: ['red'],
 					//lineColors: ['red', 'green'],
-					goals: [<?php echo $r->resultValue; ?>],
-					goalStrokeWidth: 2,
-					goalLineColors: ['red'],
+					//lineColors: ['#0b62a4'],
+        			//pointFillColors: ['#00ff00'],
+					//goals: [<?php echo $r->resultValue; ?>],
+					//goalStrokeWidth: 4,
+					//goalLineColors: ['red'],
+
+					//: "eq",
+					//yValueCheck: <?php echo $r->resultValue; ?>,
+					//yValueCheckColor: "red",
+					
 				<?php }
 			}
 			
@@ -694,6 +788,10 @@ function formatDate(date) {
 			//xLabelAngle: 45,
 			//xLabelMargin: 500,
 			//behaveLikeLine: true,
+
+			//behaveLikeLine: true,
+			//fillOpacity: 0.4,
+			
 
 			xLabelFormat: function (x) {
 				return formatDate(new Date(x));
