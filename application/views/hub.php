@@ -202,7 +202,7 @@ border: 2px solid #86c44c !important;
 											// $step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
 											$step_img = base_url().'assets/front/images/icons/Steps-icon-GREY.png';
 											
-											if($min_stepAvgDay < 8000){  // Less than 8000
+											if($min_stepAvgDay > 0 && $min_stepAvgDay < 8000){  // Less than 8000
 												$step_img = base_url().'assets/front/images/icons/Steps-icon-Red.png';
 											}
 
