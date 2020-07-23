@@ -47,7 +47,7 @@ border: 2px solid #86c44c !important;
 
 	<div class="shop-page hub-page full-width">
 		<div class="row">
-			<div class="col-lg-12 p-0 m-p-15">
+			<div class="col-lg-12 p-0 m-p-15 display-hub-dsk">
 				<div class="title">
 					<h5 class="pull-left" style="padding: 15px 0;">Welcome <?=$this->session_data->userFirstName?></h5>
 					<?php $this->load->view('includes/recommend_friend');   ?>
@@ -56,9 +56,9 @@ border: 2px solid #86c44c !important;
 				</div>
 			</div>
 
-			<div class="clearfix"></div> <br />
+			<div class="clearfix"></div> 
 
-			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15">
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15  display-hub-dsk">
 				<?php $this->load->view('includes/sidebar'); ?>
 			</div>
 
@@ -460,7 +460,13 @@ border: 2px solid #86c44c !important;
 												<div class="b_ans"><?php if($row->cholesterol>0){ echo number_format($row->cholesterol).' ratio';}else{ echo '---';} ?></div>
 
 											</div><!--body info-->
+                                            
+                                            <div class="body-info">
+											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
+												<label>Blood Sugar</label>
+												<div class="b_ans">Less than 7</div>
 
+											</div>
 
 										</div><!-- /.col- -->
 

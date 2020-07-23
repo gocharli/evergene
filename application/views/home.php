@@ -29,9 +29,10 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
 				<div class="container">
+                    <h1 class="wow fadeInUp animated" data-wow-delay="0.2s" >Convenient at home health testing <br> with expert medical advice.</h1>
 					<h5 class="wow fadeInUp animated">Start your health journey today with our convenient,  <br>  confidential and accurate
 					home health testing for women and men,  <br> with online results in a matter of days.</h5>
-					<h1 class="wow fadeInUp animated" data-wow-delay="0.2s" >Convenient at home health testing <br> with expert medical advice.</h1>
+					
 				
 					<a href="<?php echo base_url(); ?>tests" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">View Our Tests</a>
 					<!--	<div class="play-option wow fadeInRight animated" data-wow-delay="0.255s">
@@ -47,9 +48,10 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
 				<div class="container">
+                    <h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Track your health<br> where you want and when you want.</h1>
 					<h5 class="wow fadeInUp animated">Start your health journey today with our convenient, <br>  confidential and accurate 
 					home health testing for women and men,  <br>  with online results in a matter of days.</h5>
-					<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Track your health<br> where you want and when you want.</h1>
+					
 					<a href="<?php echo base_url(); ?>how_it_works" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">How it works </a>
 					<!--	<div class="play-option wow fadeInRight animated" data-wow-delay="0.255s">
                             <div class="watch-video">
@@ -64,9 +66,10 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
 				<div class="container">
+                    <h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Become a premium member and Save <br> on your regular testing</h1>
 					<h5 class="wow fadeInUp animated">Start your health journey today with our convenient, <br> confidential and accurate 
 					home health testing for women and men,  <br> with online results in a matter of days.</h5>
-					<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Become a premium member and Save <br> on your regular testing</h1>
+					
 					<a href="<?php echo base_url(); ?>memberships" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Find out more</a>
 					<!--	<div class="play-option wow fadeInRight animated" data-wow-delay="0.255s">
                             <div class="watch-video">
@@ -123,7 +126,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		</div> <!-- /.container -->
 	</div> <!-- /.what-we-do -->
 	
-	<div class="service-version-one" id="mixitUp-item">
+	<div class="service-version-one pb-0" id="mixitUp-item">
 		<div class="container">
 		    <div class="theme-title">
 				<h2>Most<br> Popular Tests</h2>
@@ -142,10 +145,10 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 							<p class="col-md-12"><?=short_text($row->testName,37)?></p>
 
 							<?php if($this->membership_data->expire) { ?>
-							<p class="col-md-6 price"  style="color: #86c44c !important;">
+							<p class="col-md-6 col-xs-6 price"  style="color: #86c44c !important;">
 								<span class="member-price" style="color: #86c44c !important;">Member Price</span>
 								£<?=number_format($row->originalPrice,2)?></p>
-							<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
+							<p class="col-md-6 col-xs-6 price" style="color: rgba(9,9,19,0.4) !important;">
 								<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
 								<?php
 								$mprice=$row->originalPrice;
@@ -164,7 +167,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 								£<?=number_format($mprice,2)?></p>
 							<?php }else{ ?>
-								<p class="col-md-6 price" style="color: #86c44c !important;">
+								<p class="col-md-6  col-xs-6 price" style="color: #86c44c !important;">
 									<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
 									<?php
 									$mprice=$row->originalPrice;
@@ -182,7 +185,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 									£<?=number_format($mprice,2)?></p>
-								<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
+								<p class="col-md-6 col-xs-6  price" style="color: rgba(9,9,19,0.4) !important;">
 									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
 									£<?=number_format($row->originalPrice,2)?></p>
 							<?php } ?>
@@ -285,6 +288,10 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
     -->
 	<div class="theme-counter-styleTwo" id="statistics-icon">
 		<div class="container">
+            <div class="text-center h-i-text">
+		    	<h3>The Numbers</h3>
+			    <h6 class="num-para">Assisting people to understand their health and take action to avoid illness.</h6>
+            </div>
 			<ul class="clearfix">
 				<li class="float-left">
 				    <i class="fa fa-flask mb-15" aria-hidden="true"></i>
