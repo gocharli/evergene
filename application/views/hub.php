@@ -147,7 +147,7 @@ border: 2px solid #86c44c !important;
 											}
 											
 											// $ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
-											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-GREY.png';
+											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Grey.png';
 											
 											if($max_excericseAvgWeek > 0 && $max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
@@ -173,7 +173,7 @@ border: 2px solid #86c44c !important;
 										<?php 
 										
 											// $spn_img = base_url().'assets/front/images/icons/Sleep-icon-amber.png';
-											$spn_img = base_url().'assets/front/images/icons/Sleep-icon-GREY.png';
+											$spn_img = base_url().'assets/front/images/icons/Sleep-icon-Grey.png';
 											
 											if($row->sleepPerNight >0 && $row->sleepPerNight <= 5){ // 5 is included
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-red.png';
@@ -200,9 +200,9 @@ border: 2px solid #86c44c !important;
 											$max_stepAvgDay = intval($sad[1]);
 											
 											// $step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
-											$step_img = base_url().'assets/front/images/icons/Steps-icon-GREY.png';
+											$step_img = base_url().'assets/front/images/icons/Steps-icon-Grey.png';
 											
-											if($min_stepAvgDay < 8000){  // Less than 8000
+											if($min_stepAvgDay > 0 && $min_stepAvgDay < 8000){  // Less than 8000
 												$step_img = base_url().'assets/front/images/icons/Steps-icon-Red.png';
 											}
 
@@ -232,7 +232,7 @@ border: 2px solid #86c44c !important;
 											//echo '<pre>'; print_r($wad);
 											
 											// $wad_img = base_url().'assets/front/images/icons/water icon - amber.png';
-											$wad_img = base_url().'assets/front/images/icons/water icon - GREY.png';
+											$wad_img = base_url().'assets/front/images/icons/water icon - Grey.png';
 											
 											if($max_waterAvgDay>0 && $max_waterAvgDay <= 1.2){
 												$wad_img = base_url().'assets/front/images/icons/water icon - Red.png';
@@ -264,7 +264,7 @@ border: 2px solid #86c44c !important;
 													<?php
 														if(age($row->dob) == 0 || age($row->dob) == ''){
 													?>
-															style="border-color: grey;"
+															style="border-color: Grey;"
 													<?php
 														}
 													?>
@@ -287,7 +287,7 @@ border: 2px solid #86c44c !important;
 													<?php
 														if($row->height == 0 || $row->height == ''){
 													?>
-															style="border-color: grey;"
+															style="border-color: Grey;"
 													<?php
 														}
 													?>
@@ -337,7 +337,7 @@ border: 2px solid #86c44c !important;
 													    	<span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">QRISK is an algorithm for predicting cardiovascular risk. It estimates the risk of a person developing cardiovascular disease (CVD) over the next 10 years and can be applied to those aged between 35 and 74 years. Those with a score of 20 per cent or more are considered to be at high risk of developing CVD.</span></span>
 						
 														QRISK 
-														<span style="color: #a19c9b"><?php if($row->qriskk!='') echo $row->qriskk.' %'; else echo '---'; ?></span>
+														<span style="color: #a19c9b"><?php if($row->qriskk!='' || $row->qriskk==0.00) echo $row->qriskk.' %'; else echo '---'; ?></span>
 													</div>
 												</div><!--QRISK-->
 
@@ -345,7 +345,7 @@ border: 2px solid #86c44c !important;
 													<?php
 														if($row->weight == 0 || $row->weight == ''){
 													?>
-															style="border-color: grey;"
+															style="border-color: Grey;"
 													<?php
 														}
 													?>
