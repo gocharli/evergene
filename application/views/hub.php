@@ -231,7 +231,7 @@ border: 2px solid #86c44c !important;
 
 											//echo '<pre>'; print_r($wad);
 											
-											// $wad_img = base_url().'assets/front/images/icons/water icon - amber.png';
+											// $wad_img = base_url().'assets/front/images/icons/water-icon-amber.png';
 											$wad_img = base_url().'assets/front/images/icons/water-icon-Grey.png';
 											
 											if($max_waterAvgDay>0 && $max_waterAvgDay <= 1.2){
@@ -441,7 +441,7 @@ border: 2px solid #86c44c !important;
 
 										<?php
 										
-											// $cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon -amber.png';
+											// $cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-amber.png';
 											$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-Grey.png';
 											
 											if($row->cholesterol >0 && $row->cholesterol < 200){  // 200 not included
@@ -455,17 +455,38 @@ border: 2px solid #86c44c !important;
 										?>
 
 											<div class="body-info">
-											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
+												<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
 												<label>Cholesterol</label>
 												<div class="b_ans"><?php if($row->cholesterol>0){ echo number_format($row->cholesterol).' ratio';}else{ echo '---';} ?></div>
 
 											</div><!--body info-->
+
+										
+										<?php
+										
+											// $cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-amber.png';
+											$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-Grey.png';
+											
+											if($row->alcoholUnits !==NULL){
+												if($row->alcoholUnits == '0' || $row->alcoholUnits == '6' || $row->alcoholUnits == '8-12'){ 
+													$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-green.png';
+												}
+												if( $row->alcoholUnits == '12-14'){
+													$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-amber.png';
+												}
+	
+												if($row->alcoholUnits == '15'){  
+													$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-red.png';
+												}
+											}
+											
+
+										?>
                                             
                                             <div class="body-info">
-											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
+												<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
 												<label>Blood Sugar</label>
-												<div class="b_ans">Less than 7</div>
-
+												<div class="b_ans"><?php echo $row->alcoholUnits ?></div>
 											</div>
 
 										</div><!-- /.col- -->
