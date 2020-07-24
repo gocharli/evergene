@@ -1086,7 +1086,6 @@
 		} else {
 			var slideI = vis+1;
 		}
-		
 				
 		var slide = $('.cameraSlide:eq('+slideI+')',target);
 		var slideNext = $('.cameraSlide:eq('+(slideI+1)+')',target).addClass('cameranext');
