@@ -131,10 +131,10 @@ border: 2px solid #86c44c !important;
 									<div class="clearfix"></div>
 								</div><!--product header-->
 
-								<div class="product-list">
+								<div class="product-list product-list-mb">
 
 									<div class="row">
-										<div class="col-lg-3 text-center">
+										<div class="col-lg-3 row m-0 text-center">
 
 
 										<?php 
@@ -159,7 +159,7 @@ border: 2px solid #86c44c !important;
 										?>
 
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6  body-info body-info-mr">
 												<img class="m-auto" src="<?php echo $ex_img; ?>">
 												<label>Exercise</label>
 												<!-- <div class="b_ans"><?php if($row->excericseAvgWeek>0){ echo number_format($row->excericseAvgWeek).'/Week';}else{ echo '---';} ?></div> -->
@@ -185,7 +185,7 @@ border: 2px solid #86c44c !important;
 										?>
 
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info">
 													<img class="m-auto" src="<?php echo $spn_img; ?>">
 												<label>Sleep</label>
 												<div class="b_ans"><?php if($row->sleepPerNight>0){ if($row->sleepPerNight == 2) echo 'Less than 3 Hours'; else if($row->sleepPerNight == 12) echo '12+ Hours'; else echo intval($row->sleepPerNight).' Hours'; }else{ echo '---';} ?></div>
@@ -211,7 +211,7 @@ border: 2px solid #86c44c !important;
 											}
 										?>
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info  body-info-mr">
 												<img class="m-auto" src="<?php echo $step_img; ?>">
 												<label>Steps</label>
 												<div class="b_ans"><?php if($row->stepAvgDay != "" ){ if(trim($row->stepAvgDay) == '15000-20000') echo '15000+'; else echo $row->stepAvgDay.'/Day';}else{ echo '---';} ?></div>
@@ -243,7 +243,7 @@ border: 2px solid #86c44c !important;
 											}
 										?>
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info">
 													<img class="m-auto" src="<?php echo $wad_img; ?>"> 
 												<label>Water</label>
 												<!-- <div class="b_ans"><?php if($row->waterAvgDay>0){ echo number_format($row->waterAvgDay).'/Day';}else{ echo '---';} ?></div> -->
@@ -393,7 +393,7 @@ border: 2px solid #86c44c !important;
 
 										</div><!-- /.col- -->
 
-										<div class="col-lg-3 text-center">
+										<div class="col-lg-3 row m-0 text-center">
 
 
 										<?php
@@ -408,7 +408,7 @@ border: 2px solid #86c44c !important;
 										?>
 
 									
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info body-info-mr">
 													<img class="m-auto" src="<?php echo $hrt_img; ?>">
 												<label>Heart Rate</label>
 
@@ -429,7 +429,7 @@ border: 2px solid #86c44c !important;
 
 										?>
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info">
 												<img class="m-auto" src="<?php echo $bp_img; ?>">
 												<label>Blood Pressure</label>
 
@@ -454,14 +454,14 @@ border: 2px solid #86c44c !important;
 
 										?>
 
-											<div class="body-info">
+											<div class="col-lg-12 col-md-12 col-xs-6 body-info body-info-mr">
 											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
 												<label>Cholesterol</label>
 												<div class="b_ans"><?php if($row->cholesterol>0){ echo number_format($row->cholesterol).' ratio';}else{ echo '---';} ?></div>
 
 											</div><!--body info-->
                                             
-                                            <div class="body-info">
+                                            <div class="col-lg-12 col-md-12 col-xs-6 body-info">
 											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
 												<label>Blood Sugar</label>
 												<div class="b_ans">Less than 7</div>
@@ -567,7 +567,7 @@ border: 2px solid #86c44c !important;
 								<div class="clearfix"></div>
 							</div> <!-- /.single-product -->
 
-							<div class="single-product">
+							<div class="single-product" id="recommended">
 								<div class="product-header">
 									<h6><img src="<?=base_url('assets/front/')?>/product/Cholesterol.png" alt=""/> Recommended Products</h6>
 									<div class="clearfix"></div>
@@ -583,11 +583,11 @@ border: 2px solid #86c44c !important;
 											<i class="tran3s"><img src="<?=base_url('uploads/tests/logo/').$res->testLogo?>" style="width: 60px;height: 60px;"  alt=""/></i>
 											<div class="row">
 												<p class="col-md-12"><?=$res->testName?></p>
-												<p class="col-md-6 price">
+												<p class="col-md-6 col-xs-5 " >
 													<span class="member-price">Member Price</span>
 													£<?=$res->originalPrice?></p>
-												<p class="col-md-6 price">
-													<span class="member-price">Premium Members Price</span>
+												<p class="col-md-6 col-xs-7 price" >
+													<span class="member-price price">Premium Members Price</span>
 													<?php
 													$mprice=$res->originalPrice;
 													if($res->discountPercentage=='Yes')
