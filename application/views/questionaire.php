@@ -771,7 +771,7 @@
 																	<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 
 																		<!-- <label>Cholesterol/HDL ratio</label> -->
-																		<label>Total cholesterol</label>
+																		<label>Total cholesterol ratio <span class="text-info">(range from 1 to 11)</span></label>
 																		<input type="text" class="form-control number" name="cholesterol" value="<?=$row->cholesterol?>" />
 																	</div>
 																	<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -897,6 +897,17 @@
 
 																	
 
+																	<div class="clearfix"></div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<div class="row">
+																	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+																		<label>Standard deviation of Systolic blood pressure </label>
+																		<input type="text" class="form-control number" name="deviation_systolic_bp" value="<?=$row->deviation_systolic_bp; ?>" />
+																			
+																	</div>
 																	<div class="clearfix"></div>
 																</div>
 															</div>
