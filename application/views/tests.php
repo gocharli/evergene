@@ -49,11 +49,11 @@
 							<p class="col-md-12"><?=short_text($row->testName,37)?> </p>
 
 							<?php if($this->membership_data->expire) { ?>
-							<p class="col-md-6 price"  style="color: #86c44c !important;">
-								<span class="member-price" style="color: #86c44c !important;">Member Price</span>
+							<p class="col-md-6 col-xs-6 price"  style="color: rgba(9,9,19,0.4) !important;">
+								<span class="member-price" style="color:  rgba(9,9,19,0.4) !important;">Member Price</span>
 								£<?=number_format($row->originalPrice,2)?></p>
-							<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-								<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
+							<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+								<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
 								<?php
 								$mprice=$row->originalPrice;
 								if($row->discountPercentage=='Yes')
@@ -71,8 +71,8 @@
 
 								£<?=number_format($mprice,2)?></p>
 							<?php }else{ ?>
-								<p class="col-md-6 price" style="color: #86c44c !important;">
-									<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
+								<p class="col-md-6 col-xs-6 price" style="color: rgba(9,9,19,0.4) !important;">
+									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
 									<?php
 									$mprice=$row->originalPrice;
 									if($row->discountPercentage=='Yes')
@@ -89,8 +89,8 @@
 
 
 									£<?=number_format($mprice,2)?></p>
-								<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
+								<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+									<span class="member-price" style="color: #86c44c !important;">Member Price</span>
 									£<?=number_format($row->originalPrice,2)?></p>
 							<?php } ?>
 
@@ -121,11 +121,11 @@
 							<div class="row">
 								<p class="col-md-12"><?=short_text($row->testName,37)?></p>
 								<?php if($this->membership_data->expire) { ?>
-									<p class="col-md-6 price"  style="color: #86c44c !important;">
-										<span class="member-price" style="color: #86c44c !important;">Member Price</span>
+									<p class="col-md-6 col-xs-6 price"  style="color: rgba(9,9,19,0.4) !important;">
+										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
 										£<?=number_format($row->originalPrice,2)?></p>
-									<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color:#86c44c !important;">
+										<span class="member-price" style="color:  #86c44c  !important;">Premium Members Price</span>
 										<?php
 										$mprice=$row->originalPrice;
 										if($row->discountPercentage=='Yes')
@@ -143,8 +143,8 @@
 
 										£<?=number_format($mprice,2)?></p>
 								<?php }else{ ?>
-									<p class="col-md-6 price" style="color: #86c44c !important;">
-										<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color:rgba(9,9,19,0.4) !important;">
+										<span class="member-price" style="color:rgba(9,9,19,0.4) !important;">Premium Members Price</span>
 										<?php
 										$mprice=$row->originalPrice;
 										if($row->discountPercentage=='Yes')
@@ -161,8 +161,8 @@
 
 
 										£<?=number_format($mprice,2)?></p>
-									<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+										<span class="member-price" style="color:  #86c44c  !important;">Member Price</span>
 										£<?=number_format($row->originalPrice,2)?></p>
 								<?php } ?>
 							</div>
@@ -185,11 +185,11 @@
 							<div class="row">
 								<p class="col-md-12"><?=short_text($row->testName,37)?></p>
 								<?php if($this->membership_data->expire) { ?>
-									<p class="col-md-6 price"  style="color: #86c44c !important;">
-										<span class="member-price" style="color: #86c44c !important;">Member Price</span>
+									<p class="col-md-6 col-xs-6 price"  style="color: rgba(9,9,19,0.4) !important;">
+										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
 										£<?=number_format($row->originalPrice,2)?></p>
-									<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+										<span class="member-price" style="color:  #86c44c !important;">Premium Members Price</span>
 										<?php
 										$mprice=$row->originalPrice;
 										if($row->discountPercentage=='Yes')
@@ -207,8 +207,8 @@
 
 										£<?=number_format($mprice,2)?></p>
 								<?php }else{ ?>
-									<p class="col-md-6 price" style="color: #86c44c !important;">
-										<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color: rgba(9,9,19,0.4) !important;">
+										<span class="member-price" style="color:  rgba(9,9,19,0.4) !important;">Premium Members Price</span>
 										<?php
 										$mprice=$row->originalPrice;
 										if($row->discountPercentage=='Yes')
@@ -225,8 +225,8 @@
 
 
 										£<?=number_format($mprice,2)?></p>
-									<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-										<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
+									<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+										<span class="member-price" style="color:#86c44c !important;">Member Price</span>
 										£<?=number_format($row->originalPrice,2)?></p>
 								<?php } ?>
 							</div>
@@ -254,11 +254,11 @@
 							<p class="col-md-12"><?=short_text($row->testName,37)?> </p>
 
 							<?php if($this->membership_data->expire) { ?>
-							<p class="col-md-6 price"  style="color: #86c44c !important;">
-								<span class="member-price" style="color: #86c44c !important;">Member Price</span>
+							<p class="col-md-6 col-xs-6 price"  style="color:rgba(9,9,19,0.4)!important;">
+								<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
 								£<?=number_format($row->originalPrice,2)?></p>
-							<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-								<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
+							<p class="col-md-6 col-xs-6 price" style="color: #86c44c !important;">
+								<span class="member-price" style="color: #86c44c  !important;">Premium Members Price</span>
 								<?php
 								$mprice=$row->originalPrice;
 								if($row->discountPercentage=='Yes')
@@ -276,8 +276,8 @@
 
 								£<?=number_format($mprice,2)?></p>
 							<?php }else{ ?>
-								<p class="col-md-6 price" style="color: #86c44c !important;">
-									<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
+								<p class="col-md-6 col-xs-6 price" style="color:  rgba(9,9,19,0.4) !important;">
+									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Premium Members Price</span>
 									<?php
 									$mprice=$row->originalPrice;
 									if($row->discountPercentage=='Yes')
@@ -294,8 +294,8 @@
 
 
 									£<?=number_format($mprice,2)?></p>
-								<p class="col-md-6 price" style="color: rgba(9,9,19,0.4) !important;">
-									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
+								<p class="col-md-6 col-xs-6 price" style="color:#86c44c  !important;">
+									<span class="member-price" style="color: #86c44c !important;">Member Price</span>
 									£<?=number_format($row->originalPrice,2)?></p>
 							<?php } ?>
 

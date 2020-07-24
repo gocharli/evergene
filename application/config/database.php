@@ -100,7 +100,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '92.249.44.1',
 	'username' => 'u289140853_evergenegit',
 	'password' => 'b0Pe3q0S',
 	'database' => 'u289140853_evergenegit',

@@ -603,11 +603,11 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
 #theme-main-banner.banner-two .camera_overlayer {
   background: rgba(0,0,0,0.6);
 }
-.banner-two h5 {font-weight: normal;}
+.banner-two h5 {font-weight: normal; margin-bottom: 55px;}
 .banner-two h1 {
   line-height: 45px;
   color: #fff;
-  margin:25px 0 55px 0;
+  margin:25px 0 25px 0;
   font-size:35px;
 }
 .banner-two .watch-video {
@@ -829,6 +829,9 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
 #how-it-works{
   margin-top: 107px;
   margin-bottom: 50px;
+}
+.howitwork-text{
+    margin-bottom: 25px;
 }
 #h-i-w .main-content{
     padding-left:0px;
@@ -1817,6 +1820,9 @@ footer .bottom-footer {padding: 25px 0 70px 0;}
 }
 /*----------------------- Our Service Version One -----------------------*/
 .service-version-one {padding-bottom: 130px;}
+.pb-0{
+    padding-bottom: 50px !important;
+}
 .service-version-one h2 {
   line-height: 55px;
   margin-bottom: 110px;
@@ -3996,8 +4002,15 @@ page-break-inside: avoid;
     margin: 20px 0px;
     padding: 15px;
 }
-
-
+.num-para{
+    padding: 20px 0px;
+}
+.display-hub-mb{
+        display: none !important;
+}
+.display-hub-dsk{
+        display: block !important;
+}
 /** MEDIA QUERIES **/
 @media only screen and (max-width: 989px){
     .span1{
@@ -4019,6 +4032,34 @@ page-break-inside: avoid;
     }
     .panel {
         margin-bottom: 1px;
+    }
+    .display-hub-mb{
+        display: block !important;
+    }
+    .display-hub-dsk{
+        display: none !important;
+    }
+    #cart_label {
+        position: absolute;
+        top: 2px;
+        right: 291px;
+        border-radius: 15px;
+    }
+    .header-wrapper{
+        padding-top: 20px !important;
+    }
+    .quadrat a{
+        width: 100%;
+        padding: 0px 5px;
+    }
+    .quadrat a .fa{
+        margin-top: 0px;
+    }
+    .theme-counter-styleTwo ul li:nth-child(2){
+        margin: 0px;
+    }
+    .theme-counter-styleTwo ul li{
+        margin: 10px 0px;
     }
 }
 
@@ -4614,5 +4655,10 @@ span.round-tab:hover {
         content: " ";
         position: absolute;
         left: 35%;
+    }
+}
+@media (max-width:320px){
+    .mem-p{
+        font-size: 13px;
     }
 }

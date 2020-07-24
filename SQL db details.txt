@@ -1,0 +1,2 @@
+Our MySQL server hostname is: sql254.main-hosting.eu or 
+you can use this IP as your hostname: 92.249.44.1
