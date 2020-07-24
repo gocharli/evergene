@@ -27,8 +27,8 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 	    
 		<div class="container">
 		    <div class="text-center h-i-text">
-		    	<h3>How it Works</h3>
-			<h6>we work with business &amp; provide solution to client with their business problem</h6>
+		    	<h3 class="howitwork-text">How it Works</h3>
+			<h6>We work with business &amp; provide solution to client with their business problem</h6>
             </div>
 			<div class="row">
 			     <div class="col-md-12">
@@ -90,7 +90,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 			</div> <!-- /.row -->
-			<a href="#" class="tran3s custom-btn">Find Out More</a>
+			<a href="#" class="tran3s custom-btn">See our tests</a>
 
 			<div class="clearfix"></div>
 		</div> <!-- /.container -->

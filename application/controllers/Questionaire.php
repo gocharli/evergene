@@ -178,6 +178,7 @@ class Questionaire extends CI_Controller {
 			$upd['dietDetails']=$this->input->post('dietDetails');
 
 			$upd['systolic_bp']=$this->input->post('systolic_bp');
+			$upd['deviation_systolic_bp']=$this->input->post('deviation_systolic_bp');
 
 			$upd['testicular_cancer']=$this->input->post('testicular_cancer');
 			$upd['testicular_lastcheck']=$this->input->post('testicular_lastcheck');

@@ -301,6 +301,7 @@
   .banner-one h1,.banner-two h1,.banner-three .container h1 {font-size: 35px;line-height: 48px;}
   .banner-one h1 span:before {bottom: 10px;}
   .theme-modal-box .modal-content .modal-body form .wrapper {padding: 0;}
+    
 	
 }
 @media (max-width: 520px) {

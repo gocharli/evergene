@@ -478,6 +478,11 @@ class Qrisk_model extends CI_Model {
 				
 			}
 
+			if($row->deviation_systolic_bp > 0){ //Systolic blood pressure (mmHg, e.g. 180 mmHg)
+				$sbps5 = $row->deviation_systolic_bp;
+				
+			}
+
 			$smoke_cat = 0; // default value // 0 = non-smoker, 1=ex-smoker, 2=light smoker (less than 10), 3 = moderate smoker (10 to 19), 4 = heavy smoker (20 or over)
 			if(is_numeric($row->smoker)){
 				if($row->smoker < 10){
@@ -500,13 +505,18 @@ class Qrisk_model extends CI_Model {
 
 			$qrisk = '---';
 			if(strtolower($gender) == 'male'){
+
 				$qrisk = $this->cvd_male_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town);
+				
+				// $qrisk = $this->cvd_male_raw(44, 1, $b_atypicalantipsy, 1, 1, 1, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  31.22, $ethrisk, $fh_cvd, 2, 132, 10, 4, $surv, $town);
+
+				// $qrisk = $this->cvd_male_raw(44, 0, $b_atypicalantipsy, 1, 0, 1, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  31.22, $ethrisk, $fh_cvd, 2, 132, 0, 4, $surv, $town);
 			}
 			if(strtolower($gender) == 'female'){
 				$qrisk = $this->cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town);
 			}
 
-			return $qrisk/100;
+			return $qrisk;
 
 		}else{
 			return '';

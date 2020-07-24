@@ -90,7 +90,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body">
-					<h3>Signup</h3>
+					<h3>Sign Up For Free</h3>
 					<form id="frm_signup" action="<?=base_url('signup/process')?>" method="post">
 						<div class="wrapper p-0">
 						    <div class="row">
