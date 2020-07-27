@@ -115,14 +115,17 @@
 							
 							</a>
 						</li>
-                        <li class="dropdown-holder menu-list display-hub-mb"><a href="<?=base_url('hub')?>" class="tran3s">Hub</a>
+                        <?php
+							if(isset($this->session_data->userId)) {
+						?>
+                        <li class="dropdown-holder menu-list display-hub-mb"><a href="<?=base_url('hub')?>" class="tran3s"><?=$this->session_data->userFirstName?> Hub
+									</a>
 							<ul class="sub-menu">
-								<li class="fw-600">Welcome Zoey</li>
                                 <li>
-			                         <a href="http://localhost/evergene/memberships" class="tran3s">Upgrade to Premium</a>
+			                        <a href="http://localhost/evergene/memberships" class="tran3s">Upgrade to Premium</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" data-toggle="modal" data-target="#FriendModal" class="tran3s">Recommend a Friend</a>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#FriendModal1" class="tran3s">Recommend a Friend</a>
                                 </li>
                                 <li class="clearfix">
                                     <a href="<?=base_url('hub')?>" class="tran3s <?php if($this->router->fetch_class()=='hub'){ ?>active<?php } ?>">Evergene Hub</a>
@@ -154,11 +157,38 @@
 							
 							</ul>
 						</li>
+                        <div id="FriendModal1" class="modal fade loginModal theme-modal-box" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3>Recommend Friends</h3>
+                                    <ul class="clearfix">
+                                        <li class="float-left"><a onclick="window.open( 'http://www.facebook.com/sharer.php?u=<?=base_url()?>?ref=EG<?=$this->session_data->userId?>', 'sharer', 'toolbar=0, status=0, width=626, height=436');return false;" title="Share on Facebook" href="javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
+                                        <li class="float-left"><a onclick="window.open( 'https://plus.google.com/share?url=<?=base_url()?>?ref=EG<?=$this->session_data->userId?>', 'sharer', 'toolbar=0, status=0, width=626, height=436');return false;" title="Share on Google+" href="javascript:void(0)"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
+                                        <li class="float-left"><a onclick="window.open( 'http://www.twitter.com/share?url=<?=base_url()?>?ref=EG<?=$this->session_data->userId?>', 'sharer', 'toolbar=0, status=0, width=626, height=436');return false;" title="Share on Twitter" href="javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                                        <li class="float-left"><a onclick="window.open( 'https://www.linkedin.com/share?url=<?=base_url()?>?ref=EG<?=$this->session_data->userId?>', 'sharer', 'toolbar=0, status=0, width=626, height=436');return false;" title="Share on Linkedin" href="javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                                    </ul>
+                                    <form  action="" method="post">
+                                        <h6><span>or</span></h6>
+                                        <div class="wrapper">
+                                            <input type="text" id="ref_url_inp" value="<?=base_url()?>?ref=EG<?=$this->session_data->userId?>" readonly>
+                                            <button type="button"  onclick="copy()"  class="hvr-trim-two" style="background: #000000b3;margin-top: 10px;">Copy</button>
+                                        </div>
+                                    </form>
+
+                                </div> <!-- /.modal-body -->
+                            </div> <!-- /.modal-content -->
+                        </div> <!-- /.modal-dialog -->
+                    </div>
+                        <?php
+							}
+                        ?>
 
 						<?php
 							if(isset($this->session_data->userId)) {
 						?>
-								<li class="menu-list">
+								<li class="menu-list display-hub-dsk">
 									<a href="<?=base_url('hub')?>" class="tran3s">
 									<?=$this->session_data->userFirstName?> Hub
 									</a>

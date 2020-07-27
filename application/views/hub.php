@@ -47,11 +47,11 @@ border: 2px solid #86c44c !important;
 
 	<div class="shop-page hub-page full-width">
 		<div class="row">
-			<div class="col-lg-12 p-0 m-p-15 display-hub-dsk">
+			<div class="col-lg-12 p-0 m-p-15">
 				<div class="title">
 					<h5 class="pull-left" style="padding: 15px 0;">Welcome <?=$this->session_data->userFirstName?></h5>
-					<?php $this->load->view('includes/recommend_friend');   ?>
-					<?php $this->load->view('includes/upgarde_premium');   ?>
+                    <div class=" display-hub-dsk"><?php $this->load->view('includes/recommend_friend');   ?></div>
+                    <div class=" display-hub-dsk"><?php $this->load->view('includes/upgarde_premium');   ?></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
