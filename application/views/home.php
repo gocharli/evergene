@@ -45,7 +45,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 				</div> <!-- /.container -->
 			</div> <!-- /.camera_caption -->
 		</div>
-		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
+		<!--<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
 				<div class="container">
                     <h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Track your health<br> where you want and when you want.</h1>
@@ -60,9 +60,9 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
                                 <a data-fancybox href="https://www.youtube.com/embed/r-AuLm7S3XE?rel=0&amp;showinfo=0" class="tran3s"><i class="fa fa-play" aria-hidden="true"></i></a>
                             </div>
                         </div> -->
-				</div> <!-- /.container -->
-			</div> <!-- /.camera_caption -->
-		</div>
+				<!--</div> <!-- /.container -->
+			<!--</div> <!-- /.camera_caption -->
+		<!--</div>-->
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
 				<div class="container">
@@ -145,7 +145,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 							<p class="col-md-12"><?=short_text($row->testName,37)?></p>
 
 							<?php if($this->membership_data->expire) { ?>
-							<p class="col-md-6 col-xs-6 price"  style="color: #86c44c !important;">
+							 <p class="col-md-6 col-xs-6 price"  style="color: #86c44c !important;">
 								<span class="member-price" style="color: #86c44c !important;">Member Price</span>
 								£<?=number_format($row->originalPrice,2)?></p>
 							<p class="col-md-6 col-xs-6 price" style="color: rgba(9,9,19,0.4) !important;">
@@ -166,7 +166,11 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 								£<?=number_format($mprice,2)?></p>
+                           
 							<?php }else{ ?>
+                            <p class="col-md-6 col-xs-6  price" style="color: rgba(9,9,19,0.4) !important;">
+									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
+									£<?=number_format($row->originalPrice,2)?></p>
 								<p class="col-md-6  col-xs-6 price" style="color: #86c44c !important;">
 									<span class="member-price" style="color: #86c44c !important;">Premium Members Price</span>
 									<?php
@@ -185,9 +189,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 									£<?=number_format($mprice,2)?></p>
-								<p class="col-md-6 col-xs-6  price" style="color: rgba(9,9,19,0.4) !important;">
-									<span class="member-price" style="color: rgba(9,9,19,0.4) !important;">Member Price</span>
-									£<?=number_format($row->originalPrice,2)?></p>
+								
 							<?php } ?>
 
 
