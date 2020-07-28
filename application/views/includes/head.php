@@ -32,7 +32,11 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<!-- For Resposive Device -->
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+			<meta name="description" content="<?=$meta_description?>">
+			<meta name="title" content="<?=$page_title?>">
 			<title><?=$page_title?></title>
+			
 			<!-- Favicon -->
 			<link rel="icon" type="image/png" sizes="56x56" href="<?=base_url('assets/front/')?>images/fav-icon/icon.png">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

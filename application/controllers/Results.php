@@ -147,8 +147,9 @@ class Results extends CI_Controller {
 		$response['previous_results']=$previous_results;
 		 //echo '<pre>'; print_r($test_results); exit;
 		//echo '<pre>'; print_r($order_details); exit;
-		
-		$response['page_title']='Result '.$order_details->testName;
+
+		$response['page_title']='Evergene - '.$order_details->testName.' - Health Testing ';
+		$response['meta_description']= $test_results[0]->testDescription;
 		$response['order_details']=$order_details;
 		$response['results']=$test_results;
 
