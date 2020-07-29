@@ -4710,4 +4710,7 @@ span.round-tab:hover {
         padding: 4px;
         min-height: 118px;
     }
+    .theme-menu-wrapper.fixed .logo {
+        top: -1px !important;
+    }
 }
