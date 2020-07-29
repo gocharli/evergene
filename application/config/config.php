@@ -27,13 +27,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$config['base_url'] = 'https://appvelo.com/evergene';
-$config['custom_url'] = 'https://appvelo.com/evergene/index.php/';
-$config['admin_url'] = 'https://appvelo.com/evergene/admin';
+// $config['base_url'] = 'https://appvelo.com/evergene';
+// $config['custom_url'] = 'https://appvelo.com/evergene/index.php/';
+// $config['admin_url'] = 'https://appvelo.com/evergene/admin';
 
-//  $config['base_url'] = 'http://localhost/evergene/';
-//  $config['custom_url'] = 'http://localhost/evergene/'; //getenv('APP_URL');
-//  $config['admin_url'] = 'http://localhost/evergene/admin'; //getenv('APP_URL').'admin';
+ $config['base_url'] = getenv('APP_URL');
+ $config['custom_url'] = getenv('APP_URL').'index.php/';
+ $config['admin_url'] = getenv('APP_URL').'admin';
 
 // $config['base_url'] = 'http://localhost/evergene/';
 // $config['custom_url'] = 'http://localhost/evergene/index.php/';
@@ -116,7 +116,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE; //FALSE;
 
 /*
 |--------------------------------------------------------------------------
