@@ -19,19 +19,19 @@
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#order<?=$row->orderGroupId?>" aria-expanded="true" aria-controls="collapseOne" style="width: 100%;" onclick="odr_status();">
 						<div class="table-row">
 
-							<div class="col-lg-3 col-sm-3">
+							<div class="col-lg-3 col-sm-3 col-xs-3 p-0-mb">
 								<?=date('d F Y',strtotime($row->createdAt))?>
 							</div>
 
-							<div class="col-lg-3 col-sm-3">
+							<div class="col-lg-3 col-sm-3 col-xs-3 ">
 								#<?=$row->orderId?>
 							</div>	
 
-							<div class="col-lg-3 col-sm-3">
+							<div class="col-lg-3 col-sm-3 col-xs-3">
 								£<?=number_format($row->orderAmount).".00"?>	
 							</div>
 
-							<div class="col-lg-3 col-sm-3">
+							<div class="col-lg-3 col-sm-3 col-xs-3">
 							
 								<?php 
 									//if($row->detailStatus=='Inprogress') {

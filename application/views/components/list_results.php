@@ -4,12 +4,12 @@
 		<div class="product-list mb-2">
 			<div class="row">
 				<a href="<?=base_url('results/view/'.$row->detailId)?>" class="order-again">View Detail</a>
-				<div class="col-lg-3 text-center">
+				<div class="col-lg-3 col-sm-3 text-center">
 					<div class="symbol-icon">
 						<img class="img-responsive" src="<?=base_url('uploads/tests/logo/').$row->testLogo?>" alt=""/>
 					</div>
 				</div><!-- /.col- -->
-				<div class="col-lg-9">
+				<div class="col-lg-9 col-sm-9">
 					<div class="results-info-list">
 						<ul class="clearfix">
 							<li>

@@ -340,9 +340,9 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		
 		<!---->
 		
-		<div class="container">
+		<div class="container p-0-mb">
 			<div class="row">
-			    <div class="col-md-5">
+			    <div class="col-md-5 p-0-mb">
         		    <video class="h-i-w-video" width="100%" height="20%" controls >
                             <source src="<?php echo base_url(); ?>assets/videoplayback.mp4" type="video/mp4" >
                     </video>
@@ -520,7 +520,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
 	</div> <!-- /.home-blog-section -->
-    <div class="hub-page shop-page br-0">
+    <div class="hub-page shop-page br-0 pb-0">
         <div class="container">
             <div class="shop-product-wrapper br-0">
             <div class="row">

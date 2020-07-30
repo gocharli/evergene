@@ -31,7 +31,7 @@
 			<div class="row" id="mixitUp-item">
 
 				<?php foreach ($results as $row) { ?>
-				<div class="col-md-4 col-sm-4 col-xs-12 mix all <?=$row->catSlug?>">
+				<div class="col-md-4 col-sm-6 col-xs-12 mix all <?=$row->catSlug?>">
 					<div class="single-service">
 					<?php if($row->coming_soon == 1 && $row->coming_soon_date > date('Y-m-d')){  ?>
 						<!-- <a href="javascript:;" class="add-to-cart">
@@ -112,7 +112,7 @@
 				$mealprep=$this->db->query('select tests.*,(SELECT test_images.imageName FROM test_images WHERE tests.testId=test_images.testId ORDER BY rand() LIMIT 1) as otherImg from tests
  				WHERE productType="MealPrep"')->result(); ?>
 				<?php if($this->uri->segment(3) != 'coming_soon'){ foreach ($mealprep as $row) { ?>
-					<div class="col-md-4 col-sm-4 col-xs-12 mix all mealprep">
+					<div class="col-md-4 col-sm-6 col-xs-12 mix all mealprep">
 						<div class="single-service">
 							<a href="<?=base_url('mealprep/'.$row->slug)?>" class="add-to-cart">
 								<div class="img"></div>
@@ -176,7 +176,7 @@
 				$items=$this->db->query('select tests.*,(SELECT test_images.imageName FROM test_images WHERE tests.testId=test_images.testId ORDER BY rand() LIMIT 1) as otherImg from tests
  				WHERE productType="General items"')->result(); ?>
 				<?php if($this->uri->segment(3) != 'coming_soon'){ foreach ($items as $row) { ?>
-					<div class="col-md-4 col-sm-4 col-xs-12 mix all items">
+					<div class="col-md-4 col-sm-6 col-xs-12 mix all items">
 						<div class="single-service">
 							<a href="<?=base_url('items/'.$row->slug)?>" class="add-to-cart">
 								<div class="img"></div>
@@ -242,7 +242,7 @@
 
 
 				<?php foreach ($coming_soon_tests as $row) { ?>
-					<div class="col-md-4 col-sm-4 col-xs-12 mix all <?=$row->catSlug?>" style="display: inline-block;">
+					<div class="col-md-4 col-sm-6 col-xs-12 mix all <?=$row->catSlug?>" style="display: inline-block;">
 
 						<div class="single-service">
 												<!-- <a href="javascript:;" class="add-to-cart">

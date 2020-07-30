@@ -13,23 +13,23 @@
 			<div class="p-0 m-p-15">
 				<div class="title-head">
 					<h5 class="pull-left" style="padding: 15px 0;">General Setting</h5>
-					<?php $this->load->view('includes/recommend_friend');   ?>
-					<?php $this->load->view('includes/upgarde_premium');   ?>
+					<div class=" display-hub-dsk"><?php $this->load->view('includes/recommend_friend');   ?></div>
+                    <div class=" display-hub-dsk"><?php $this->load->view('includes/upgarde_premium');   ?></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="clearfix"></div> <br />
-			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15">
+			<div class="clearfix"></div>
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15  display-hub-dsk">
 				<?php $this->load->view('includes/sidebar'); ?>
 			</div>
-			<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 float-right p-0">
+			<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 float-right p-0">
 				<div class="shop-product-wrapper service-version-one" style="min-height: 465px;">
 					<div class="row">
 						<div class="single-product shop-sidebar">
 							<div class="product-header">
 								<div class="clearfix"></div>
 							</div><!--product header-->
-							<div class="single-service m-bottom0" style="min-height: 680px;">
+							<div class="single-service m-bottom0 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<ul class="nav nav-tabs">
 									<li class="active"><a data-toggle="tab" href="#a_profile">Profile</a></li>
 									<li><a data-toggle="tab" href="#a_change_password">Change Password</a></li>
@@ -41,7 +41,7 @@
 								</ul>
 								<div class="tab-content" style="margin-top: 15px;">
 									<div id="a_profile" class="tab-pane fade in active">
-										<div class="col-lg-8 col-sm-12 col-xs-8 col-lg-offset-2">
+										<div class="col-lg-8 col-sm-12 col-xs-12 col-lg-offset-2 p-0-mb">
 											<div class="single-service m-bottom0">
 												<form id="frm_1" action="<?php echo base_url(); ?>account/process" method="post">
 														<div class="form-group">
@@ -163,7 +163,7 @@ function update_account_settings(){
 
 
 									<div id="a_change_password" class="tab-pane fade">
-										<div class="col-lg-6 col-xs-6 col-lg-offset-3">
+										<div class="col-lg-6 col-xs-6 col-lg-offset-3 p-0-mb">
 											<div class="single-service m-bottom0">
 												<form id="frm_change_password" action="<?=base_url()?>account/password_code">
 													<div class="form-group">
@@ -187,15 +187,15 @@ function update_account_settings(){
 										</div> <!-- /.col- -->
 									</div>
 									<div id="a_membership" class="tab-pane fade">
-										<div class="col-lg-12 col-xs-12">
+										<div class="col-lg-12 col-xs-12 p-0-mb">
 
 											<div class="single-product">
 
 
-												<div class="product-list mb-2">
+												<div class="product-list mb-2 " id="pt-mb-55">
 
 													<div class="row">
-
+                                         
 														<a href="<?=base_url()?>memberships" class="order-again">Membership</a>
 
 
@@ -268,7 +268,7 @@ function update_account_settings(){
 									</div>
 
 									<div id="a_settings" class="tab-pane fade">
-										<div class="col-lg-12 col-xs-12">
+										<div class="col-lg-12 col-xs-12 p-mb-0">
 											<div class="single-product">
 												<div class="product-list mb-2">
 													<div class="row">
@@ -276,7 +276,7 @@ function update_account_settings(){
 														<div class="col-lg-9">
 															
 														<div class="">
-															<button type="button" class="btn btn-danger btn-pay" onclick="delete_my_account()" style="with: 100%; background-color: #dc3545; border: #dc3545">Delete My Account</button>
+															<button type="button" class="btn btn-danger btn-pay dlt-btn" onclick="delete_my_account()" style="with: 100%; background-color: #dc3545; border: #dc3545">Delete My Account</button>
 														</div>
 
 														</div><!-- /.col- -->
@@ -295,7 +295,7 @@ function update_account_settings(){
 
 
 									<div id="a_notification_settings" class="tab-pane fade">
-										<div class="col-lg-12 col-xs-12">
+										<div class="col-lg-12 col-xs-12 p-0-mb">
 											<div class="single-product">
 												<div class="product-list mb-2">
 													<div class="row">

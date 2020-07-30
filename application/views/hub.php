@@ -62,7 +62,7 @@ border: 2px solid #86c44c !important;
 				<?php $this->load->view('includes/sidebar'); ?>
 			</div>
 
-			<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 float-right p-0">
+			<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 float-right p-0">
 				<div class="shop-product-wrapper service-version-one">
 
 					<div class="row">
@@ -590,21 +590,21 @@ border: 2px solid #86c44c !important;
 
 							<div class="single-product" id="recommended">
 								<div class="product-header">
-									<h6><img src="<?=base_url('assets/front/')?>/product/Cholesterol.png" alt=""/> Recommended Products</h6>
+									<h6><img src="<?=base_url('assets/front/')?>/images/product/Cholesterol.png" alt=""/> Recommended Products</h6>
 									<div class="clearfix"></div>
 								</div><!--product header-->
 
 								<div class="row">
 									<?php foreach ($recommended_products as $res){ ?>
-									<div class="col-md-6 col-sm-6 col-xs-12 mix finance marketing">
+									<div class="col-md-6 col-sm-6 col-xs-12 mix finance marketing recomended">
 										<div class="single-service">
 											<a href="<?=base_url('tests/'.$res->slug)?>" class="add-to-cart">
 												<div class="img"></div>
 											</a>
 											<i class="tran3s"><img src="<?=base_url('uploads/tests/logo/').$res->testLogo?>" style="width: 60px;height: 60px;"  alt=""/></i>
-											<div class="row">
+											<div class="row recommended-inner-p">
 												<p class="col-md-12"><?=$res->testName?></p>
-												<p class="col-md-6 col-xs-5 " >
+												<p class="col-md-6 col-xs-5" >
 													<span class="member-price">Member Price</span>
 													£<?=$res->originalPrice?></p>
 												<p class="col-md-6 col-xs-7 price" >
@@ -627,8 +627,10 @@ border: 2px solid #86c44c !important;
 													£<?=$mprice?></p>
 											</div>
 											<div class="clearfix"></div>
-											<p class="description"><?=short_text($res->testDescription,90)?></p>
+											<p class="description recommended-inner-p"><?=short_text($res->testDescription,90)?></p>
+                                            <div class="col-md-12 recommend-btn">
 											<a href="<?=base_url('tests/'.$res->slug)?>" class="custom-btn">Learn More</a>
+                                            </div>
 										</div> <!-- /.single-service -->
 									</div> <!-- /.col-md-4 -->
 									<?php  } ?>
@@ -640,7 +642,7 @@ border: 2px solid #86c44c !important;
 
 							<div class="single-product">
 								<div class="product-header">
-									<h6><img src="<?=base_url('assets/front/')?>/product/Cholesterol.png" alt=""/> Track your progress</h6>
+									<h6><img src="<?=base_url('assets/front/')?>/images/product/Cholesterol.png" alt=""/> Track your progress</h6>
 									<div class="shorting-option clearfix">
 
 									</div> <!-- /.shorting-option -->

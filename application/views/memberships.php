@@ -20,7 +20,7 @@
 						<h5 class="pull-left" style="padding: 15px 0;">Memberships</h5>
 
 						<div class="clearfix"></div>
-					</div><br />
+					</div>
 				</div>
 				<div class="col-lg-12 col-md-12 col-xs-12 float-right p-0">
 					<div class="shop-product-wrapper service-version-one" style="border: 0; padding: 0px;">
@@ -29,7 +29,7 @@
 
 							<div class="col-lg-12 col-xs-12">
 
-								<div class="single-product shop-sidebar" style="padding: 100px 0px;">
+								<div class="single-product shop-sidebar membership" style="padding: 100px 0px;">
 
 									<div class="pricing-plan-list">
 										<?php

@@ -12,16 +12,16 @@
 			<div class="col-lg-12 p-0 m-p-15">
 				<div class="title-head">
 					<h5 class="pull-left" style="padding: 15px 0;">Your Upcoming Orders</h5>
-					<?php $this->load->view('includes/recommend_friend');   ?>
-					<?php $this->load->view('includes/upgarde_premium');   ?>
+					<div class=" display-hub-dsk"><?php $this->load->view('includes/recommend_friend');   ?></div>
+                    <div class=" display-hub-dsk"><?php $this->load->view('includes/upgarde_premium');   ?></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="clearfix"></div> <br />
-			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15">
+			<div class="clearfix"></div>
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15  display-hub-dsk">
 				<?php $this->load->view('includes/sidebar'); ?>
 			</div>
-			<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 float-right p-0">
+			<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 float-right p-0">
 				<div class="shop-product-wrapper service-version-one">
 					<div class="row">
 						<div class="col-lg-12 col-xs-12">
@@ -67,25 +67,25 @@
 									</div>
 									<div class="row">
 
-										<div class="col-md-3 text-center">
+										<div class="col-md-3 col-sm-3 text-center">
 											<div class="symbol-icon">
 												<img class="img-responsive" src="<?=base_url('uploads/tests/logo/').$d->testLogo?>" alt=""/>
 											</div>
 											<div class="clearfix"></div>
 											
 										</div><!-- /.col- -->
-										<div class="col-md-9">
-											<div class="results-info-list">
+										<div class="col-md-9 col-sm-9 ">
+											<div class="results-info-list upcoming-order-history">
 												<ul class="clearfix">
 													<li>
 														<div class="row">
-															<div class="col-md-8" >
+															<div class="col-md-8 col-sm-8 d-flex-mb" >
 																<span class="heading">Name:</span>
 																<span class="detail" style="width: 100%;"><?=$d->testName?></span>
 																<div class="clearfix"></div>
 															</div>
 
-															<div class="col-md-4" >
+															<div class="col-md-4 col-sm-4 d-flex-mb" >
 																<span class="heading">Order ID:</span>
 																<span class="detail" style="width: 100%;"><?=$d->orderId.'-'.$sub_id; ?></span>
 																<div class="clearfix"></div>
@@ -101,12 +101,12 @@
 													</li>
 													<li>
 														<div class="row">
-															<div class="col-md-8" >
+															<div class="col-md-8 col-sm-8 d-flex-mb" >
 															<span class="heading" style="width: 100%">Scheduled Date:</span>
 															<span class="detail" style="width: 100%; margin-top: 10px;"><?=date('d F Y',strtotime($d->scheduleDate))?></span>
 
 															</div>
-															<div class="col-md-4">
+															<div class="col-md-4 col-sm-4 d-flex-mb">
 																<span class="heading">price:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;">£<?=$d->detailPrice?></span>
 															</div>
@@ -114,12 +114,12 @@
 													</li>
 													<li>
 														<div class="row">
-															<div class="col-md-8" >
+															<div class="col-md-8 col-sm-8 d-flex-mb" >
 																<span class="heading" style="width: 100%">Type:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;"><?=$d->paymentType?></span>
 
 															</div>
-															<div class="col-md-4">
+															<div class="col-md-4 col-sm-4 d-flex-mb">
 																<span class="heading" style="width: 100%">payment:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;"><?php if($d->paymentStatus=='Yes'){
 																		echo 'Paid';

@@ -117,15 +117,15 @@
 
 							<div class="col-lg-12 col-xs-12">
 
-								<div class="single-product shop-sidebar">
+								<div class="single-product shop-sidebar  cart-shop">
 									<div class="product-header">
 										<h6 style="margin:0px;">Order Summary</h6>
 										<div class="clearfix"></div>
 									</div><!--product header-->
 
-									<div class="single-service">
+									<div class="single-service cart-mb">
 
-										<div class="shopping-cart">
+										<div class="shopping-cart shopping-cart-mb">
 											<!-- Product #1 -->
                                             <div class="item">
                                                  <div class="image" style="width: 10%;font-size: 15px;font-weight: bold;">Image</div>
@@ -231,25 +231,29 @@
                                             }
 											}else{ ?>
 											<div class="alert alert-warning text-center" role="alert">
-												<b>Cart</b>  is empty</div>
+												<b>Cart </b>  is empty</div>
 											  </div>
 										 <?php	}?>
 
 										</div>
 										<div class="clearfix"></div>
 									</div> <!-- /.single-product -->
-								<div class="alert alert-warning" role="alert" >
+								
 									<?php
 									if($cart_data){ ?>
+                                <div class="alert alert-warning" role="alert" >
 									<b>Total </b>  £ <span id="grand"><?=number_format($grand,2)?></span> 
                                   
 							     <?php } ?>
 							     </div>
-                                 </div>
-								<?php if(count($cart_data)>0) {?>
+							<div class="col-md-12">	
+                                 <?php if(count($cart_data)>0) {?>
 								<a href="javascript:;" onclick="go_checkout()" class="tran3s custom-btn small-btn hvr-trim-two pull-right">Check Out</a>
 								<?php } ?>
-								<a href="<?=base_url('tests')?>" class="tran3s custom-btn small-btn hvr-trim-two pull-right">Continue</a>
+                                <a href="<?=base_url('tests')?>" class="tran3s custom-btn small-btn hvr-trim-two pull-right">Continue</a>
+                            </div>
+                                 </div>
+								
 
 							</div> <!-- /.col- -->
 

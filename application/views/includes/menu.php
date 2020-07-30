@@ -39,7 +39,7 @@
 
 	<?php if(trim($b_title) != ""){  ?>
 
-	<div id="top_bar_offer" class="col-md-12 text-center" style="background: #86c44c;">
+	<div id="top_bar_offer" class="col-md-12 text-center" style="background: #86c44c;margin-bottom: 14px;">
 			 <p class="mem-p" style="color:#fff;margin:0px"> <a style="color:#fff;" href="<?php echo $b_link; ?>"> <?php echo $b_title; ?> </a> <i onclick="hide_top_bar()" class="fa fa-times float-right header-cross" aria-hidden="true"></i></p>
 	</div>
 
@@ -48,7 +48,7 @@
 	<!-- <div id="top_bar_offer" class="col-md-12 text-center" style="background: #86c44c; <?php if(!$cpn || $subbb_mpId == 2) { echo 'display: none';  } /*if($this->session->userdata('hide_top_bar')) { echo 'display: none';  }*/?>">
 				    <p class="mem-p" style="color:#fff;margin:0px">Limited time offer: 1 <?php echo $durtn; ?> membership in £<?php echo $dsct_price; ?> with code <b>"<?php echo $cpn->code; ?>"</b> <i onclick="hide_top_bar()" class="fa fa-times float-right header-cross" aria-hidden="true"></i></p>
 	</div> -->
-	<div class="header-wrapper"  style="padding-top:60px">
+	<div class="header-wrapper"  style="padding-top:30px">
 		<div class="container">
 		    
 			<!-- Logo -->
@@ -70,7 +70,7 @@
 				
 				<div class="collapse navbar-collapse" id="navbar-collapse-1">
 					<ul class="nav">
-						<li class="dropdown-holder menu-list <?php if($this->router->fetch_class()=='home'){ ?>active<?php } ?>"><a href="<?=base_url()?>" class="tran3s">Home</a>
+						<li class=" menu-list <?php if($this->router->fetch_class()=='home'){ ?>active<?php } ?>"><a href="<?=base_url()?>" class="tran3s">Home</a>
 						</li>
 						<li class="dropdown-holder menu-list <?php if($this->router->fetch_class()=='tests'){ ?>active<?php } ?>"><a href="<?=base_url('tests')?>" class="tran3s">Tests</a>
 							<ul class="sub-menu">
