@@ -603,7 +603,7 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
 #theme-main-banner.banner-two .camera_overlayer {
   background: rgba(0,0,0,0.6);
 }
-.banner-two h5 {font-weight: normal; margin-bottom: 55px;}
+.banner-two h5 {font-weight: normal; margin-bottom: 25px;}
 .banner-two h1 {
   line-height: 45px;
   color: #fff;
@@ -4074,7 +4074,8 @@ page-break-inside: avoid;
     .product-list-mb .col-xs-6{
         width: 47% !important;
         padding: 4px;
-        min-height: 118px;
+        min-height: 120px;
+
     }
     .body-info-mr{
         margin-right: 14px;
