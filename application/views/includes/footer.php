@@ -603,7 +603,6 @@ $(document).ready(function () {
 		//var idleInterval = setInterval(timerIncrement, 3300000); // 1000 = 1 sec, 60000(1 minut)*55 = 3300000
 	<?php } ?>
 
-
     //Zero the idle timer on mouse movement.
     $(this).mousemove(function (e) {
         idleTime = 0;

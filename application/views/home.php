@@ -28,13 +28,13 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 	<div id="theme-main-banner" class="banner-two">
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
-				<div class="container">
-                    <h1 class="wow fadeInUp animated" data-wow-delay="0.2s" >Convenient at home health testing <br> with expert medical advice.</h1>
-					<h5 class="wow fadeInUp animated">Start your health journey today with our convenient,  <br>  confidential and accurate
+				<div class="container text-center">
+                    <h1>Convenient at home health testing <br> with expert medical advice.</h1>
+					<h5>Start your health journey today with our convenient,  <br>  confidential and accurate
 					home health testing for women and men,  <br> with online results in a matter of days.</h5>
 					
 				
-					<a href="<?php echo base_url(); ?>tests" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">View Our Tests</a>
+					<a href="<?php echo base_url(); ?>tests" class="tran3s hvr-trim p-bg-color button-one" >View Our Tests</a>
 					<!--	<div class="play-option wow fadeInRight animated" data-wow-delay="0.255s">
                             <div class="watch-video">
                                 <h6>Watch</h6>
@@ -65,12 +65,12 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		<!--</div>-->
 		<div data-src="<?=base_url('assets/front/')?>images/home/slide-2.jpg">
 			<div class="camera_caption">
-				<div class="container">
-                    <h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Become a premium member and Save <br> on your regular testing</h1>
-					<h5 class="wow fadeInUp animated">Start your health journey today with our convenient, <br> confidential and accurate 
+				<div class="container text-center">
+                    <h1> Become a premium member and Save <br> on your regular testing</h1>
+					<h5>Start your health journey today with our convenient, <br> confidential and accurate 
 					home health testing for women and men,  <br> with online results in a matter of days.</h5>
 					
-					<a href="<?php echo base_url(); ?>memberships" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Find out more</a>
+					<a href="<?php echo base_url(); ?>memberships" class="tran3s hvr-trim  p-bg-color button-one" >Find out more</a>
 					<!--	<div class="play-option wow fadeInRight animated" data-wow-delay="0.255s">
                             <div class="watch-video">
                                 <h6>Watch</h6>
@@ -340,9 +340,9 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 		
 		<!---->
 		
-		<div class="container">
+		<div class="container p-0-mb">
 			<div class="row">
-			    <div class="col-md-5">
+			    <div class="col-md-5 p-0-mb">
         		    <video class="h-i-w-video" width="100%" height="20%" controls >
                             <source src="<?php echo base_url(); ?>assets/videoplayback.mp4" type="video/mp4" >
                     </video>
@@ -520,7 +520,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
 	</div> <!-- /.home-blog-section -->
-    <div class="hub-page shop-page br-0">
+    <div class="hub-page shop-page br-0 pb-0">
         <div class="container">
             <div class="shop-product-wrapper br-0">
             <div class="row">
@@ -563,33 +563,33 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 	<script type='text/javascript' src='<?=base_url('assets/front/')?>vendor/Camera-master/scripts/jquery.easing.1.3.js'></script>
 	<script type='text/javascript' src='<?=base_url('assets/front/')?>vendor/Camera-master/scripts/camera.min.js'></script>
 	<script>
+    var counted = 0;
+    $(window).scroll(function() {
+      var oTop = $('.counting').offset().top - window.innerHeight;
+      if (counted == 0 && $(window).scrollTop() > oTop) {
+        $('.counting').each(function() {
+              var $this = $(this),
+                  countTo = $this.attr('data-count');
 
-$(window).load(function () {
-	$('.counting').each(function() {
-          var $this = $(this),
-              countTo = $this.attr('data-count');
-          
-          $({ countNum: $this.text()}).animate({
-            countNum: countTo
-          },
-          {
-            duration: 1000,
-            easing:'linear',
-            step: function() {
-              $this.text(Math.floor(this.countNum));
-            },
-            complete: function() {
-              $this.text(this.countNum);
-              //alert('finished');
-            }
-          });  
+              $({ countNum: $this.text()}).animate({
+                countNum: countTo
+              },
+              {
+                duration: 1000,
+                easing:'linear',
+                step: function() {
+                  $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                  $this.text(this.countNum);
+                  //alert('finished');
+                }
+              });  
+        });
+        counted = 1;
+      }
+
     });
-});
-
-
-
-	    
-	    
 	</script>
 	<script type="text/javascript">
 

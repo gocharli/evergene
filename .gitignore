@@ -33,4 +33,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/third_party/azure/
 .htaccess
 uploads/
-application/config/
+

@@ -34,16 +34,16 @@
 			<div class="p-0 m-p-15">
 				<div class="title-head">
 					<h5 class="pull-left" style="padding: 15px 0;">Your Results</h5>
-					<?php $this->load->view('includes/recommend_friend');   ?>
-					<?php $this->load->view('includes/upgarde_premium');   ?>
+					<div class=" display-hub-dsk"><?php $this->load->view('includes/recommend_friend');   ?></div>
+                    <div class=" display-hub-dsk"><?php $this->load->view('includes/upgarde_premium');   ?></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="clearfix"></div> <br />
-			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15">
+			<div class="clearfix"></div> 
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 p-0 m-p-15  display-hub-dsk">
 				<?php $this->load->view('includes/sidebar'); ?>
 			</div>
-			<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 float-right p-0">
+			<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 float-right p-0">
 				<div class="shop-product-wrapper service-version-one">
 
 					<div class="row">

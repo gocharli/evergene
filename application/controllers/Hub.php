@@ -47,7 +47,7 @@ class Hub extends CI_Controller {
 		$row->qriskk = $this->qrisk_model->get_qrisk($this->session_data->userId, $gender);
 		//$row->heart_age=$this->db->query('select heart_age from user_track_graph WHERE userId='.$this->session_data->userId)->row()->heart_age;
 		$row->heart_age = '';
-		$rr = $this->db->query('select * from user_track_graph WHERE userId='.$this->session_data->userId)->row();
+		$rr = $this->db->query('select * from user_track_graph WHERE userId="'.$this->session_data->userId.'" order by trackId desc')->row();
 		if($rr){
 			$row->heart_age = $rr->heart_age;
 		}

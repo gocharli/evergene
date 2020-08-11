@@ -80,7 +80,7 @@
 						</div>
 						<br><br>
 						<?php if($this->membership_data->expire) { ?>
-						<div class="field-radio">
+						<div class="field-radio upgrade-p-mb">
 							<div class="box-radio-option">
 								<label for="address-service">Upgrade your account - find out how it works <a href="<?=base_url('memberships')?>"><span id="disc_reg_price"> £<?=number_format($mprice,2)?></span></a></span></label>
 							</div>
@@ -97,8 +97,8 @@
 						<div class="product-info">
 							<form id="cart_frm" action="<?=base_url('cart/add')?>" type="post">
 							<div class="row">
-								<div class="col-md-8"><h3 style="line-height: inherit;margin: 0px; margin-top: 5px;"><?=$row->testName?></h3></div>
-								<div class="col-md-4 text-right"><strong class="price">
+								<div class="col-md-8 col-sm-8 col-xs-8 cart-heading-mb"><h3 style="line-height: inherit;margin: 0px; margin-top: 5px;"><?=$row->testName?></h3></div>
+								<div class="col-md-4 col-sm-4 col-xs-4 text-right"><strong class="price">
 									<?php if($this->membership_data->expire) { ?>
                                     
 										£<?php echo number_format($originalPrice,2)?>
@@ -145,7 +145,7 @@
 								<li><input type="text" name="Qty" min="1" max="10" value="1" class="val only_number"  id="product-value"></li>
 								<li><button type="button" id="value-increase">+ </button></li>
 							</ul>
-                            <i style="margin-left: 4px;" onclick="ShowMessage()" class="fa fa-info-circle"></i>
+                            <i style="margin-left: 4px;" onclick="ShowMessage()" class="fa fa-info-circle info-circle-mb"></i>
 
 							<div class="dropdown pull-right" id="regular_type" style="display: none;" >
 								<select class="form-control regular_type" name="regularType">
@@ -189,7 +189,7 @@
 										LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId
 										WHERE testId='.$row->testId)->result();
 			?>
-			<div class="product-review-tab">
+			<div class="product-review-tab review-tab">
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#menu11">Details</a></li>
                     <?php if($row->testMarkers!='')
@@ -247,7 +247,7 @@
 			</div> <!-- /.product-review-tab -->
 			<?php if($related){ ?>
 			<div class="realated-product service-version-one shop-product-wrapper p-0">
-				<h2>Releted Products</h2>
+				<h2>Related Products</h2>
 				<div class="row">
 					<div class="related-product-slider">
 
@@ -274,12 +274,12 @@
 
 			<!-- ==================== Team ====================== -->
 			<div class="our-team-styleOne inner-page style-two">
-				<div class="container">
-					<div class="row">
+				<div class="">
+					<div class="row margin-tab-0">
 						<div class="theme-title text-center">
 							<h2>Meet Our Team</h2><br /><br />
 						</div> <!-- /.theme-title -->
-						<div class="col-md-4 col-xs-6">
+						<div class="col-md-4 col-sm-4 col-xs-6">
 							<div class="single-team-member">
 								<div class="image">
 									<img src="<?=base_url('assets/front/')?>images/team/1.jpg" alt="">
@@ -296,7 +296,7 @@
 								<p>CO-Founder</p>
 							</div> <!-- /.single-team-member -->
 						</div> <!-- /.col- -->
-						<div class="col-md-4 col-xs-6">
+						<div class="col-md-4 col-sm-4  col-xs-6">
 							<div class="single-team-member">
 								<div class="image">
 									<img src="<?=base_url('assets/front/')?>images/team/2.jpg" alt="">
@@ -313,7 +313,7 @@
 								<p>Solicitor</p>
 							</div> <!-- /.single-team-member -->
 						</div> <!-- /.col- -->
-						<div class="col-md-4 col-xs-6">
+						<div class="col-md-4  col-sm-4  col-xs-6">
 							<div class="single-team-member">
 								<div class="image">
 									<img src="<?=base_url('assets/front/')?>images/team/3.jpg" alt="">
@@ -330,7 +330,7 @@
 								<p>CEO</p>
 							</div> <!-- /.single-team-member -->
 						</div> <!-- /.col- -->
-						<div class="text-center">
+						<div class="text-center col-md-12 ">
 							<a href="javascript:;" class="tran3s custom-btn">Find Out More</a>
 						</div>
 					</div> <!-- /.row -->
