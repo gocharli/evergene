@@ -4,9 +4,13 @@
 
 	<?php 
 
+		if(isset($_GET['test'])){
+			$this->session->set_userdata('test_mode',$_GET['test']);
+		}
+
 		$testing_version = $this->db->query("select settingValue from settings where settingOption = 'testing_version' ")->row()->settingValue;
 
-		if($testing_version == 1){
+		if($testing_version == 1 && !isset($_SESSION['test_mode']) && $_SESSION['test_mode'] != 'yes'){
 			if (!isset($this->session->userdata('admin')->adminID)){
 	?>
 				<meta charset="utf-8">
@@ -22,6 +26,39 @@
 				<link rel="stylesheet" href="<?=base_url()?>assets/coming-soon/style.css">
 				<link rel="stylesheet" href="<?=base_url()?>assets/coming-soon/responsive.css">
 				<link rel="stylesheet" href="<?=base_url()?>assets/coming-soon/coming-soon.css">
+	<?php
+			}
+			else{
+	?>
+				<meta charset="UTF-8">
+				<!-- For IE -->
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<!-- For Resposive Device -->
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+				<meta name="description" content="<?=$meta_description?>">
+				<meta name="title" content="<?=$page_title?>">
+				<title><?=$page_title?></title>
+				
+				<!-- Favicon -->
+				<link rel="icon" type="image/png" sizes="56x56" href="<?=base_url('assets/front/')?>images/fav-icon/icon.png">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+				<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+				<!-- Main style sheet -->
+				<link rel="stylesheet" type="text/css" href="<?=base_url('assets/front/')?>css/style.css">
+				<!-- responsive style sheet -->
+				<link rel="stylesheet" type="text/css" href="<?=base_url('assets/front/')?>css/responsive.css">
+				<link href="<?=base_url()?>assets/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" type="text/css"/>
+				<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/front/ex_css/bootstrap-datetimepicker.min.css"/>
+
+				<style type="text/css">
+					.upgrade_to_premium{
+						margin-right: 15px;
+						float: right;
+						margin-top: 0px;
+					}
+				</style>
 	<?php
 			}
 		}
@@ -72,9 +109,9 @@
 	
 	$testing_version = $this->db->query("select settingValue from settings where settingOption = 'testing_version' ")->row()->settingValue;
 
-	if($testing_version == 1){
-
+	if($testing_version == 1 && !isset($_SESSION['test_mode']) && $_SESSION['test_mode'] != 'yes'){
 		if (!isset($this->session->userdata('admin')->adminID)){
+			
 	?>
 			<body>
 

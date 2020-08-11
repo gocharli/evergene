@@ -120,7 +120,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 			</div> <!-- /.row -->
-			<a href="<?php echo base_url(); ?>how_it_works" class="tran3s custom-btn">Find Out More</a>
+			<a href="<?php echo base_url(); ?>tests" class="tran3s custom-btn">See our tests</a>
 
 			<div class="clearfix"></div>
 		</div> <!-- /.container -->

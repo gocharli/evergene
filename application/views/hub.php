@@ -146,14 +146,18 @@ border: 2px solid #86c44c !important;
 												$max_excericseAvgWeek = $min_excericseAvgWeek;
 											}
 											
-											// $ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
+											
 											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Grey.png';
 											
 											if($max_excericseAvgWeek > 0 && $max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
 											}
 
-											if($max_excericseAvgWeek >= 3){  // 3 is included
+											if($min_excericseAvgWeek >= 2 && $max_excericseAvgWeek <= 3){
+												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-amber.png';
+											}
+
+											if($max_excericseAvgWeek > 3){  // 3 is included
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Green.png';
 											}
 										?>
@@ -179,7 +183,11 @@ border: 2px solid #86c44c !important;
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-red.png';
 											}
 
-											if($row->sleepPerNight >= 8){  // 8 is included
+											if($row->sleepPerNight >=6 && $row->sleepPerNight <= 7){ // 5 is included
+												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-amber.png';
+											}
+
+											if($row->sleepPerNight >= 8 || $row->sleepPerNight == '12+'){  // 8 is included
 												$spn_img = base_url().'assets/front/images/icons/Sleep-icon-green.png';
 											}
 										?>
@@ -199,14 +207,18 @@ border: 2px solid #86c44c !important;
 											$min_stepAvgDay = intval($sad[0]); 
 											$max_stepAvgDay = intval($sad[1]);
 											
-											// $step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
+											
 											$step_img = base_url().'assets/front/images/icons/Steps-icon-Grey.png';
 											
-											if($min_stepAvgDay > 0 && $min_stepAvgDay < 8000){  // Less than 8000
+											if($max_stepAvgDay >0 && $max_stepAvgDay <= 7999){  // Less than 8000
 												$step_img = base_url().'assets/front/images/icons/Steps-icon-Red.png';
 											}
 
-											if($min_stepAvgDay >= 8000){  // 9999 is not included
+											if($min_stepAvgDay >= 8000 && $max_stepAvgDay <= 9999){  // Less than 8000
+												$step_img = base_url().'assets/front/images/icons/Step-icon-Amber.png';
+											}
+
+											if($min_stepAvgDay >= 10000){  // 9999 is not included
 												$step_img = base_url().'assets/front/images/icons/Steps-icon-Green.png';
 											}
 										?>
@@ -231,11 +243,15 @@ border: 2px solid #86c44c !important;
 
 											//echo '<pre>'; print_r($wad);
 											
-											// $wad_img = base_url().'assets/front/images/icons/water-icon-amber.png';
+											
 											$wad_img = base_url().'assets/front/images/icons/water-icon-Grey.png';
 											
 											if($max_waterAvgDay>0 && $max_waterAvgDay <= 1.2){
 												$wad_img = base_url().'assets/front/images/icons/water-icon-Red.png';
+											}
+
+											if($max_waterAvgDay>=1.3 && $max_waterAvgDay <= 1.9){
+												$wad_img = base_url().'assets/front/images/icons/water-icon-amber.png';
 											}
 
 											if($max_waterAvgDay >= 2){  // 2 is included
@@ -398,11 +414,15 @@ border: 2px solid #86c44c !important;
 
 										<?php
 
-											// $hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Amber.png';
+											
 											$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Grey.png';
 												
-											if($row->restHeartRate > 59 && $row->restHeartRate <= 100){  // 60-100 BPM 
+											if($row->restHeartRate >= 60 && $row->restHeartRate <= 100){  // 60-100 BPM 
 												$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Green.png';
+											}
+
+											if( $row->restHeartRate < 60 || $row->restHeartRate > 100){  // 60-100 BPM 
+												$hrt_img = base_url().'assets/front/images/icons/Heartrate-icon-Red.png';
 											}
 
 										?>
@@ -420,10 +440,12 @@ border: 2px solid #86c44c !important;
 										<?php
 										
 											$bp_img = base_url().'assets/front/images/icons/bloodpressure-icon-Grey.png';
-											if($row->systolic_bp > 0 && $row->systolic_bp < 140 && $row->bloodPressure > 0 && $row->bloodPressure < 90){  // If systolic < 140 & Diastolic < 90 then the symbol is the green one
+
+											if($row->systolic_bp > 0 && $row->systolic_bp <= 139 && $row->bloodPressure > 0 && $row->bloodPressure <= 89){  // If systolic < 140 & Diastolic < 90 then the symbol is the green one
 												$bp_img = base_url().'assets/front/images/icons/bloodpressure-icon-Green.png';
 											}
-											if($row->systolic_bp > 140 && $row->bloodPressure > 90){
+											
+											if($row->systolic_bp > 139 && $row->bloodPressure > 89){
 												$bp_img = base_url().'assets/front/images/icons/blood-pressure-icon-Red.png';
 											}
 
@@ -441,11 +463,15 @@ border: 2px solid #86c44c !important;
 
 										<?php
 										
-											// $cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-amber.png';
+											
 											$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-Grey.png';
 											
 											if($row->cholesterol >0 && $row->cholesterol < 200){  // 200 not included
 												$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-green.png';
+											}
+
+											if($row->cholesterol > 200 && $row->cholesterol <= 239){  // 239 not included
+												$cholesterol_img = base_url().'assets/front/images/icons/cholesterol-icon-amber.png';
 											}
 
 											if($row->cholesterol > 239){  // 239 not included

@@ -150,19 +150,16 @@
 																		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																		<label>Ethnicity</label>
 																		<select name="ethnicity" class="form-control ethnicity">
-																			<option value="" selected="selected" disabled="disabled">-- select one --</option>
-																			
-																			
-																			<option value="White or not stated">White or not stated</option>
-																			<option value="Asian Indian">Indian</option>
-																			<option value="Asian Pakistani">Pakistani</option>
-																			<option value="Asian Bangladeshi">Bangladeshi</option>
-																			<option value="Other Asian">Other Asian</option>
-
-																			<option value="Black Caribbean">Black Caribbean</option>
-																			<option value="Black African">Black African</option>
-																			<option value="Asian Chinese">Chinese</option>
-																			<option value="Other">Other ethnic group</option>
+																			<option value="">select an option</option>
+																			<option value="White or not stated" <?php if($row->ethnicity == 'White or not stated') { echo 'selected';} ?>>White or not stated</option>
+																			<option value="Asian Indian" <?php if($row->ethnicity == 'Asian Indian') { echo 'selected';} ?>>Indian</option>
+																			<option value="Asian Pakistani" <?php if($row->ethnicity == 'Asian Pakistani') { echo 'selected';} ?>>Pakistani</option>
+																			<option value="Asian Bangladeshi" <?php if($row->ethnicity == 'Asian Bangladeshi') { echo 'selected';} ?>>Bangladeshi</option>
+																			<option value="Other Asian" <?php if($row->ethnicity == 'Other Asian') { echo 'selected';} ?>>Other Asian</option>
+																			<option value="Black Caribbean" <?php if($row->ethnicity == 'Black Caribbean') { echo 'selected';} ?>>Black Caribbean</option>
+																			<option value="Black African" <?php if($row->ethnicity == 'Black African') { echo 'selected';} ?>>Black African</option>
+																			<option value="Asian Chinese" <?php if($row->ethnicity == 'Asian Chinese') { echo 'selected';} ?>>Chinese</option>
+																			<option value="Other" <?php if($row->ethnicity == 'Other') { echo 'selected';} ?>>Other ethnic group</option>
 																		</select>
 
 																	</div>
@@ -227,14 +224,14 @@
 																		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																		<label>Body Type <span style="cursor: pointer" class="tooltip1"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="custom critical">Body Type</span></span></label></label>
 																		<select  name="bodyType" class="form-control bodyType">
-																			<option value="" selected disabled>Select One</option>
-																			<option value="Skinny">Skinny</option>
-																			<option value="Slim">Slim</option>
-																			<option value="Normal">Normal</option>
-																			<option value="Curvy">Curvy</option>
-																			<option value="Sporty">Sporty</option>
-																			<option value="Muscular">Muscular</option>
-																			<option value="Overweight">Overweight</option>
+																			<option value="">select an option</option>
+																			<option value="Skinny" <?php if($row->bodyType == 'Skinny'){ echo 'selected';} ?>>Skinny</option>
+																			<option value="Slim" <?php if($row->bodyType == 'Slim'){ echo 'selected';} ?>>Slim</option>
+																			<option value="Normal" <?php if($row->bodyType == 'Normal'){ echo 'selected';} ?>>Normal</option>
+																			<option value="Curvy" <?php if($row->bodyType == 'Curvy'){ echo 'selected';} ?>>Curvy</option>
+																			<option value="Sporty" <?php if($row->bodyType == 'Sporty'){ echo 'selected';} ?>>Sporty</option>
+																			<option value="Muscular" <?php if($row->bodyType == 'Muscular'){ echo 'selected';} ?>>Muscular</option>
+																			<option value="Overweight" <?php if($row->bodyType == 'Overweight'){ echo 'selected';} ?>>Overweight</option>
 
 																			
 																		</select>
@@ -262,42 +259,31 @@
 																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																		<label>Avg exercise a week (Hours)</label>
 																		<select name="excericseAvgWeek" class="form-control">
-
-																			<option value="<?php echo $row->excericseAvgWeek; ?>" selected hidden>
-																				<?php 
-																					if($row->excericseAvgWeek!=''){
-																						echo $row->excericseAvgWeek; echo ' hour'; if($row->excericseAvgWeek != '0-1'){echo 's'; } 
-																					}
-																					
-																				?>
-																			</option>
-																			<option value="0-1" >0-1  hour</option>
-																			<option value="1 – 1.5">1 – 1.5  hours</option>
-																			<option value="1.5 - 2">1.5 - 2  hours</option>
-																			<option value="2 – 2.5">2 – 2.5  hours</option>
-																			<option value="2.5 – 3">2.5 – 3  hours</option>
-																			<option value="3 – 3.5">3 – 3.5  hours</option>
-																			<option value="3.5 – 4">3.5 – 4  hours</option>
-																			<option value="4 – 4.5">4 – 4.5  hours</option>
-																			<option value="4.5 +">4.5 +  hours</option>
-																			
+																			<option value="">select an option</option>
+																			<option value="0-1" <?php if($row->excericseAvgWeek == '0-1'){echo 'selected';} ?>>0-1  hour</option>
+																			<option value="1 – 1.5" <?php if($row->excericseAvgWeek == '1 – 1.5'){echo 'selected';} ?>>1 – 1.5  hours</option>
+																			<option value="1.5 - 2" <?php if($row->excericseAvgWeek == '1.5 - 2'){echo 'selected';} ?>>1.5 - 2  hours</option>
+																			<option value="2 – 2.5" <?php if($row->excericseAvgWeek == '2 – 2.5'){echo 'selected';} ?>>2 – 2.5  hours</option>
+																			<option value="2.5 – 3" <?php if($row->excericseAvgWeek == '2.5 – 3'){echo 'selected';} ?>>2.5 – 3  hours</option>
+																			<option value="3 – 3.5" <?php if($row->excericseAvgWeek == '3 – 3.5'){echo 'selected';} ?>>3 – 3.5  hours</option>
+																			<option value="3.5 – 4" <?php if($row->excericseAvgWeek == '3.5 – 4'){echo 'selected';} ?>>3.5 – 4  hours</option>
+																			<option value="4 – 4.5" <?php if($row->excericseAvgWeek == '4 – 4.5'){echo 'selected';} ?>>4 – 4.5  hours</option>
+																			<option value="4.5 +" <?php if($row->excericseAvgWeek == '4.5 +'){echo 'selected';} ?>>4.5 +  hours</option>
 																		</select>
 																	
 																	</div>
 																	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 																		<label>Avg steps per day</label>
 
-																	<select name="stepAvgDay" class="form-control">
-																		
-																			<option value="<?php echo $row->stepAvgDay; ?>" selected hidden><?php echo $row->stepAvgDay; ?></option>
-																			<option value="0000-2999 ">0-2999 </option>
-																			<option value="3000-5999 ">3000-5999 </option>
-																			<option value="6000-7999 ">6000-7999 </option>
-																			<option value="8000-9999 ">8000-9999 </option>
-																			<option value="10000-12999 ">10000-12999 </option>
-																			<option value="13000-14999 ">13000-14999</option>
-																			<option value="15000-20000 ">15000+</option>
-
+																		<select name="stepAvgDay" class="form-control">
+																			<option value="">select an option</option>
+																			<option value="0000-2999 " <?php if($row->stepAvgDay == '0000-2999 '){echo 'selected';} ?>>0-2999 </option>
+																			<option value="3000-5999 " <?php if($row->stepAvgDay == '3000-5999 '){echo 'selected';} ?>>3000-5999 </option>
+																			<option value="6000-7999 " <?php if($row->stepAvgDay == '6000-7999 '){echo 'selected';} ?>>6000-7999 </option>
+																			<option value="8000-9999 " <?php if($row->stepAvgDay == '8000-9999 '){echo 'selected';} ?>>8000-9999 </option>
+																			<option value="10000-12999 " <?php if($row->stepAvgDay == '10000-12999 '){echo 'selected';} ?>>10000-12999 </option>
+																			<option value="13000-14999 " <?php if($row->stepAvgDay == '13000-14999 '){echo 'selected';} ?>>13000-14999</option>
+																			<option value="15000-20000 " <?php if($row->stepAvgDay == '15000-20000 '){echo 'selected';} ?>>15000+</option>
 																		</select>
 																	
 
@@ -395,20 +381,19 @@
 																		<label>Avg Sleep per night (hours)</label>
 
 																		<select  name="sleepPerNight" class="form-control bodyType">
-
-																			<option value="<?php echo $row->sleepPerNight; ?>" selected hidden><?php echo $row->sleepPerNight; ?></option>
 																			
-																			<option value="2">Less than 3</option>
-																			<option value="3">3</option>
-																			<option value="4">4</option>
-																			<option value="5">5</option>
-																			<option value="6">6</option>
-																			<option value="7">7</option>
-																			<option value="8">8</option>
-																			<option value="9">9</option>
-																			<option value="10">10</option>
-																			<option value="11">11</option>
-																			<option value="12+">12+</option>
+																			<option value="">select an option</option>
+																			<option value="2" <?php if($row->sleepPerNight == '2'){echo 'selected';} ?>>Less than 3</option>
+																			<option value="3" <?php if($row->sleepPerNight == '3'){echo 'selected';} ?>>3</option>
+																			<option value="4" <?php if($row->sleepPerNight == '4'){echo 'selected';} ?>>4</option>
+																			<option value="5" <?php if($row->sleepPerNight == '5'){echo 'selected';} ?>>5</option>
+																			<option value="6" <?php if($row->sleepPerNight == '6'){echo 'selected';} ?>>6</option>
+																			<option value="7" <?php if($row->sleepPerNight == '7'){echo 'selected';} ?>>7</option>
+																			<option value="8" <?php if($row->sleepPerNight == '8'){echo 'selected';} ?>>8</option>
+																			<option value="9" <?php if($row->sleepPerNight == '9'){echo 'selected';} ?>>9</option>
+																			<option value="10" <?php if($row->sleepPerNight == '10'){echo 'selected';} ?>>10</option>
+																			<option value="11" <?php if($row->sleepPerNight == '11'){echo 'selected';} ?>>11</option>
+																			<option value="12+" <?php if($row->sleepPerNight == '12+'){echo 'selected';} ?>>12+</option>
 
 																		</select>
 																	</div>
@@ -419,13 +404,12 @@
 
 																		<select  name="per_day_smoking" class="form-control bodyType">
 
-																			<option value="<?php echo $row->smoker; ?>" selected hidden><?php echo $row->smoker; ?></option>
-																			
-																			<option value="no smoker">No smoker</option>
-																			<option value="ex smoker">Ex smoker</option>
-																			<option value="9">less than 10 </option>
-																			<option value="11">More than 10</option>
-																			<option value="21">More than 20</option>
+																			<option value="">select an option</option>
+																			<option value="no smoker" <?php if($row->smoker == 'no smoker'){echo 'selected';} ?>>No smoker</option>
+																			<option value="ex smoker" <?php if($row->smoker == 'ex smoker'){echo 'selected';} ?>>Ex smoker</option>
+																			<option value="9" <?php if($row->smoker == '9'){echo 'selected';} ?>>less than 10 </option>
+																			<option value="11" <?php if($row->smoker == '11'){echo 'selected';} ?>>More than 10</option>
+																			<option value="21" <?php if($row->smoker == '21'){echo 'selected';} ?>>More than 20</option>
 
 																		</select>
 																	</div>
@@ -490,17 +474,14 @@
 																		<label>Avg water consumed a day (in litres)</label>
 
 																		<select  name="avg_water" class="form-control bodyType">
-
-																			<option value="<?php echo $row->waterAvgDay; ?>" selected hidden><?php echo $row->waterAvgDay; ?></option>
-
-																			<option value="0.5">less than 1 </option>
-																			<option value="1 – 1.2">1 – 1.2</option>
-																			<option value="1.3 – 1.9">1.3 – 1.9</option>
-																			<option value="2 – 2.4">2 – 2.4</option>
-																			<option value="2.5 – 2.9">2.5 – 2.9</option>
-																			<option value="3 – 3.5">3 – 3.5</option>
-																			<option value="3.6+">3.6+</option>
-																					
+																			<option value="">select an option</option>
+																			<option value="0.5" <?php if($row->waterAvgDay == '0.5'){echo 'selected';} ?>>less than 1 </option>
+																			<option value="1 – 1.2" <?php if($row->waterAvgDay == '1 – 1.2'){echo 'selected';} ?>>1 – 1.2</option>
+																			<option value="1.3 – 1.9" <?php if($row->waterAvgDay == '1.3 – 1.9'){echo 'selected';} ?>>1.3 – 1.9</option>
+																			<option value="2 – 2.4" <?php if($row->waterAvgDay == '2 – 2.4'){echo 'selected';} ?>>2 – 2.4</option>
+																			<option value="2.5 – 2.9" <?php if($row->waterAvgDay == '2.5 – 2.9'){echo 'selected';} ?>>2.5 – 2.9</option>
+																			<option value="3 – 3.5" <?php if($row->waterAvgDay == '3 – 3.5'){echo 'selected';} ?>>3 – 3.5</option>
+																			<option value="3.6+" <?php if($row->waterAvgDay == '3.6+'){echo 'selected';} ?>>3.6+</option>	
 																		</select>
 																	</div>
 
@@ -509,15 +490,12 @@
 																		<label>Avg units of alcohol do you consume a week (in units)</label>
 
 																		<select  name="avg_alcohol" class="form-control bodyType">
-																			<option value="<?php echo $row->alcoholUnits; ?>" selected hidden><?php echo $row->alcoholUnits; ?></option>
-
-																			<option value="0">0</option>
-																			<option value="6">Less than 7</option>
-																			<option value="8-12">8-12</option>
-																			<option value="12-14">12-14</option>
-																			<option value="15">15+</option>
-						
-																			
+																			<option value="">select an option</option>
+																			<option value="0" <?php if($row->alcoholUnits == '0'){echo 'selected';} ?>>0</option>
+																			<option value="6" <?php if($row->alcoholUnits == '6'){echo 'selected';} ?>>Less than 7</option>
+																			<option value="8-12" <?php if($row->alcoholUnits == '8-12'){echo 'selected';} ?>>8-12</option>
+																			<option value="12-14" <?php if($row->alcoholUnits == '12-14'){echo 'selected';} ?>>12-14</option>
+																			<option value="15" <?php if($row->alcoholUnits == '15'){echo 'selected';} ?>>15+</option>
 																		</select>
 																	</div>
 
