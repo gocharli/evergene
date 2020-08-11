@@ -27,17 +27,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$config['base_url'] = 'https://appvelo.com/evergene';
-$config['custom_url'] = 'https://appvelo.com/evergene/index.php/';
-$config['admin_url'] = 'https://appvelo.com/evergene/admin';
+// $config['base_url'] = 'https://appvelo.com/evergene';
+// $config['custom_url'] = 'https://appvelo.com/evergene/index.php/';
+// $config['admin_url'] = 'https://appvelo.com/evergene/admin';
 
 //  $config['base_url'] = 'http://localhost/evergene/';
 //  $config['custom_url'] = 'http://localhost/evergene/'; //getenv('APP_URL');
 //  $config['admin_url'] = 'http://localhost/evergene/admin'; //getenv('APP_URL').'admin';
 
-// $config['base_url'] = 'http://localhost/evergene/';
-// $config['custom_url'] = 'http://localhost/evergene/index.php/';
-// $config['admin_url'] = 'http://localhost/evergene/admin';
+$config['base_url'] = 'http://localhost/evergene/';
+$config['custom_url'] = 'http://localhost/evergene/index.php/';
+$config['admin_url'] = 'http://localhost/evergene/admin';
 
 /*
 
