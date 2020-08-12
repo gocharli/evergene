@@ -664,7 +664,8 @@ class Checkout extends CI_Controller {
 					//echo 'yes Regular  '; echo '<pre>'; print_r($s_dates_arr[$j]); echo count($s_dates_arr[$j]); exit;
                     if($item['payDebit']=='No') {
 						
-                        $paidAmount = $item['price']*$item['qty'];
+						$paidAmount = $item['price']*$item['qty'];
+						$total_charge = $paidAmount;
                         $total_paid+=$paidAmount;
                                 
                         $charge = \Stripe\Charge::create(array(

@@ -895,6 +895,7 @@ class Orders_items extends CI_Controller {
 				
 				// End
 				
+				
 				$result_data=array(
 					'detailId' => $detailId,
 					'orderId' => $orderId,
@@ -1241,7 +1242,7 @@ class Orders_items extends CI_Controller {
 
 
 	public function saveAndPublishResult() {
-		//echo '<pre>'; print_r($_POST); exit;
+		// echo '<pre>'; print_r($_POST); exit;
 		$resultId=$this->input->post('resultId');
 		$detailId=$this->input->post('detailId');
 
@@ -1257,18 +1258,42 @@ class Orders_items extends CI_Controller {
 
 		for ($i=0; $i < sizeof($resultId); $i++) {
 
-			$result_data=array(
-				'topText' => $topText[$i],
-				'bottomText' => $bottomText[$i],
-				'resultValue' => $resultValue[$i],
-				'min_value' => $minValue[$i],
-				'lower_value' => $lowerValue[$i],
-				'upper_value' => $upperValue[$i],
-				'max_value' => $maxValue[$i],
-				'added_by' => $this->session_data->adminID
-			);	
+			if(empty($topText[$i])){
+				
+				$topText=$this->input->post('standard');
+				$normal=$this->input->post('normal');
+				$abnormal=$this->input->post('abnormal');
+				$result3 = $this->input->post('result3');
+
+				if($result3 == 'Positive'){
+
+					$bottomText = $abnormal;
+				}else{
+					$bottomText = $normal;
+				}
+
+				$result_data=array(
+					'topText' => $topText[$i],
+					'bottomText' => $bottomText,
+					'result3' => $result3,
+					'added_by' => $this->session_data->adminID
+				);
+			}
+			else{
+
+				$result_data=array(
+					'topText' => $topText[$i],
+					'bottomText' => $bottomText[$i],
+					'resultValue' => $resultValue[$i],
+					'min_value' => $minValue[$i],
+					'lower_value' => $lowerValue[$i],
+					'upper_value' => $upperValue[$i],
+					'max_value' => $maxValue[$i],
+					'added_by' => $this->session_data->adminID
+				);
+			}
 			
-			//echo '<pre>'; print_r($result_data); exit;
+			// echo '<pre>'; print_r($result_data); exit;
 
 			$value=$this->db->update('results',$result_data,array('resultId'=>$resultId[$i]));
 
