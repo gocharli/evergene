@@ -260,7 +260,7 @@
 																		<label>Avg exercise a week (Hours)</label>
 																		<select name="excericseAvgWeek" class="form-control">
 																			<option value="">select an option</option>
-																			<option value="0-1" <?php if($row->excericseAvgWeek == '0-1'){echo 'selected';} ?>>0-1  hour</option>
+																			<option value="0 - 1" <?php if($row->excericseAvgWeek == '0 - 1'){echo 'selected';} ?>>0-1  hour</option>
 																			<option value="1 – 1.5" <?php if($row->excericseAvgWeek == '1 – 1.5'){echo 'selected';} ?>>1 – 1.5  hours</option>
 																			<option value="1.5 - 2" <?php if($row->excericseAvgWeek == '1.5 - 2'){echo 'selected';} ?>>1.5 - 2  hours</option>
 																			<option value="2 – 2.5" <?php if($row->excericseAvgWeek == '2 – 2.5'){echo 'selected';} ?>>2 – 2.5  hours</option>

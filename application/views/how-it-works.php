@@ -90,7 +90,7 @@ header.theme-menu-wrapper.menu-style-two #mega-menu-wrapper .nav .login-button a
 
 
 			</div> <!-- /.row -->
-			<a href="#" class="tran3s custom-btn">See our tests</a>
+			<a href="<?php echo base_url(); ?>tests" class="tran3s custom-btn">See our tests</a>
 
 			<div class="clearfix"></div>
 		</div> <!-- /.container -->

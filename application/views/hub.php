@@ -139,7 +139,7 @@ border: 2px solid #86c44c !important;
 
 										<?php 
 										
-											$eaw = explode('–', $row->excericseAvgWeek); 
+											$eaw = explode('–', $row->excericseAvgWeek);
 											$min_excericseAvgWeek = floatval($eaw[0]); 
 											$max_excericseAvgWeek = floatval($eaw[1]);
 											if(!$max_excericseAvgWeek){
@@ -149,7 +149,7 @@ border: 2px solid #86c44c !important;
 											
 											$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Grey.png';
 											
-											if($max_excericseAvgWeek > 0 && $max_excericseAvgWeek <= 2){
+											if($min_excericseAvgWeek >= 0 && $max_excericseAvgWeek <= 2){
 												$ex_img = base_url().'assets/front/images/icons/Exercise-icon-Red.png';
 											}
 
@@ -511,8 +511,8 @@ border: 2px solid #86c44c !important;
                                             
                                             <div class="col-lg-12 col-md-12 col-xs-6 body-info">
 											<img class="m-auto" src="<?php echo $cholesterol_img; ?>">
-												<label>Blood Sugar</label>
-												<div class="b_ans"><?php echo $row->alcoholUnits ?></div>
+												<label>Alchohol</label>
+												<div class="b_ans"><?php echo $row->alcoholUnits ?> units</div>
 											</div>
 
 										</div><!-- /.col- -->
