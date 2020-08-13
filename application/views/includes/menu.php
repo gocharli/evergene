@@ -118,11 +118,11 @@
                         <?php
 							if(isset($this->session_data->userId)) {
 						?>
-                        <li class="dropdown-holder menu-list display-hub-mb"><a href="<?=base_url('hub')?>" class="tran3s"><?=$this->session_data->userFirstName?> Hub
+                        <li class="dropdown-holder menu-list display-hub-mb"><a href="<?=base_url('hub')?>" class="tran3s"><?=$this->session_data->userFirstName?> ghjk
 									</a>
 							<ul class="sub-menu">
                                 <li>
-			                        <a href="http://localhost/evergene/memberships" class="tran3s">Upgrade to Premium</a>
+			                        <a href="<?=base_url('memberships')?>" class="tran3s">Upgrade to Premium</a>
                                 </li>
                                 <li>
                                     <a href="javascript:;" data-toggle="modal" data-target="#FriendModal1" class="tran3s">Recommend a Friend</a>
