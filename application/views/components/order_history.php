@@ -64,7 +64,7 @@
 										<div class="col-lg-3"><?=$d->testName?><br /> (<?=date('d F Y',strtotime($d->scheduleDate))?>)</div>
 										<!--<div class="col-lg-1">1</div>-->
 										<div class="col-lg-3">£<?=number_format($d->detailPrice).".00"?></div>
-										<div class="col-lg-3"><?php if($d->order_cancel_status == 1){ echo '<span style="color: red">Cancelled</span>'; } else { if($d->detailStatus == 'Pending' && strtotime($d->scheduleDate) != strtotime(date('Y-m-d'))) echo 'Scheduled'; else echo $d->detailStatus; } //echo $d->detailStatus; ?></div>
+										<div class="col-lg-3"> <strong class="status-mb">Status:</strong> <?php if($d->order_cancel_status == 1){ echo '<span style="color: red">Cancelled</span>'; } else { if($d->detailStatus == 'Pending' && strtotime($d->scheduleDate) != strtotime(date('Y-m-d'))) echo 'Scheduled'; else echo $d->detailStatus; } //echo $d->detailStatus; ?></div>
 										<!--<div class="col-lg-2">
 											<?php 
 												if($d->paymentStatus=='Yes') {
