@@ -34,38 +34,47 @@
 	<div class="shop-page hub-page">
 		<div class="row">
 			<div class="container">
-				<div class="title-head">
-					<h5 class="pull-left" style="padding: 15px 0; ">Results</h5>
-                   
-					<a href="<?=base_url('results')?>" class="tran3s custom-btn small-btn pull-right">Back</a>
+				<div class="title-head mb-5">
+                    <div class="col-md-12 row m-0 test-result-mb">
+                        <div class="col-md-3 p-0">
+                            <h5 class="pull-left" style="padding: 15px 0; ">Results</h5>
+                        </div>
+                        <div class="col-md-9 p-0">
+                            <a href="<?=base_url('results')?>" class="tran3s custom-btn small-btn pull-right ml-0">Back</a>
+
+
+                             <a href="<?=base_url()?>tests/<?php echo str_replace(" ","-",$order_details->testName); ?>" class="tran3s custom-btn small-btn pull-right" >Reorder</a>
+                            
+                           <?php if(count($previous_results) > 0){ ?>
+                                <select class="form-control pull-right test-result-select" style="width: 200px; height: 53px;" onchange="go_get_result(this.value)">
+                                    <option value="0">Previous Results</option>
+                                    <?php foreach($previous_results as $p){ ?>
+
+                                        <option value="<?php echo $p->detailId; ?>"><?php echo date('d F Y',strtotime($p->resultReceivedDate)); ?></option>
+
+                                    <?php } ?>
+                                </select>
+
+                            <?php }else{ ?>
+
+                                <h6 class="pull-right" style="padding: 15px 0;">No Result History</h6>
+
+                            <?php } ?>
+                            
+                        </div>
+                    </div>
 					
-					<?php if(count($previous_results) > 0){ ?>
-						<select class="form-control pull-right" style="width: 200px; height: 53px;" onchange="go_get_result(this.value)">
-							<option value="0">Previous Results</option>
-							<?php foreach($previous_results as $p){ ?>
-							
-								<option value="<?php echo $p->detailId; ?>"><?php echo date('d F Y',strtotime($p->resultReceivedDate)); ?></option>
-
-							<?php } ?>
-						</select>
-
-					<?php }else{ ?>
-
-						<h6 class="pull-right" style="padding: 15px 0;">No Result History</h6>
-						
-					<?php } ?>
-					 <a href="<?=base_url()?>tests/<?php echo str_replace(" ","-",$order_details->testName); ?>" class="tran3s custom-btn small-btn pull-right" style="margin-right:10px">Reorder</a>
 					<div class="clearfix"></div>
 				</div>
 
-				<div class="clearfix"></div> <br /><br />
+				<div class="clearfix"></div>
 				<div class="col-lg-12 col-md-12 col-xs-12 float-right p-0">
 					<div class="shop-product-wrapper service-version-one">
 
 						<div class="row">
 							<div class="col-lg-12 col-xs-12">
 
-								<div class="single-product shop-sidebar">
+								<div class="single-product shop-sidebar result-type">
 								    <div id="html-2-pdfwrapper">
 									<div class="product-header">
 										<h6 class="print-design"><img src="<?=base_url(); ?>uploads/tests/logo/<?php echo $order_details->testLogo; ?>" alt="" style="width:10%; margin-right: 10px; display: inline-block;" />
@@ -75,7 +84,7 @@
 										<div class="row">
 										    <br><br>
 											<div class="col-lg-12">
-												<table class="table table-borderless table-sm">
+												<table class="table table-borderless table-sm result-table">
 												  	<thead>
 												  	    <tr>
 												    		<td scope="col">
@@ -160,7 +169,7 @@
 												    $i++;
 
 													?>
-													<div class="row col-md-12 col-xs-12 mix technical investment">
+													<div class="row col-md-12 col-xs-12 mix technical investment p-0 m-0">
 											    <div>
 												<h5 class="marker-heading mb-15"><?php echo $res->marker_title; ?></h5>
 												<div class="single-service" style="margin-bottom: 30px;border: 1px solid rgba(0,0,0,0.07);padding: 20px;border-radius: 5px;background: #FFF;">
@@ -200,7 +209,7 @@
 												    <div class="result-value res_div" >Result = <?=$res->resultValue?> <?=$res->resultUnit?> 
 											
 												</div>
-												 <div style="float:left;margin-left:2rem">
+												 <div style="float:left;margin-left:2rem"  class="result-value-mb">
 												<?php //echo '-----result value = '.$res->resultValue; echo '------lower value = '.$res->lower_value; echo '------upper max value = '.$res->max_value; ?>
 
 												<?php if($res->resultValue < $res->lower_value){  ?>
@@ -335,10 +344,6 @@
 
 	<script>
   
-    	
-
-        
-
 		        function drawChart() {
 
 
@@ -601,6 +606,7 @@
 		}
 
 	</script>
+   
 
 </div> <!-- /.main-page-wrapper -->
 

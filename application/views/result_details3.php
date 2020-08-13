@@ -1,9 +1,6 @@
 <?php $this->load->view('includes/head');   ?>
 <?php if($order_details->testResultType=='Result 3' || $order_details->testResultType=='Result 2'){ ?>
 	<link rel="stylesheet" href="<?=base_url('assets/plugins/morris')?>/morris.css">
-	
-	
-
 <?php } ?>
 
 </head>
@@ -32,37 +29,41 @@
 		<div class="row">
 			<div class="container">
 				<div class="title-head">
-					<h5 class="pull-left" style="padding: 15px 0; ">Results</h5>
-                   
-					<a href="<?=base_url('results')?>" class="tran3s custom-btn small-btn pull-right">Back</a>
-					
-					<?php if(count($previous_results) > 0){ ?>
-						<select class="form-control pull-right" style="width: 200px; height: 53px;" onchange="go_get_result(this.value)">
-							<option value="0">Previous Results</option>
-							<?php foreach($previous_results as $p){ ?>
-							
-								<option value="<?php echo $p->detailId; ?>"><?php echo date('d F Y',strtotime($p->resultReceivedDate)); ?></option>
+                     <div class="col-md-12  row m-0 test-result-mb">
+                        <div class="col-md-3 p-0">
+					       <h5 class="pull-left" style="padding: 15px 0; ">Results</h5>
+                         </div>
+                         <div class="col-md-9 p-0">
+                           <a href="<?=base_url('results')?>" class="tran3s custom-btn small-btn pull-right  ml-0">Back</a>
+                            <a href="<?=base_url()?>tests/<?php echo str_replace(" ","-",$order_details->testName); ?>" class="tran3s custom-btn small-btn pull-right">Reorder</a>
 
-							<?php } ?>
-						</select>
+                            <?php if(count($previous_results) > 0){ ?>
+                                <select class="form-control pull-right test-result-select" style="width: 200px; height: 53px;" onchange="go_get_result(this.value)">
+                                    <option value="0">Previous Results</option>
+                                    <?php foreach($previous_results as $p){ ?>
 
-					<?php }else{ ?>
+                                        <option value="<?php echo $p->detailId; ?>"><?php echo date('d F Y',strtotime($p->resultReceivedDate)); ?></option>
 
-						<h6 class="pull-right" style="padding: 15px 0;">No Result History</h6>
-						
-					<?php } ?>
-					 <a href="<?=base_url()?>tests/<?php echo str_replace(" ","-",$order_details->testName); ?>" class="tran3s custom-btn small-btn pull-right" style="margin-right:10px">Reorder</a>
+                                    <?php } ?>
+                                </select>
+
+                            <?php }else{ ?>
+
+                                <h6 class="pull-right" style="padding: 15px 0;">No Result History</h6>
+
+                            <?php } ?>
+                         </div>
 					<div class="clearfix"></div>
 				</div>
 
-				<div class="clearfix"></div> <br />
+				<div class="clearfix"></div>
 				<div class="col-lg-12 col-md-12 col-xs-12 float-right p-0">
 					<div class="shop-product-wrapper service-version-one">
 
 						<div class="row">
 							<div class="col-lg-12 col-xs-12">
 
-								<div class="single-product shop-sidebar">
+								<div class="single-product shop-sidebar result-type">
 								    <div id="html-2-pdfwrapper">
 									<div class="product-header m-0">
 										<h6 class="print-design"><img  src="<?=base_url(); ?>uploads/tests/logo/<?php echo $order_details->testLogo; ?>" alt="" style="width:10%"/>
@@ -72,7 +73,7 @@
 										<div class="row">
 										    <br><br>
 											<div class="col-lg-12">
-												<table class="table table-borderless table-sm m-0">
+												<table class="table table-borderless table-sm m-0 result-table">
 												  	<thead>
 												  	    <tr>
 												    		<td scope="col">
@@ -153,7 +154,7 @@
 													 
 													
 													?>
-													 <div class="col-md-12 col-xs-12 row mix technical investment">
+													 <div class="col-md-12 col-xs-12 row mix technical investment m-0 p-0">
 													<div>
 												<h5 class="marker-heading mb-15"><?php echo $m_title; ?></h5>
 													<h5 class="marker-heading"><?php //echo $m_title; ?></h5>

@@ -214,9 +214,9 @@
 										<div class="clearfix"></div>
 									</div><!--product header-->
 
-									<div class="single-service">
+									<div class="single-service checkout-mb">
 
-										<div class="shopping-cart">
+										<div class="shopping-cart checkout-cart-mb">
 											<!-- Product #1 -->
                                             <div class="item">                                            
                                                  <div class="description" style="width: 20%;font-size: 15px;font-weight: bold;">Title</div>
@@ -406,7 +406,7 @@
 									<div>
 											<!-- <input type="checkbox" name="terms1" value="1"/><span class="simple-text">I have read and agree to</span> <a href="#"> Terms and conditions.</a> </br> -->
 											<!-- <span style="display: inline-flex;"><input type="checkbox" name="terms2" value="1" /> <a  class="simple-text">We will only use your email address to contact you about when results are available.</a></span> -->
-											<span style="display: inline-flex;"><input type="checkbox" name="terms2" value="1" /> <a  class="simple-text">I want to receive emails including special offers and Evergene news.</a></span>
+											<span style="display: inline-flex;" class="mt-mb-10"> <input type="checkbox" name="terms2" value="1" />  <a  class="simple-text simple-text-mb"> I want to receive emails including special offers and Evergene news.</a></span>
 									</div>
 
 								<button type="button" onclick="pay()" class="tran3s cart-button btn-pay block hvr-trim-two">PAY NOW</button>

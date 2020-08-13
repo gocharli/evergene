@@ -131,20 +131,20 @@
 								
 
 								<?php if($this->uri->segment(1) == 'checkout'){ ?>
-									<input type="checkbox" id="sign-up-checkbox" style="margin-right:3px;"> We will only use your email address to contact you about when results are available.</span>
+									<input type="checkbox" id="sign-up-checkbox" style="margin-right:3px;"> We will only use your email address to contact you about when results are available.
 									<!--<input type="checkbox" style="display: none" name="terms1" style="width: auto; height: auto;" value="1" checked="checked" /><span class="simple-text">I have read and agree to</span> <a target="_blank" href="<?php echo base_url(); ?>terms_of_use"> Terms and conditions.</a> </br> -->
 								<?php }else{ ?>
-									<span style="display: inline-flex;color:#000;margin-top:5px;width:100%;line-height:28px;">
-									<input type="checkbox" id="sign-up-checkbox"> Agree to Evergene using the email addess to contact them about results.</span>
+									
+									<input type="checkbox" id="sign-up-checkbox"> <span class="checkbox-text-mt">Agree to Evergene using the email addess to contact them about results.</span>
 									</span>
 									
 								<?php } ?>
 
-				            <span style="display: inline-flex;color:#000;margin-top:5px;width:100%;line-height:28px;">
-					            <input type="checkbox" name="terms1" id="sign-up-checkbox2"   style="margin-left: -3px;" value="1"/><span class="simple-text">I have read and agree to</span> <a target="_blank" href="<?php echo base_url(); ?>terms_of_use"> Terms and conditions.</a> </br>
+				                <span class="signup-checkbox" style="display: inline-flex;color:#000;margin-top:5px;width:100%;line-height:28px;">
+                                    <input type="checkbox" name="terms1" id="sign-up-checkbox2"   style="margin-left: -3px;" value="1"/> <span class="simple-text"> I have read and agree to  <a target="_blank" href="<?php echo base_url(); ?>terms_of_use"> Terms and conditions.</a></span> 
 								
 								</span>
-								</br>
+							
 								
 							</div>
 							<input type="hidden" id="ref_inp" name="ref" value="">

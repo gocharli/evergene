@@ -22,7 +22,7 @@
 						<div class="clearfix"></div>
 					</div><br />
 				</div>
-				<div class="col-lg-12 col-md-12 col-xs-12 float-right p-0">
+				<div class="col-lg-12 col-md-12 col-xs-12 float-right p-0 m-p-15">
 					<div class="shop-product-wrapper service-version-one" style="border: 0; padding: 0px;">
 
 						<div class="row">

@@ -79,13 +79,13 @@
 												<ul class="clearfix">
 													<li>
 														<div class="row">
-															<div class="col-md-8 col-sm-8 d-flex-mb" >
+															<div class="col-md-8 col-sm-8 col-xs-12 d-flex-mb" >
 																<span class="heading">Name:</span>
 																<span class="detail" style="width: 100%;"><?=$d->testName?></span>
 																<div class="clearfix"></div>
 															</div>
 
-															<div class="col-md-4 col-sm-4 d-flex-mb" >
+															<div class="col-md-4 col-sm-4 col-xs-12 d-flex-mb" >
 																<span class="heading">Order ID:</span>
 																<span class="detail" style="width: 100%;"><?=$d->orderId.'-'.$sub_id; ?></span>
 																<div class="clearfix"></div>
@@ -94,19 +94,20 @@
 														</div>
 													</li>
 													<li>
-
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 p-0">
 														<span class="heading">Description:</span>
-														<span class="detail" style="width: 100%; margin-top: 10px;"><?=short_text($d->testDescription,100)?></span>
+														<span class="detail" style="width: 100%; margin-top: 10px;margin-bottom:5px;"><?=short_text($d->testDescription,100)?></span>
 														<div class="clearfix"></div>
+                                                        </div>
 													</li>
 													<li>
 														<div class="row">
-															<div class="col-md-8 col-sm-8 d-flex-mb" >
+															<div class="col-md-8 col-sm-8 col-xs-12 d-flex-mb" >
 															<span class="heading" style="width: 100%">Scheduled Date:</span>
 															<span class="detail" style="width: 100%; margin-top: 10px;"><?=date('d F Y',strtotime($d->scheduleDate))?></span>
 
 															</div>
-															<div class="col-md-4 col-sm-4 d-flex-mb">
+															<div class="col-md-4 col-sm-4  col-xs-12 d-flex-mb">
 																<span class="heading">price:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;">£<?=$d->detailPrice?></span>
 															</div>
@@ -114,12 +115,12 @@
 													</li>
 													<li>
 														<div class="row">
-															<div class="col-md-8 col-sm-8 d-flex-mb" >
+															<div class="col-md-8 col-sm-8 col-xs-12 d-flex-mb" >
 																<span class="heading" style="width: 100%">Type:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;"><?=$d->paymentType?></span>
 
 															</div>
-															<div class="col-md-4 col-sm-4 d-flex-mb">
+															<div class="col-md-4 col-sm-4  col-xs-12 d-flex-mb">
 																<span class="heading" style="width: 100%">payment:</span>
 																<span class="detail" style="width: 100%; margin-top: 10px;"><?php if($d->paymentStatus=='Yes'){
 																		echo 'Paid';

@@ -53,7 +53,7 @@
 										<?php } ?>
 									</div>
 									<?php if($orders && count($orders)>=$resultsPerPage){  ?>
-										<div class="col-md-12 text-center" style="margin-top: 10px">
+										<div class="text-center" style="margin-top: 10px">
 											<a href="javascript:;" class="loadmore tran3s custom-btn"  page="2" >View More</a>
 										</div>
 									<?php } ?>
