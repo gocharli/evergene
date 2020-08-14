@@ -51,6 +51,6 @@
 	<?php $this->load->view('includes/footer'); ?>
 	<script type="text/javascript" src="<?=base_url('assets/front/')?>vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 	<script src="https://checkout.stripe.com/checkout.js"></script>
-	<script type="text/javascript">
+    <?php $this->load->view('includes/scripts'); ?>
 	
 </html>

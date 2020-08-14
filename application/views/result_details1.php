@@ -5,7 +5,7 @@
 	
 
 <?php } ?>
-
+  
 
 
 
@@ -327,14 +327,14 @@
 		<input type="hidden" id="request_type" name="orderId" value="<?=$order_details->detailId?>">
 	</form>
 	<?php //$this->load->view('includes/footer'); ?> 
+ 
 	<script type="text/javascript" src="<?=base_url('assets/front/')?>vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
     <script src="<?=base_url('assets/plugins/morris')?>/raphael-min.js"></script>
 	<script src="<?=base_url('assets/plugins/morris')?>/morris.min.js"></script>
+  
 	<script src="https://checkout.stripe.com/checkout.js"></script>
-	<?php $this->load->view('includes/scripts'); ?>
-
-	
-	
+	 
+    
 	<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
       </script>
       <script type = "text/javascript">
@@ -612,3 +612,4 @@
 
 
 <?php $this->load->view('includes/footer'); ?>
+<?php $this->load->view('includes/scripts'); ?>

@@ -97,7 +97,7 @@
 	</div> <!-- /.shop-page -->
 
 	<?php $this->load->view('includes/footer'); ?>
-
+<?php $this->load->view('includes/scripts'); ?>
 <script>
     setTimeout(function() {
   
