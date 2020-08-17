@@ -63,12 +63,49 @@ class Signup extends CI_Controller{
 			$email_check = $this->general_model->role_exists('userEmail', $userEmail,'users');
 			
 			if($email_check == false) {
+
+				$deleted_check = $this->general_model->deleted_role_exists('userEmail', $userEmail,'users');
+
+				if($deleted_check==false){
+
+					$response=array();
+					$response['code']=0;
+					$response['message']= $userEmail.' already exists ssss';
+					echo json_encode($response);
+					exit();
+				}
+				else{
+
+					$user_data = array(
+
+						'userFirstName' => $userFirstName,
+						'userLastName' => $userLastName,
+						'userEmail' => $userEmail,
+						'userPassword' => md5($userPassword),
+						'userGender' => $userGender,
+						'userDob' => $userDob,
+						'userStatus' => 'Active',
+						'isDeleted' => 'No',
+					);
+					$this->db->where('userId', $deleted_check->userId);
+					$this->db->update('users', $user_data);
+
+					$user=$this->db->query('SELECT * from users where userId="'.$deleted_check->userId.'"')->row();
+
+					if($user){
+						$this->session->set_userdata(array('users'=>$user));
+					}
+					
+					$name=$userFirstName.' '.$userLastName;
+					$response=array();
+					$response['code']=1;
+					$response['message']=$name." Profile Created Successfully";
+
+					echo json_encode($response);
+					exit();
+				}
 				
-				$response=array();
-				$response['code']=0;
-				$response['message']= $userEmail.' already exists ssss';
-				echo json_encode($response);
-				exit();
+				
 			}
 
 			$ins=array();

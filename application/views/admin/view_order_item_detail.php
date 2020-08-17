@@ -370,7 +370,7 @@
 																														<div class="j-unit j-span4">
 																																	<label class="j-label">Select Test Result</label>
 																																	<div class="j-input j-select">
-																																		<select class="js-example-basic-single" name="result3" id="result3_<?php echo $res->resultId; ?>" onchange="update_result3('<?php echo $res->resultId; ?>', this.value)" style="width: 100% !important; height:30px!important" required>
+																																		<select class="js-example-basic-single" name="result3[]" id="result3_<?php echo $res->resultId; ?>" onchange="update_result3('<?php echo $res->resultId; ?>', this.value)" style="width: 100% !important; height:30px!important" required>
 																																			<option value="" >Select Result</option>
 																																			<option value="Positive" <?php if($res->result3 == 'Positive') echo 'selected'; ?> >Positive</option>
 																																			<option value="Negative" <?php if($res->result3 == 'Negative') echo 'selected'; ?>>Negative</option>
@@ -388,11 +388,11 @@
 																														</div>
 																														<div class="col-lg-3">
 																															<label class="j-label">Negative Result</label>
-																															<textarea name="normal" id="normal_<?php echo $res->resultId; ?>" class="col-sm-12 form-control"><?php if($res->result3 == 'Negative') echo $res->bottomText; else echo $marker->tm_normal_description; ?></textarea>
+																															<textarea name="normal[]" id="normal_<?php echo $res->resultId; ?>" class="col-sm-12 form-control"><?php if($res->result3 == 'Negative') echo $res->bottomText; else echo $marker->tm_normal_description; ?></textarea>
 																														</div>
 																														<div class="col-lg-3">
 																															<label class="j-label">Positive Result</label>
-																															<textarea name="abnormal" id="abnormal_<?php echo $res->resultId; ?>" class="col-sm-12 form-control"><?php if($res->result3 == 'Positive')  echo $res->bottomText; else echo $marker->tm_abnormal_description; ?></textarea>
+																															<textarea name="abnormal[]" id="abnormal_<?php echo $res->resultId; ?>" class="col-sm-12 form-control"><?php if($res->result3 == 'Positive')  echo $res->bottomText; else echo $marker->tm_abnormal_description; ?></textarea>
 																														</div>
 																														<div class="col-lg-3">
 																														<button type="button" class="btn btn-primary" style="margin-top: 35px;" onclick="update_result3_desc('<?php echo $res->resultId; ?>');" >Update</button>
@@ -554,11 +554,11 @@
 																					</div>
 																					<div class="col-lg-4">
 																						<label class="j-label">Negative Result</label>
-																						<textarea name="normal" id="normal" readonly class="col-sm-12 form-control"><?php echo $res->topText; // echo $marker->tm_normal_description; ?></textarea>
+																						<textarea name="normal[]" id="normal" readonly class="col-sm-12 form-control"><?php echo $res->topText; // echo $marker->tm_normal_description; ?></textarea>
 																					</div>
 																					<div class="col-lg-4">
 																						<label class="j-label">Positive Result</label>
-																						<textarea name="abnormal" id="abnormal" readonly class="col-sm-12 form-control"><?php echo $res->bottomText; //echo $marker->tm_abnormal_description; ?></textarea>
+																						<textarea name="abnormal[]" id="abnormal" readonly class="col-sm-12 form-control"><?php echo $res->bottomText; //echo $marker->tm_abnormal_description; ?></textarea>
 																					</div>
 																				</div>
 
@@ -576,7 +576,7 @@
 																			</div>
 
 
-																			<?php if($results[0]->testResultType == 'Result 2'  && count($results) > 1  ){ ?>
+																			<!-- <?php if($results[0]->testResultType == 'Result 2'  && count($results) > 1  ){ ?>
 																				<div class="col-lg-11">
 																					<select id="m_report" name="m_report" class="form-control d-print-none" style="width: 20%; margin: 10px; margin-left: 80%;" onchange="get_report(this.value, '<?php echo $order_details->testId; ?>')">
 																						
@@ -585,6 +585,22 @@
 																						<?php $ii=0; $m=1; foreach($results as $r){ ?>
 																			
 																							<option class="<?php echo $res_unit[$ii]; ?>" value="<?php echo $r->marker_title; ?>"> <?php echo $r->marker_title; ?></option>
+																			
+																						<?php $m++; $ii++; } ?>
+																			
+																					</select> 
+																				</div>
+																			<?php } ?> -->
+
+																			<?php if($results[0]->testResultType == 'Result 2'  && count($results) > 1  ){ ?>
+																				<div class="col-lg-11">
+																					<select id="m_report" name="m_report" class="form-control d-print-none" style="width: 20%; margin: 10px; margin-left: 80%;" onchange="drawVisualization(this.value)">
+																						
+																						<option value="">Result Value</option>
+																			
+																						<?php $ii=0; $m=1; foreach($results as $r){ ?>
+																			
+																							<option class="<?php echo $res_unit[$ii]; ?>" value="<?php echo $r->resultId; ?>"> <?php echo $r->marker_title; ?></option>
 																			
 																						<?php $m++; $ii++; } ?>
 																			
@@ -602,11 +618,10 @@
 <!--   Added by daivid for Graph 19-May-2020 -->
 
 <div class="row">
-<div class="col-lg-12">
-
-<div id="graph" ></div>
-
-</div>
+	<div class="col-lg-12">
+		<!-- <div id="graph" ></div> -->
+		<div id="chart_div" style="height: 400px;"></div>
+	</div>
 </div>
 
 <?php if($results[0]->testResultType == 'Result 2'){ ?>
@@ -1894,6 +1909,151 @@ function formatDate(date) {
 	}
 	
 </script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load('visualization', '1', {packages: ['corechart']});
+	</script>
+	<script type="text/javascript">
+		function drawVisualization(is_called) {
+
+			document.cookie = "is_called = "+is_called;
+			if(is_called){
+
+				<?php
+					$data = "[";
+					$data .="['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
+					foreach ($results as $res) {
+
+						if($res->resultId == $_COOKIE['is_called']){
+							$upper_value = $res->upper_value - $res->lower_value;
+							$max_value = $res->max_value - $res->upper_value;
+	
+							$data .="['',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+					$data .= "]";
+				?>
+
+				//Raw data
+				var data = google.visualization.arrayToDataTable(<?php echo $data; ?>);
+
+				var options = {
+				title : 'Test Results Comparison',
+				vAxis: {title: ""},
+				//Horizontal axis text vertical
+				hAxis: {title: ""},
+				seriesType: "bars",
+				series: {
+					0:{color:'red'},
+					1:{color:'green'},
+					2:{color:'red'},
+					3: {type: "line", color: "yellow",pointShape: 'circle',pointSize: 10}
+				},
+				isStacked: true,
+				bar: { groupWidth: '100%' },
+				};
+
+				var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+			}
+			else{
+				<?php
+					$data = "[";
+					$data .="['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
+
+					$is_max = 0;
+					$is_upper = 0;
+					$is_lower = 0;
+					$is_true = false;
+					$no = 0;
+					foreach ($results as $res) {
+
+						$no++;
+
+						if($no == 1){
+							
+							$is_max = $res->max_value;
+							$is_upper = $res->upper_value;
+							$is_lower = $res->lower_value;
+						}
+						
+						if($is_max == $res->max_value && $is_upper == $res->upper_value && $is_lower == $res->lower_value){
+
+							$is_true = true;
+						}
+
+						if($is_max < $res->max_value){
+
+							$is_true = false;
+
+							$is_max = $res->max_value;
+						}
+						if($is_upper < $res->upper_value){
+
+							$is_true = false;
+
+							$is_upper = $res->upper_value;
+						}
+						if($is_lower < $res->lower_value){
+
+							$is_true = false;
+							
+							$is_lower = $res->lower_value;
+						}
+					}
+
+					if($is_true == true){
+						foreach ($results as $res) {
+
+							$upper_value = $res->upper_value - $res->lower_value;
+							$max_value = $res->max_value - $res->upper_value;
+		
+							$data .="['',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+					else{
+
+						foreach ($results as $res) {
+
+							$upper_value = $is_upper - $is_lower;
+							$max_value = $is_max - $is_upper;
+		
+							$data .="['',".$is_lower.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+
+					$data .= "]";
+				?>
+
+				//Raw data
+				var data = google.visualization.arrayToDataTable(<?php echo $data; ?>);
+
+				var options = {
+				title : 'Test Results Comparison',
+				vAxis: {title: ""},
+				//Horizontal axis text vertical
+				hAxis: {title: ""},
+				seriesType: "bars",
+				series: {
+					0:{color:'red'},
+					1:{color:'green'},
+					2:{color:'red'},
+					3: {type: "line", color: "yellow",pointShape: 'circle',pointSize: 10}
+				},
+				isStacked: true,
+				bar: { groupWidth: '100%' },
+				};
+
+				var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+			}
+			
+			
+			
+		}
+		google.setOnLoadCallback(drawVisualization);
+	</script>
 
 </body>
 

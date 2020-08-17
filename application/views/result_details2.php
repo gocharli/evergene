@@ -344,12 +344,14 @@
 
 												<?php if(count($previous_results) > 1){ ?>
 
-														<div id="graph" ></div>
+														<!-- <div id="graph" ></div> -->
 														<?php } else{ ?>
-														<div id="graph" class="d-print-none"></div>
+														<!-- <div id="graph" class="d-print-none"></div> -->
 														<!-- <img src="<?php echo base_url(); ?>assets/img/graph.jpg" /> -->
-														<div class="d-print-none"><h4 style="text-align: center; color: green; font-size: inherit;">Only one result available</h4></div>
+														<!-- <div class="d-print-none"><h4 style="text-align: center; color: green; font-size: inherit;">Only one result available</h4></div> -->
 														<?php } ?>
+
+														<div id="chart_div" style="height: 400px;"></div>
 													<div class="boxstyle text-left margin-bottom text-center">
 													    
 													</div>
@@ -970,3 +972,102 @@ function formatDate(date) {
 
 
 <?php $this->load->view('includes/footer'); ?>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load('visualization', '1', {packages: ['corechart']});
+	</script>
+	<script type="text/javascript">
+		function drawVisualization() {
+				<?php
+					$data = "[";
+					$data .="['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
+
+					$is_max = 0;
+					$is_upper = 0;
+					$is_lower = 0;
+					$is_true = false;
+					$no = 0;
+					foreach ($results as $res) {
+
+						$no++;
+
+						if($no == 1){
+							
+							$is_max = $res->max_value;
+							$is_upper = $res->upper_value;
+							$is_lower = $res->lower_value;
+						}
+						
+						if($is_max == $res->max_value && $is_upper == $res->upper_value && $is_lower == $res->lower_value){
+
+							$is_true = true;
+						}
+
+						if($is_max < $res->max_value){
+
+							$is_true = false;
+
+							$is_max = $res->max_value;
+						}
+						if($is_upper < $res->upper_value){
+
+							$is_true = false;
+
+							$is_upper = $res->upper_value;
+						}
+						if($is_lower < $res->lower_value){
+
+							$is_true = false;
+							
+							$is_lower = $res->lower_value;
+						}
+					}
+
+					if($is_true == true){
+						foreach ($results as $res) {
+
+							$upper_value = $res->upper_value - $res->lower_value;
+							$max_value = $res->max_value - $res->upper_value;
+		
+							$data .="['',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+					else{
+
+						foreach ($results as $res) {
+
+							$upper_value = $is_upper - $is_lower;
+							$max_value = $is_max - $is_upper;
+		
+							$data .="['',".$is_lower.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+
+					$data .= "]";
+				?>
+
+				//Raw data
+				var data = google.visualization.arrayToDataTable(<?php echo $data; ?>);
+
+				var options = {
+				title : 'Test Results Comparison',
+				vAxis: {title: ""},
+				//Horizontal axis text vertical
+				hAxis: {title: ""},
+				seriesType: "bars",
+				series: {
+					0:{color:'red'},
+					1:{color:'green'},
+					2:{color:'red'},
+					3: {type: "line", color: "yellow",pointShape: 'circle',pointSize: 10}
+				},
+				isStacked: true,
+				bar: { groupWidth: '100%' },
+				};
+
+				var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+		}
+		google.setOnLoadCallback(drawVisualization);
+	</script>

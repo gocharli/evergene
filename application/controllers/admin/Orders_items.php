@@ -1256,26 +1256,27 @@ class Orders_items extends CI_Controller {
 		$upperValue=$this->input->post('upperValue');
 		$maxValue=$this->input->post('maxValue');
 
+		$result3 = $this->input->post('result3');
+
 		for ($i=0; $i < sizeof($resultId); $i++) {
 
-			if(empty($topText[$i])){
+			if(!empty($result3)){
 				
 				$topText=$this->input->post('standard');
 				$normal=$this->input->post('normal');
 				$abnormal=$this->input->post('abnormal');
-				$result3 = $this->input->post('result3');
 
-				if($result3 == 'Positive'){
+				if($result3[$i] == 'Positive'){
 
-					$bottomText = $abnormal;
+					$bottomText = $abnormal[$i];
 				}else{
-					$bottomText = $normal;
+					$bottomText = $normal[$i];
 				}
 
 				$result_data=array(
 					'topText' => $topText[$i],
 					'bottomText' => $bottomText,
-					'result3' => $result3,
+					'result3' => $result3[$i],
 					'added_by' => $this->session_data->adminID
 				);
 			}

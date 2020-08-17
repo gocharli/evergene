@@ -146,6 +146,23 @@ class General_model extends CI_Model {
            
             return true;
         }
+	}
+	
+	function deleted_role_exists($key,$str,$table)
+    {
+        
+		$this->db->where($key,$str);
+		$this->db->where('isDeleted','Yes');
+        $query = $this->db->get($table);
+        
+        if ($query->num_rows() > 0){
+         
+            return $query->row();
+        }
+        else{
+           
+            return false;
+        }
     }
 }
 
