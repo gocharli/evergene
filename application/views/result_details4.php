@@ -76,7 +76,7 @@
 								    <div >
 									<div class="product-header">
 										<h6 class="print-design"><img src="<?=base_url(); ?>uploads/tests/logo/<?php echo $order_details->testLogo; ?>" alt="" style="width:10%"/>
-										    <?=$order_details->testName?> <small>(Date : <?=date('d F Y',strtotime($order_details->resultReceivedDate))?>)</small>
+                                            <span style="padding:1% 0%"> <?=$order_details->testName?> <small style="line-height:56px">(Date : <?=date('d F Y',strtotime($order_details->resultReceivedDate))?>)</small></span>
 										</h6>
 										
 										<div class="row">
@@ -141,7 +141,7 @@
 									</div><!--product header-->
 
 									<div class="row">
-                                                <div class="col-md-12 col-xs-12 mix technical investment m-0 p-0">
+                                                <div class="col-md-12 col-xs-12 mix technical investment m-0">
 
 
 												<h5 class="mb-15">Description</h5>
