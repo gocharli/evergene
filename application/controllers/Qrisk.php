@@ -32,6 +32,10 @@ class Qrisk extends CI_Controller {
 		$smoke_cat=3;    // 0 = non-smoker, 1=ex-smoker, 2=light smoker (less than 10), 3 = moderate smoker (10 to 19), 4 = heavy smoker (20 or over)
 		$surv=0; 
 		$town=0;
+		
+		
+
+		
 
 		//$da = $this->cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town);
 		$da = $this->Qrisk_model->cvd_female_raw($age, $b_AF, $b_atypicalantipsy, $b_corticosteroids, $b_impotence2, $b_migraine, $b_ra, $b_renal, $b_semi, $b_sle, $b_treatedhyp, $b_type1, $b_type2,  $bmi, $ethrisk, $fh_cvd, $rati, $sbp, $sbps5, $smoke_cat, $surv, $town);

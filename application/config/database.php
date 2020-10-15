@@ -100,10 +100,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '92.249.44.1',
-	'username' => 'u289140853_evergenegit',
+	'hostname' => 'localhost',
+	'username' => 'u736489213_evergenegit',
 	'password' => 'b0Pe3q0S',
-	'database' => 'u289140853_evergenegit',
+	'database' => 'u736489213_evergenegit',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
