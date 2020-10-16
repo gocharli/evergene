@@ -128,16 +128,6 @@
 											</div>
 										</div>
 										<div class="shorting-option clearfix">
-											<!--<ul class="clearfix">
-												<li class="float-right">
-													<select class="selectpicker">
-														<option>Select Results</option>
-														<option>Results 1</option>
-														<option>Results 2</option>
-														<option>Results 3</option>
-													</select>
-												</li>
-											</ul>-->
 										</div> <!-- /.shorting-option -->
 										<div class="clearfix"></div>
 									</div><!--product header-->
@@ -145,9 +135,6 @@
                                             <h5 class="mb-15">Description</h5>
 										    <p class="mb-15"> <?php echo $results[0]->testDescription; ?></p>
                                         </div>
-									   <!--  Commented by David  -->
-                                        
-										
 										
 											<?php
 
@@ -155,7 +142,6 @@
 
 											$i=0;
 											$p=0;
-												// $results=$this->db->query('SELECT * FROM `results` WHERE detailId='.$order_details->detailId)->result();
 												foreach ($results as $res){
 													
 													//echo '<pre>'; print_r($res);
@@ -167,8 +153,6 @@
 															$m_title = explode(",", $res->testMarkers)[$p]; 
 														} 
 													}
-
-													//$lbls.= $m_title."','";
 													$lbls.= $m_title." (" .$res_unit[$i].") ','";
 
 												    $i++;
@@ -176,14 +160,12 @@
 													?>
 											
 										    	<div class="row col-md-12 col-xs-12 m-0 p-0 mix technical investment" style="">
-													 <!-- <h5 class="marker-heading">Marker Type 1</h5><br> -->
 													 <div>
 													<h5 class="marker-heading mb-15"><?php echo $m_title; ?></h5>
 
 												    <div class="single-service" style="margin-bottom: 30px;border: 1px solid rgba(0,0,0,0.07);padding: 20px;border-radius: 5px;background: #FFF;">
 												   
-												  	<!-- <p> <?php echo $results[0]->testDescription; ?></p>   -->
-													  <p class="mb-15"> <?php echo $res->topText; ?></p>
+												  	 <p class="mb-15"> <?php echo $res->topText; ?></p>
 												<br />
 												<div class="clearfix"></div>
 													<div class="row">
@@ -194,14 +176,8 @@
     												<div class="price-ranger col-lg-12">
     
     													<div class="row">
-    														<!--<div class="col-md-1"></div>-->
     														<div class="col-md-12">
-    															<?php
-    													          //$width =10.0;
-    													          //$total =  (int) $res->resultValue * $width;
-    													       	?>
-    															<!--<div style="background-color: yellow;height: 120px;z-index: 999;left: <?php echo $total; ?>px;width: 4px;position: absolute;"></div>-->
-      															<div id = "<?php echo 'container'.$i; ?>" style = "width: 100%; height: 100px; margin: 0 auto">
+    															<div id = "<?php echo 'container'.$i; ?>" style = "width: 100%; height: 100px; margin: 0 auto">
       															</div>
     														 </div>
     													</div>
@@ -213,8 +189,7 @@
 												<div class=" result-value res_div" >Result = <?=$res->resultValue?> <?=$res->resultUnit?> 
 											
 												</div>
-												<!-- <span style="color:red"><i class="fa fa-exclamation-circle" id="info-icon" aria-hidden="true" ></i> High</span>  -->
-												 <div style="float:left;margin-left:2rem" class="result-value-mb">
+												<div style="float:left;margin-left:2rem" class="result-value-mb">
 													<?php if($res->resultValue < $res->lower_value){  ?>
 														<span style="color:red;line-height: 48px;font-weight:600"><i class="fa fa-exclamation-circle" id="info-icon" aria-hidden="true" ></i> Low </span>
 													<?php }else if($res->resultValue > $res->upper_value) { ?>
@@ -235,8 +210,6 @@
 											<?php  $p++; } 
 											
 											$lbls = substr($lbls, 0, -3)."']";
-											
-											//echo $lbls;
 											?>
 										
 											<?php //if($order_details->resultHistory=='Yes'){
@@ -261,16 +234,9 @@
 													for($g=1; $g<=$results[0]->no_of_markers; $g++){
 														$new['x'.$g]=0;
 													}
-													// $new['x1']=0;
-													// $new['x2']=0;
-													// $new['x3']=0;
-													// $new['x4']=0;
 													$result_analytics[]=$new;
 												}
-												//$result_track_graph=$this->db->query('select * from results WHERE  DATE(createdAt)>="'.$last_year.'" and  userId='.$this->session_data->userId.' and testId='.$order_details->testId.' and resType="OBX" GROUP BY YEAR(createdAt), MONTH(createdAt)')->result();
 												$result_track_graph=$this->db->query('select * from results WHERE  DATE(createdAt)>="'.$last_year.'" and  userId='.$this->session_data->userId.' and testId='.$order_details->testId.' and resType="OBX" ')->result();
-
-												//echo '<pre>'; print_r($result_track_graph);
 
 												foreach ($result_track_graph as $r)
 												{
@@ -299,12 +265,6 @@
 															$kkk[$key] = $result_analytics[$key];
 
 														}else{
-														  //  unset($result_analytics[$key]['y']);
-														  //  unset($result_analytics[$key]['x']);
-														  //  unset($result_analytics[$key]['x1']);
-														  //  unset($result_analytics[$key]['x2']);
-														  //  unset($result_analytics[$key]['x3']);
-														  //  unset($result_analytics[$key]['x4']);
 														}
 														}else{
 
@@ -314,7 +274,6 @@
 													}
 
 												}
-//echo '<pre>'; print_r($daily_analytics);
 
 												?>
 
@@ -343,13 +302,6 @@
 												<div class="single-service">
 
 												<?php if(count($previous_results) > 1){ ?>
-
-														<!-- <div id="graph" ></div> -->
-														<?php } else{ ?>
-														<!-- <div id="graph" class="d-print-none"></div> -->
-														<!-- <img src="<?php echo base_url(); ?>assets/img/graph.jpg" /> -->
-														<!-- <div class="d-print-none"><h4 style="text-align: center; color: green; font-size: inherit;">Only one result available</h4></div> -->
-														<?php } ?>
 
 														<div id="chart_div" style="height: 400px;"></div>
 													<div class="boxstyle text-left margin-bottom text-center">
@@ -392,9 +344,6 @@ function get_report(marker_title, testId){
 					for($i=1; $i < $results[0]->no_of_markers; $i++){
 
 						$ykeys.=", 'x".$i."'";
-						//$labels.=", 'Result Vlaue'";
-						//array_push($ykeys,'x'.$i);
-						//array_push($labels,'Result Vlaue');
 
 					}
 					
@@ -409,26 +358,15 @@ function get_report(marker_title, testId){
 					padding: 100,
 
 					xLabelFormat: function (x) {
-						// var IndexToMonth = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-						// var month = IndexToMonth[ x.getMonth() ];
-						// var year = x.getFullYear();
-						// return date('Y-d-m', x); //year + ' ' + month;
 						return formatDate(x);
 					},
 					dateFormat: function (x) {
-						// var IndexToMonth = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-						// var month = IndexToMonth[ new Date(x).getMonth() ];
-						// var year = new Date(x).getFullYear();
-						// var dt = new Date(x);
-						// return dt; //year + ' ' + month;
 						return formatDate(x);
 					},
 					resize: true
 
 				});
 			}else{
-
-				<?php //$res_unit = " (" .$results[0]->resultUnit.") "; ?>
 
 				Morris.Line({
 					element: 'graph',
@@ -441,16 +379,10 @@ function get_report(marker_title, testId){
 					padding: 100,
 		
 					xLabelFormat: function (x) {
-						//var IndexToMonth = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-						//var month = IndexToMonth[ x.getMonth() ];
-						//var year = x.getFullYear();
 						return formatDate(x);
 						//return x; //year + ' ' + month;
 					},
 					dateFormat: function (x) {
-						//var IndexToMonth = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-						//var month = IndexToMonth[ new Date(x).getMonth() ];
-						//var year = new Date(x).getFullYear();
 
 						return formatDate(x);
 						//return x; //year + ' ' + month;
@@ -688,32 +620,6 @@ function formatDate(date) {
     };
 }).call(this);
 
-// Morris.Line({
-//     element: 'graph',
-//     data: [
-//         { y: '2015-01', a: 1, b: 5 },
-//         { y: '2015-02', a: 2,  b: 3 },
-//         { y: '2015-03', a: 2,  b: 9 },
-//         { y: '2015-04', a: 7,  b: 4 },
-//         { y: '2015-05', a: 2,  b: 2 },
-//         { y: '2015-06', a: 3,  b: 3 },
-//         { y: '2015-07', a: 1, b: 2 }
-//       ],
-//     xkey: 'y',
-//     ykeys: ['a', 'b'],
-//     labels: ['Line 1', 'Line 2'],
-//     hideHover: 'auto',
-//     resize: true,
-//     //pointFillColors: ['grey', 'red'],
-//     //pointStrokeColors: ['black', 'blue'],
-//     //lineColors: ['red', 'blue'],
-//     //goals: [3],
-//     //goalLineColors: ['pink'],
-//     checkYValues: "eq",
-//     yValueCheck: 72,
-//     yValueCheckColor: "yellow"
-// });
-
 </script>
 
 
@@ -729,10 +635,7 @@ function formatDate(date) {
 		$IndexToMonth.='"'.$m.'",';
 		
 	}
-	$IndexToMonth = substr($IndexToMonth, 0, -1).']';
-	
-    //echo 'vvvvvvvv'; echo '<pre>'; print_r($result_analytics1); //if($order_details->resultHistory=='Yes'){ ?>
-		// Use Morris.Bar
+	$IndexToMonth = substr($IndexToMonth, 0, -1).']';?>
 		Morris.Line({
 			element: 'graph',
 			data:[
@@ -761,7 +664,6 @@ function formatDate(date) {
 			labels: <?php echo $lbls; ?>,
 
 			padding: 100,
-			//lineColors: ['gray', 'green'],
 
 <?php  // 22 June 2020
 			
@@ -787,17 +689,6 @@ function formatDate(date) {
 			
 ?> // End 22 June 2020
 
-			//xLabelMargin: 10,
-			//pointFillColors:['#green'],
-			// pointStrokeColors: ['black'],
-			// lineColors:['gray','red'],
-			//gridTextColor:['#green'],
-			//xLabelAngle: 45,
-			//xLabelMargin: 500,
-			//behaveLikeLine: true,
-
-			//behaveLikeLine: true,
-			//fillOpacity: 0.4,
 			
 
 			xLabelFormat: function (x) {

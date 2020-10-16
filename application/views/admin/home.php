@@ -1,54 +1,55 @@
 <?php $this->load->view('admin/includes/head'); ?>
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/admin/assets/css/widget.css">
- <!-- Style.css -->
- <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/admin/assets/css/style.css"> 
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/admin/assets/css/widget.css">
+<!-- Style.css -->
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/admin/assets/css/style.css">
 </head>
+
 <body>
-    <!-- [ Pre-loader ] start -->
-    <div class="loader-bg">
-        <div class="loader-bar"></div>
-    </div>
-    <!-- [ Pre-loader ] end -->
-    <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
-            <!-- [ Header ] start -->
-         <?php $this->load->view('admin/includes/menu'); ?>
-            <!-- [ Header ] end -->
-            <div class="pcoded-main-container">
-                <div class="pcoded-wrapper">
-                    <!-- [ navigation menu ] start -->
-                <?php $this->load->view('admin/includes/sidebar'); ?>
-                    <!-- [ navigation menu ] end -->
-                    <div class="pcoded-content">
-                        <!-- [ breadcrumb ] start -->
-                        <div class="page-header">
-                            <div class="page-block">
-                                <div class="row align-items-center">
-                                    <div class="col-md-8">
-                                        <div class="page-header-title">
-                                            <h4 class="m-b-10">Dashboard</h4>
-                                        </div>
-                                        <ul class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <a href="<?=$this->config->item('admin_url')?>">
-                                                    <i class="feather icon-home"></i>
-                                                </a>
-                                            </li>
-                                            <li class="breadcrumb-item">
-                                                <a href="#!">Dashboard</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- [ breadcrumb ] end -->
-                        <div class="pcoded-inner-content">
-                            <div class="main-body">
-                                <div class="page-wrapper">
-                                    <div class="page-body">
-                                        <!-- [ page content ] start -->
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-bar"></div>
+	</div>
+	<!-- [ Pre-loader ] end -->
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- [ Header ] start -->
+			<?php $this->load->view('admin/includes/menu'); ?>
+			<!-- [ Header ] end -->
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- [ navigation menu ] start -->
+					<?php $this->load->view('admin/includes/sidebar'); ?>
+					<!-- [ navigation menu ] end -->
+					<div class="pcoded-content">
+						<!-- [ breadcrumb ] start -->
+						<div class="page-header">
+							<div class="page-block">
+								<div class="row align-items-center">
+									<div class="col-md-8">
+										<div class="page-header-title">
+											<h4 class="m-b-10">Dashboard</h4>
+										</div>
+										<ul class="breadcrumb">
+											<li class="breadcrumb-item">
+												<a href="<?= $this->config->item('admin_url') ?>">
+													<i class="feather icon-home"></i>
+												</a>
+											</li>
+											<li class="breadcrumb-item">
+												<a href="#!">Dashboard</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- [ breadcrumb ] end -->
+						<div class="pcoded-inner-content">
+							<div class="main-body">
+								<div class="page-wrapper">
+									<div class="page-body">
+										<!-- [ page content ] start -->
 										<div class="row">
 
 											<div class="col-lg-12 col-md-12">
@@ -57,123 +58,123 @@
 
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/orders_items/index/new')?>" target="_blank">
+														<a href="<?= base_url('admin/orders_items/index/new') ?>" target="_blank">
 															<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-lite-green"><?=$total_new?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-cart-alt f-28"></i>
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-lite-green"><?= $total_new ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-cart-alt f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-lite-green">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">New Orders</h5>
-																	</div>
+																<div class="card-footer bg-c-lite-green">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">New Orders</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/orders_items/index/inprogress')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_inprogress?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-cart-alt f-28"></i>
+														<a href="<?= base_url('admin/orders_items/index/inprogress') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_inprogress ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-cart-alt f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">InProgress</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">InProgress</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/orders_items/index/recieved')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_result_recieved?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-cart-alt f-28"></i>
+														<a href="<?= base_url('admin/orders_items/index/recieved') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_result_recieved ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-cart-alt f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">Result Recieved</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">Result Recieved</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/orders_items/index/completed')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-green"><?=$total_completed?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-cart-alt f-28"></i>
+														<a href="<?= base_url('admin/orders_items/index/completed') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-green"><?= $total_completed ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-cart-alt f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-green">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">Completed</h5>
-																	</div>
+																<div class="card-footer bg-c-green">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">Completed</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/orders_items/index/upcoming')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_upcoming?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-cart-alt f-28"></i>
+														<a href="<?= base_url('admin/orders_items/index/upcoming') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_upcoming ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-cart-alt f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">Upcoming</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">Upcoming</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 
@@ -188,51 +189,51 @@
 													</div>
 
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/requests/index/nurse')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_nurse?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-nurse f-28"></i>
+														<a href="<?= base_url('admin/requests/index/nurse') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_nurse ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-nurse f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">Nurse Requests</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">Nurse Requests</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/requests/index/doctor')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_doctor?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-doctor f-28"></i>
+														<a href="<?= base_url('admin/requests/index/doctor') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_doctor ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-doctor f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">Doctor Requests</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">Doctor Requests</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 
@@ -246,75 +247,75 @@
 													</div>
 
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/tests')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-yellow"><?=$total_test?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-laboratory f-28"></i>
+														<a href="<?= base_url('admin/tests') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-yellow"><?= $total_test ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-laboratory f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-yellow">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">All Tests</h5>
-																	</div>
+																<div class="card-footer bg-c-yellow">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">All Tests</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/mealprep')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-green"><?=$total_mealprep?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-fast-food f-28"></i>
+														<a href="<?= base_url('admin/mealprep') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-green"><?= $total_mealprep ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-fast-food f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-green">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">All Meal Prep</h5>
-																	</div>
+																<div class="card-footer bg-c-green">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">All Meal Prep</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 													<div class="col-md-4">
-														<a href="<?=base_url('admin/items')?>" target="_blank">
-														<div class="card">
-															<div class="card-block">
-																<div class="row align-items-center">
-																	<div class="col-8">
-																		<h4 class="text-c-blue"><?=$total_items?></h4>
-																	</div>
-																	<div class="col-4 text-right">
-																		<i class="feather icofont icofont-food-basket f-28"></i>
+														<a href="<?= base_url('admin/items') ?>" target="_blank">
+															<div class="card">
+																<div class="card-block">
+																	<div class="row align-items-center">
+																		<div class="col-8">
+																			<h4 class="text-c-blue"><?= $total_items ?></h4>
+																		</div>
+																		<div class="col-4 text-right">
+																			<i class="feather icofont icofont-food-basket f-28"></i>
+																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="card-footer bg-c-blue">
-																<div class="row align-items-center">
-																	<div class="col-9">
-																		<h5 class="text-white m-b-0">All Items</h5>
-																	</div>
+																<div class="card-footer bg-c-blue">
+																	<div class="row align-items-center">
+																		<div class="col-9">
+																			<h5 class="text-white m-b-0">All Items</h5>
+																		</div>
 
+																	</div>
 																</div>
 															</div>
-														</div>
 														</a>
 													</div>
 												</div>
@@ -324,26 +325,25 @@
 											<!-- site Analytics card end -->
 										</div>
 										<!-- [ page content ] end -->
-                                        <!-- [ page content ] end -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Warning Section Starts -->
-<?php $this->load->view('admin/includes/scripts'); ?>
+										<!-- [ page content ] end -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Warning Section Starts -->
+	<?php $this->load->view('admin/includes/scripts'); ?>
 	<!-- amchart js -->
-	<script src="<?=base_url()?>assets/admin/assets/pages/widget/amchart/amcharts.js"></script>
-	<script src="<?=base_url()?>assets/admin/assets/pages/widget/amchart/serial.js"></script>
-	<script src="<?=base_url()?>assets/admin/assets/pages/widget/amchart/light.js"></script>
+	<script src="<?= base_url() ?>assets/admin/assets/pages/widget/amchart/amcharts.js"></script>
+	<script src="<?= base_url() ?>assets/admin/assets/pages/widget/amchart/serial.js"></script>
+	<script src="<?= base_url() ?>assets/admin/assets/pages/widget/amchart/light.js"></script>
 
 	<script type="text/javascript">
-
 		$(document).ready(function() {
 			// seo ecommerce start
 			$(function() {
