@@ -1,80 +1,85 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
 
-class Items extends CI_Controller {
-	
+class Items extends CI_Controller
+{
 
 
-	public function __construct() {
-		
+
+	public function __construct()
+	{
+
 		parent::__construct();
-		$sess_data=$this->session->userdata('admin');
+		$sess_data = $this->session->userdata('admin');
 		$this->session_data = $sess_data;
 	}
 
 
 
-	public function index() {
-		
+	public function index()
+	{
+
 		$this->check_login();
-		$this->data['page_title']='General items';
+		$this->data['page_title'] = 'General items';
 		$this->load->view('admin/list_items', $this->data);
 	}
 
 
 
-	public function add(){
+	public function add()
+	{
 
 		$this->check_login();
-		$this->data['page_title']='General item - Admin';
+		$this->data['page_title'] = 'General item - Admin';
 		$this->load->view('admin/add_item', $this->data);
 	}
 
 
 
-	public function edit($id=0) {
-		
+	public function edit($id = 0)
+	{
+
 		$this->check_login();
-		$test = $this->db->query("SELECT * FROM tests WHERE testId='".$id."' and isDeleted='No' and productType='General items'")->row();
-		
-		if($test) {
-			
-			$this->data['page_title']='Edit General items';
-			$this->data['row']=$test;
+		$test = $this->db->query("SELECT * FROM tests WHERE testId='" . $id . "' and isDeleted='No' and productType='General items'")->row();
+
+		if ($test) {
+
+			$this->data['page_title'] = 'Edit General items';
+			$this->data['row'] = $test;
 			$this->load->view('admin/edit_items', $this->data);
-		}
-		else {
-			
+		} else {
+
 			redirect('admin/items');
 		}
 	}
 
 
 
-	public function view($id=0) {
-		
+	public function view($id = 0)
+	{
+
 		$this->check_login();
 		$test = $this->db->query("SELECT tests.* FROM tests
- 		WHERE testId='".$id."' and isDeleted='No' and productType='General items'")->row();
-		
-		if($test) {
-			
-			$this->data['page_title']='View General items';
-			$this->data['row']=$test;
+ 		WHERE testId='" . $id . "' and isDeleted='No' and productType='General items'")->row();
+
+		if ($test) {
+
+			$this->data['page_title'] = 'View General items';
+			$this->data['row'] = $test;
 			$this->load->view('admin/view_items', $this->data);
-		}
-		else {
-			
+		} else {
+
 			redirect('admin/items');
 		}
 	}
 
 
 
-	public  function add_process() {
-		
+	public  function add_process()
+	{
+
 		$this->check_ajax_login();
 		$this->form_validation->set_rules('testName', 'Name', 'required');
 		$this->form_validation->set_rules('originalPrice', 'Original Price', 'required');
@@ -82,80 +87,77 @@ class Items extends CI_Controller {
 		$this->form_validation->set_rules('testDescription', 'Description', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']=validation_errors();
+
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = validation_errors();
 			echo json_encode($response);
 			exit();
-		}
-		else {
+		} else {
 
-			$testName=$this->input->post('testName');
-			$originalPrice=$this->input->post('originalPrice');
-			$discountPrice=$this->input->post('discountPrice');
-			$discountPercentage=$this->input->post('discountPercentage');
-			$testDescription=$this->input->post('testDescription');
-			$testDetails=$this->input->post('testDetails');
-			$testSymtoms=$this->input->post('testSymtoms');
-			$testMarkers=$this->input->post('testMarkers');
+			$testName = $this->input->post('testName');
+			$originalPrice = $this->input->post('originalPrice');
+			$discountPrice = $this->input->post('discountPrice');
+			$discountPercentage = $this->input->post('discountPercentage');
+			$testDescription = $this->input->post('testDescription');
+			$testDetails = $this->input->post('testDetails');
+			$testSymtoms = $this->input->post('testSymtoms');
+			$testMarkers = $this->input->post('testMarkers');
 
-			$slug=slug($testName);
-			$slug_chk=$this->general_model->role_exists('slug',$slug,'tests');
-			
-			if($slug_chk==false) {
-				
-				$response=array();
-				$response['code']=0;
-				$response['message']='Item with same name already exist';
+			$slug = slug($testName);
+			$slug_chk = $this->general_model->role_exists('slug', $slug, 'tests');
+
+			if ($slug_chk == false) {
+
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = 'Item with same name already exist';
 				echo json_encode($response);
 				exit();
 			}
 
-			if($discountPrice<1 || $originalPrice<1) {
+			if ($discountPrice < 1 || $originalPrice < 1) {
 
-				$response=array();
-				$response['code']=0;
-				$response['message']='Price must me greater than 0';
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = 'Price must me greater than 0';
 				echo json_encode($response);
 				exit();
 			}
 
 
-			if($testMarkers!='') {
-				$testMarkers=implode(',',$testMarkers);
-			}
-			else{
-				$testMarkers='';
+			if ($testMarkers != '') {
+				$testMarkers = implode(',', $testMarkers);
+			} else {
+				$testMarkers = '';
 			}
 
 
-			if($discountPercentage=='Yes') {
-				
-				if($discountPrice>=100) {
-					
-					$response=array();
-					$response['code']=0;
-					$response['message']='Discount must be less than 100%';
+			if ($discountPercentage == 'Yes') {
+
+				if ($discountPrice >= 100) {
+
+					$response = array();
+					$response['code'] = 0;
+					$response['message'] = 'Discount must be less than 100%';
 					echo json_encode($response);
 					exit();
 				}
 
-				$discountedPrice=$originalPrice*($discountPrice/100);
-			}
-			else {
+				$discountedPrice = $originalPrice * ($discountPrice / 100);
+			} else {
 
-				if($discountPrice>=$originalPrice) {
+				if ($discountPrice >= $originalPrice) {
 
-					$response=array();
-					$response['code']=0;
-					$response['message']='Discount price must be less than Original price';
+					$response = array();
+					$response['code'] = 0;
+					$response['message'] = 'Discount price must be less than Original price';
 					echo json_encode($response);
 					exit();
 				}
 
 				$discountedPrice = ($discountPrice / $originalPrice) * 100;
-				$discountPercentage='No';
+				$discountPercentage = 'No';
 			}
 
 			$path = './uploads/tests/logo/';
@@ -169,53 +171,52 @@ class Items extends CI_Controller {
 				)
 			);
 
-			if($this->upload->do_upload("testLogo")) {
-				
-				$upload_data = $this->upload->data();
-				$testLogo=$upload_data['file_name'];
-			}
-			else {
+			if ($this->upload->do_upload("testLogo")) {
 
-				$response=array();
-				$response['code']=0;
-				$response['message']=$this->upload->error_msg[0];
+				$upload_data = $this->upload->data();
+				$testLogo = $upload_data['file_name'];
+			} else {
+
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = $this->upload->error_msg[0];
 				echo json_encode($response);
 				exit();
 			}
 
-			$ins=array();
-			$ins['testName']=$testName;
-			$ins['slug']=$slug;
-			$ins['originalPrice']=$originalPrice;
-			$ins['discountPercentage']=$discountPercentage;
-			$ins['discountPrice']=$discountPrice;
-			$ins['discountedPrice']=$discountedPrice;
-			$ins['testDescription']=$testDescription;
-			$ins['testDetails']=$testDetails;
-			$ins['testMarkers']=$testMarkers;
-			$ins['testSymtoms']=$testSymtoms;
-			$ins['testLogo']=$testLogo;
-			$ins['productType']='General items';
-			$ins['testStatus']='Active';
-			$ins['isDeleted']='No';
-			$ins['createdAt']=current_datetime();
-			$ins['updatedAt']=current_datetime();
-			$this->db->insert('tests',$ins);
-			$testId=$this->db->insert_id();
+			$ins = array();
+			$ins['testName'] = $testName;
+			$ins['slug'] = $slug;
+			$ins['originalPrice'] = $originalPrice;
+			$ins['discountPercentage'] = $discountPercentage;
+			$ins['discountPrice'] = $discountPrice;
+			$ins['discountedPrice'] = $discountedPrice;
+			$ins['testDescription'] = $testDescription;
+			$ins['testDetails'] = $testDetails;
+			$ins['testMarkers'] = $testMarkers;
+			$ins['testSymtoms'] = $testSymtoms;
+			$ins['testLogo'] = $testLogo;
+			$ins['productType'] = 'General items';
+			$ins['testStatus'] = 'Active';
+			$ins['isDeleted'] = 'No';
+			$ins['createdAt'] = current_datetime();
+			$ins['updatedAt'] = current_datetime();
+			$this->db->insert('tests', $ins);
+			$testId = $this->db->insert_id();
 
 			// more images //
 			$this->load->library('upload');
 			$dataInfo = array();
 			$files = $_FILES;
 			$cpt = count($_FILES['moreImages']['name']);
-			
-			for($i=0; $i<$cpt; $i++) {
 
-				$_FILES['image']['name']= $files['moreImages']['name'][$i];
-				$_FILES['image']['type']= $files['moreImages']['type'][$i];
-				$_FILES['image']['tmp_name']= $files['moreImages']['tmp_name'][$i];
-				$_FILES['image']['error']= $files['moreImages']['error'][$i];
-				$_FILES['image']['size']= $files['moreImages']['size'][$i];
+			for ($i = 0; $i < $cpt; $i++) {
+
+				$_FILES['image']['name'] = $files['moreImages']['name'][$i];
+				$_FILES['image']['type'] = $files['moreImages']['type'][$i];
+				$_FILES['image']['tmp_name'] = $files['moreImages']['tmp_name'][$i];
+				$_FILES['image']['error'] = $files['moreImages']['error'][$i];
+				$_FILES['image']['size'] = $files['moreImages']['size'][$i];
 
 				$path = './uploads/tests/products/';
 				$this->upload->initialize(
@@ -226,23 +227,22 @@ class Items extends CI_Controller {
 					)
 				);
 
-				if($this->upload->do_upload('image')) {
+				if ($this->upload->do_upload('image')) {
 					$upload_data = $this->upload->data();
-					$dataInfo[] =$upload_data['file_name'];
+					$dataInfo[] = $upload_data['file_name'];
 				}
-
 			}
 			foreach ($dataInfo as $img) {
-				
-				$ins=array();
-				$ins['testId']=$testId;
-				$ins['imageName']=$img;
-				$this->db->insert('test_images',$ins);
+
+				$ins = array();
+				$ins['testId'] = $testId;
+				$ins['imageName'] = $img;
+				$this->db->insert('test_images', $ins);
 			}
 
-			$response=array();
-			$response['code']=1;
-			$response['message']='Added successfully';
+			$response = array();
+			$response['code'] = 1;
+			$response['message'] = 'Added successfully';
 			echo json_encode($response);
 			exit();
 		}
@@ -250,18 +250,19 @@ class Items extends CI_Controller {
 
 
 
-	public function edit_process($id=0) {
-		
+	public function edit_process($id = 0)
+	{
+
 		$this->check_ajax_login();
 		$this->check_ajax_login();
 
-		$test= $this->db->query("SELECT * FROM tests WHERE testId='".$id."' and isDeleted='No' and productType='General items'")->row();
+		$test = $this->db->query("SELECT * FROM tests WHERE testId='" . $id . "' and isDeleted='No' and productType='General items'")->row();
 
-		if(!$test) {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']="General item Not found";
+		if (!$test) {
+
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = "General item Not found";
 			echo json_encode($response);
 			exit();
 		}
@@ -272,83 +273,80 @@ class Items extends CI_Controller {
 		$this->form_validation->set_rules('testDescription', 'Description', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']=validation_errors();
+
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = validation_errors();
 			echo json_encode($response);
 			exit();
-		}
-		else {
+		} else {
 
-			$testName=$this->input->post('testName');
-			$originalPrice=$this->input->post('originalPrice');
-			$discountPrice=$this->input->post('discountPrice');
-			$discountPercentage=$this->input->post('discountPercentage');
-			$testDescription=$this->input->post('testDescription');
-			$testDetails=$this->input->post('testDetails');
-			$testSymtoms=$this->input->post('testSymtoms');
-			$testMarkers=$this->input->post('testMarkers');
+			$testName = $this->input->post('testName');
+			$originalPrice = $this->input->post('originalPrice');
+			$discountPrice = $this->input->post('discountPrice');
+			$discountPercentage = $this->input->post('discountPercentage');
+			$testDescription = $this->input->post('testDescription');
+			$testDetails = $this->input->post('testDetails');
+			$testSymtoms = $this->input->post('testSymtoms');
+			$testMarkers = $this->input->post('testMarkers');
 
-			$slug=slug($testName);
+			$slug = slug($testName);
 
-			if($test->slug!=$slug) {
-				$slug_chk=$this->general_model->role_exists('slug',$slug,'tests');
-				
-				if($slug_chk==false) {
-					
-					$response=array();
-					$response['code']=0;
-					$response['message']='Test with same name already exist';
+			if ($test->slug != $slug) {
+				$slug_chk = $this->general_model->role_exists('slug', $slug, 'tests');
+
+				if ($slug_chk == false) {
+
+					$response = array();
+					$response['code'] = 0;
+					$response['message'] = 'Test with same name already exist';
 					echo json_encode($response);
 					exit();
 				}
 			}
 
-			if($discountPrice<1 || $originalPrice<1) {
-				
-				$response=array();
-				$response['code']=0;
-				$response['message']='Price must me greater than 0';
+			if ($discountPrice < 1 || $originalPrice < 1) {
+
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = 'Price must me greater than 0';
 				echo json_encode($response);
 				exit();
 			}
 
 
-			if($testMarkers!='') {
-				$testMarkers=implode(',',$testMarkers);
-			}
-			else{
-				$testMarkers='';
+			if ($testMarkers != '') {
+				$testMarkers = implode(',', $testMarkers);
+			} else {
+				$testMarkers = '';
 			}
 
 
-			if($discountPercentage=='Yes') {
-				
-				if($discountPrice>=100) {
-					
-					$response=array();
-					$response['code']=0;
-					$response['message']='Discount must be less than 100%';
+			if ($discountPercentage == 'Yes') {
+
+				if ($discountPrice >= 100) {
+
+					$response = array();
+					$response['code'] = 0;
+					$response['message'] = 'Discount must be less than 100%';
 					echo json_encode($response);
 					exit();
 				}
 
-				$discountedPrice=$originalPrice*($discountPrice/100);
-			}
-			else {
-				
-				if($discountPrice>=$originalPrice) {
-					
-					$response=array();
-					$response['code']=0;
-					$response['message']='Discount price must be less than Original price';
+				$discountedPrice = $originalPrice * ($discountPrice / 100);
+			} else {
+
+				if ($discountPrice >= $originalPrice) {
+
+					$response = array();
+					$response['code'] = 0;
+					$response['message'] = 'Discount price must be less than Original price';
 					echo json_encode($response);
 					exit();
 				}
-				
+
 				$discountedPrice = ($discountPrice / $originalPrice) * 100;
-				$discountPercentage='No';
+				$discountPercentage = 'No';
 			}
 
 			$path = './uploads/tests/logo/';
@@ -363,39 +361,39 @@ class Items extends CI_Controller {
 
 
 
-			$upd=array();
-			$upd['testName']=$testName;
-			$upd['slug']=$slug;
-			$upd['originalPrice']=$originalPrice;
-			$upd['discountPercentage']=$discountPercentage;
-			$upd['discountPrice']=$discountPrice;
-			$upd['discountedPrice']=$discountedPrice;
-			$upd['testDescription']=$testDescription;
-			$upd['testDetails']=$testDetails;
-			$upd['testMarkers']=$testMarkers;
-			$upd['testSymtoms']=$testSymtoms;
-			
-			if($this->upload->do_upload("testLogo")) {
+			$upd = array();
+			$upd['testName'] = $testName;
+			$upd['slug'] = $slug;
+			$upd['originalPrice'] = $originalPrice;
+			$upd['discountPercentage'] = $discountPercentage;
+			$upd['discountPrice'] = $discountPrice;
+			$upd['discountedPrice'] = $discountedPrice;
+			$upd['testDescription'] = $testDescription;
+			$upd['testDetails'] = $testDetails;
+			$upd['testMarkers'] = $testMarkers;
+			$upd['testSymtoms'] = $testSymtoms;
+
+			if ($this->upload->do_upload("testLogo")) {
 
 				$upload_data = $this->upload->data();
-				$upd['testLogo']=$upload_data['file_name'];
+				$upd['testLogo'] = $upload_data['file_name'];
 			}
-			
-			$upd['updatedAt']=current_datetime();
-			$this->db->update('tests',$upd,array('testId'=>$id));
-			$testId=$id;
+
+			$upd['updatedAt'] = current_datetime();
+			$this->db->update('tests', $upd, array('testId' => $id));
+			$testId = $id;
 			// more images //
 			$this->load->library('upload');
 			$dataInfo = array();
 			$files = $_FILES;
 			$cpt = count($_FILES['moreImages']['name']);
-			
-			for($i=0; $i<$cpt; $i++) {
-				$_FILES['image']['name']= $files['moreImages']['name'][$i];
-				$_FILES['image']['type']= $files['moreImages']['type'][$i];
-				$_FILES['image']['tmp_name']= $files['moreImages']['tmp_name'][$i];
-				$_FILES['image']['error']= $files['moreImages']['error'][$i];
-				$_FILES['image']['size']= $files['moreImages']['size'][$i];
+
+			for ($i = 0; $i < $cpt; $i++) {
+				$_FILES['image']['name'] = $files['moreImages']['name'][$i];
+				$_FILES['image']['type'] = $files['moreImages']['type'][$i];
+				$_FILES['image']['tmp_name'] = $files['moreImages']['tmp_name'][$i];
+				$_FILES['image']['error'] = $files['moreImages']['error'][$i];
+				$_FILES['image']['size'] = $files['moreImages']['size'][$i];
 
 				$path = './uploads/tests/products/';
 				$this->upload->initialize(
@@ -406,25 +404,24 @@ class Items extends CI_Controller {
 					)
 				);
 
-				if($this->upload->do_upload('image')) {
+				if ($this->upload->do_upload('image')) {
 
 					$upload_data = $this->upload->data();
-					$dataInfo[] =$upload_data['file_name'];
+					$dataInfo[] = $upload_data['file_name'];
 				}
-
 			}
 
 			foreach ($dataInfo as $img) {
-				
-				$ins=array();
-				$ins['testId']=$testId;
-				$ins['imageName']=$img;
-				$this->db->insert('test_images',$ins);
+
+				$ins = array();
+				$ins['testId'] = $testId;
+				$ins['imageName'] = $img;
+				$this->db->insert('test_images', $ins);
 			}
 
-			$response=array();
-			$response['code']=1;
-			$response['message']='Updated successfully';
+			$response = array();
+			$response['code'] = 1;
+			$response['message'] = 'Updated successfully';
 			echo json_encode($response);
 			exit();
 		}
@@ -432,16 +429,17 @@ class Items extends CI_Controller {
 
 
 
-	public function list_data($categoryId=0) {
-		
+	public function list_data($categoryId = 0)
+	{
+
 		$this->check_ajax_datatable();
 		$columns = array(
-			0 =>'testId',
-			1 =>'testName',
-			2 =>'originalPrice',
-			3=> 'discountPrice',
-			4=> 'testStatus',
-			5=> 'testId'
+			0 => 'testId',
+			1 => 'testName',
+			2 => 'originalPrice',
+			3 => 'discountPrice',
+			4 => 'testStatus',
+			5 => 'testId'
 		);
 
 		$limit = $this->input->post('length');
@@ -449,85 +447,80 @@ class Items extends CI_Controller {
 		$order = $columns[$this->input->post('order')[0]['column']];
 		$dir = $this->input->post('order')[0]['dir'];
 
-		$whr='where 1=1 ';
-		$whr.=' and isDeleted="No" and productType="General items" ';
+		$whr = 'where 1=1 ';
+		$whr .= ' and isDeleted="No" and productType="General items" ';
 
-		$totalData = $this->db->query('select * from tests '.$whr)->num_rows();
+		$totalData = $this->db->query('select * from tests ' . $whr)->num_rows();
 		$totalFiltered = $totalData;
 
-		if(empty($this->input->post('search')['value'])) {
+		if (empty($this->input->post('search')['value'])) {
 
-			$sq=$this->db->query('select tests.* from tests
- 			'.$whr.' order by '.$order.' '.$dir.' limit '.$start.','.$limit);
-			
-			if($sq->num_rows()>0) {
-				
-				$result=$sq->result();
+			$sq = $this->db->query('select tests.* from tests
+ 			' . $whr . ' order by ' . $order . ' ' . $dir . ' limit ' . $start . ',' . $limit);
+
+			if ($sq->num_rows() > 0) {
+
+				$result = $sq->result();
+			} else {
+
+				$result = null;
 			}
-			else {
-				
-				$result=null;
-			}
-		}
-		else {
-			
+		} else {
+
 			$search = $this->input->post('search')['value'];
-			$whr.=' and (testId like "%'.$search.'%" or  testName like "%'.$search.'%")';
+			$whr .= ' and (testId like "%' . $search . '%" or  testName like "%' . $search . '%")';
 
-			$sq=$this->db->query('select tests.* from tests
- 			'.$whr.' order by '.$order.' '.$dir.' limit '.$start.','.$limit);
-			
-			if($sq->num_rows()>0) {
+			$sq = $this->db->query('select tests.* from tests
+ 			' . $whr . ' order by ' . $order . ' ' . $dir . ' limit ' . $start . ',' . $limit);
 
-				$result=$sq->result();
+			if ($sq->num_rows() > 0) {
+
+				$result = $sq->result();
+			} else {
+
+				$result = null;
 			}
-			else {
 
-				$result=null;
-			}
-			
 			$totalFiltered = $this->db->query('select tests.* from tests
- 			'.$whr)->num_rows();
+ 			' . $whr)->num_rows();
 		}
-		
-		$data = array();
-		
-		if(!empty($result)) {
-			
-			foreach ($result as $row) {
-				
-				$btn='btn btn-out btn-sm waves-effect waves-light btn-info';
-				$txt="Pending";
 
-				if($row->testStatus=='Active') {
-					
-					$btn='btn btn-out btn-sm waves-effect waves-light btn-success';
-					$txt="Active";
-				}
-				else if($row->testStatus=='Block') {
-					
-					$txt="Block";
-					$btn='btn btn-out btn-sm waves-effect waves-light btn-danger';
+		$data = array();
+
+		if (!empty($result)) {
+
+			foreach ($result as $row) {
+
+				$btn = 'btn btn-out btn-sm waves-effect waves-light btn-info';
+				$txt = "Pending";
+
+				if ($row->testStatus == 'Active') {
+
+					$btn = 'btn btn-out btn-sm waves-effect waves-light btn-success';
+					$txt = "Active";
+				} else if ($row->testStatus == 'Block') {
+
+					$txt = "Block";
+					$btn = 'btn btn-out btn-sm waves-effect waves-light btn-danger';
 				}
 
 				$nestedData['id'] = $row->testId;
 				$nestedData['name'] = $row->testName;
-				$nestedData['price'] = '<i class="icofont icofont-cur-pound"></i> '.$row->originalPrice;
+				$nestedData['price'] = '<i class="icofont icofont-cur-pound"></i> ' . $row->originalPrice;
 
-				if($row->discountPercentage=='Yes') {
-					
-					$nestedData['discount'] =$row->discountPrice.' %';
-				}
-				else {
-					
-					$nestedData['discount'] ='<i class="icofont icofont-cur-pound"></i> '.$row->discountPrice;
+				if ($row->discountPercentage == 'Yes') {
+
+					$nestedData['discount'] = $row->discountPrice . ' %';
+				} else {
+
+					$nestedData['discount'] = '<i class="icofont icofont-cur-pound"></i> ' . $row->discountPrice;
 				}
 
-				$nestedData['status'] = '<a id="status_'.$row->testId.'" href="javascript:status('.$row->testId.');"><button class="'.$btn.'">'.$txt.'</button></a>';
-				$nestedData['action']='
-										<a href="'.$this->config->item('admin_url').'/items/faqs/'.$row->testId.'" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-support-faq"></i>FAQs</a>
-										<a href="'.$this->config->item('admin_url').'/items/edit/'.$row->testId.'" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-edit"></i></a>
-										<a href="'.$this->config->item('admin_url').'/items/view/'.$row->testId.'" class="btn waves-effect waves-light btn-inverse btn-sm"><i class="icofont icofont-eye-alt"></i></a> ';
+				$nestedData['status'] = '<a id="status_' . $row->testId . '" href="javascript:status(' . $row->testId . ');"><button class="' . $btn . '">' . $txt . '</button></a>';
+				$nestedData['action'] = '
+										<a href="' . $this->config->item('admin_url') . '/items/faqs/' . $row->testId . '" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-support-faq"></i>FAQs</a>
+										<a href="' . $this->config->item('admin_url') . '/items/edit/' . $row->testId . '" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-edit"></i></a>
+										<a href="' . $this->config->item('admin_url') . '/items/view/' . $row->testId . '" class="btn waves-effect waves-light btn-inverse btn-sm"><i class="icofont icofont-eye-alt"></i></a> ';
 				$data[] = $nestedData;
 			}
 		}
@@ -544,39 +537,38 @@ class Items extends CI_Controller {
 
 
 
-	public  function  delete_img() {
-		
+	public  function  delete_img()
+	{
+
 		$this->check_ajax_login();
-		$id=$this->input->post('id');
-		
-		if($id>0) {
+		$id = $this->input->post('id');
 
-			$test_images = $this->db->query("SELECT * FROM test_images WHERE imageId='".$id."'")->row();
-			
-			if($test_images) {
+		if ($id > 0) {
 
-				unlink('./uploads/tests/products/'.$test_images->imageName);
-				$this->db->delete('test_images',array('imageId'=>$id));
-				$response=array();
-				$response['code']=1;
-				$response['message']='Deleted';
+			$test_images = $this->db->query("SELECT * FROM test_images WHERE imageId='" . $id . "'")->row();
+
+			if ($test_images) {
+
+				unlink('./uploads/tests/products/' . $test_images->imageName);
+				$this->db->delete('test_images', array('imageId' => $id));
+				$response = array();
+				$response['code'] = 1;
+				$response['message'] = 'Deleted';
+				echo json_encode($response);
+				exit();
+			} else {
+
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = 'image not found';
 				echo json_encode($response);
 				exit();
 			}
-			else {
+		} else {
 
-				$response=array();
-				$response['code']=0;
-				$response['message']='image not found';
-				echo json_encode($response);
-				exit();
-			}
-		}
-		else {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']='image not found';
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = 'image not found';
 			echo json_encode($response);
 			exit();
 		}
@@ -584,36 +576,36 @@ class Items extends CI_Controller {
 
 
 
-	public function change_status() {
-		
-		$this->check_ajax_login();
-		$id=$this->input->post('id');
-		$type=$this->input->post('type');
-		$tests = $this->db->query("SELECT * FROM tests WHERE testId='".$id."'")->row();
+	public function change_status()
+	{
 
-		if($tests) {
-			
-			$btn='<button class="btn btn-out btn-sm waves-effect waves-light btn-success">Active</button>';
-			
-			if($type!='Active') {
-				
-				$type='Block';
-				$btn='<button class="btn btn-out btn-sm waves-effect waves-light btn-danger">Block</button>';
+		$this->check_ajax_login();
+		$id = $this->input->post('id');
+		$type = $this->input->post('type');
+		$tests = $this->db->query("SELECT * FROM tests WHERE testId='" . $id . "'")->row();
+
+		if ($tests) {
+
+			$btn = '<button class="btn btn-out btn-sm waves-effect waves-light btn-success">Active</button>';
+
+			if ($type != 'Active') {
+
+				$type = 'Block';
+				$btn = '<button class="btn btn-out btn-sm waves-effect waves-light btn-danger">Block</button>';
 			}
 
 			$this->db->set('testStatus ', $type);
-			$this ->db->where('testId',$id);
+			$this->db->where('testId', $id);
 			$this->db->update('tests');
 
-			$response=array();
-			$response['code']=1;
-			$response['message']='Status updated successfully';
-			$response['status_code']=$btn;
+			$response = array();
+			$response['code'] = 1;
+			$response['message'] = 'Status updated successfully';
+			$response['status_code'] = $btn;
 			echo json_encode($response);
 			exit();
-		}
-		else {
-			
+		} else {
+
 			$response = array();
 			$response['code'] = 0;
 			$response['message'] = 'Test not found';
@@ -624,31 +616,32 @@ class Items extends CI_Controller {
 
 
 
-	public function faqs($id=0) {
+	public function faqs($id = 0)
+	{
 
 		$this->check_login();
-		$test = $this->db->query("SELECT * FROM tests WHERE testId='".$id."' and isDeleted='No' and productType='General items'")->row();
-		
-		if($test) {
-			
-			$this->data['page_title']='Faqs';
-			$this->data['row']=$test;
+		$test = $this->db->query("SELECT * FROM tests WHERE testId='" . $id . "' and isDeleted='No' and productType='General items'")->row();
+
+		if ($test) {
+
+			$this->data['page_title'] = 'Faqs';
+			$this->data['row'] = $test;
 			$this->load->view('admin/items_faqs', $this->data);
-		}
-		else {
-			
+		} else {
+
 			redirect('admin/mealprep');
 		}
 	}
 
 
 
-	public  function list_faqs_data($testId=0) {
+	public  function list_faqs_data($testId = 0)
+	{
 
 		$this->check_ajax_datatable();
 		$columns = array(
-			0 =>'faqTitle',
-			1=> 'faqId'
+			0 => 'faqTitle',
+			1 => 'faqId'
 		);
 
 		$limit = $this->input->post('length');
@@ -656,65 +649,62 @@ class Items extends CI_Controller {
 		$order = $columns[$this->input->post('order')[0]['column']];
 		$dir = $this->input->post('order')[0]['dir'];
 
-		$whr=' where 1=1 ';
-		
-		if($testId>0) {
+		$whr = ' where 1=1 ';
 
-			$whr=' where faq_relations.testId='.$testId.' ';
+		if ($testId > 0) {
+
+			$whr = ' where faq_relations.testId=' . $testId . ' ';
 		}
-		
-		$whr.=' and faq_relations.relationTestType="General items" ';
+
+		$whr .= ' and faq_relations.relationTestType="General items" ';
 
 		$totalData = $this->db->query('select * from faq_relations
-									LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId'.
+									LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId' .
 			$whr)->num_rows();
 		$totalFiltered = $totalData;
 
-		if(empty($this->input->post('search')['value'])) {
-			$sq=$this->db->query('select * from faq_relations
-									LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId'.
-				$whr.' order by '.$order.' '.$dir.' limit '.$start.','.$limit);
-			
-			if($sq->num_rows()>0) {
+		if (empty($this->input->post('search')['value'])) {
+			$sq = $this->db->query('select * from faq_relations
+									LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId' .
+				$whr . ' order by ' . $order . ' ' . $dir . ' limit ' . $start . ',' . $limit);
 
-				$result=$sq->result();
-			}
-			else {
+			if ($sq->num_rows() > 0) {
 
-				$result=null;
+				$result = $sq->result();
+			} else {
+
+				$result = null;
 			}
-		}
-		else {
+		} else {
 			$search = $this->input->post('search')['value'];
-			$whr.=' and (faq_relations.faqId like "%'.$search.'%" or  faqTitle like "%'.$search.'%" )';
+			$whr .= ' and (faq_relations.faqId like "%' . $search . '%" or  faqTitle like "%' . $search . '%" )';
 
-			$sq=$this->db->query('select * from faq_relations
-								LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId'.
-				$whr.' order by '.$order.' '.$dir.' limit '.$start.','.$limit);
-			
-			if($sq->num_rows()>0) {
-				$result=$sq->result();
+			$sq = $this->db->query('select * from faq_relations
+								LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId' .
+				$whr . ' order by ' . $order . ' ' . $dir . ' limit ' . $start . ',' . $limit);
+
+			if ($sq->num_rows() > 0) {
+				$result = $sq->result();
+			} else {
+				$result = null;
 			}
-			else {
-				$result=null;
-			}
-			
+
 			$totalFiltered = $this->db->query('select * from faq_relations
 									LEFT JOIN faqs ON faq_relations.faqId=faqs.faqId'
-				.$whr)->num_rows();
+				. $whr)->num_rows();
 		}
 
 		$data = array();
-		
-		if(!empty($result)) {
+
+		if (!empty($result)) {
 
 			foreach ($result as $row) {
 
 				$nestedData['id'] = $row->relationId;
 				$nestedData['faq'] = $row->faqTitle;
 
-				$nestedData['action']=' <a target="_blank" href="'.$this->config->item('admin_url').'/faqs/edit/'.$row->faqId.'" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-edit"></i></a>
-										<a href="javascript:;" onclick="del(this,'.$row->relationId.')" class="btn waves-effect waves-light btn-danger btn-sm"><i class="icofont icofont-trash"></i></a> ';
+				$nestedData['action'] = ' <a target="_blank" href="' . $this->config->item('admin_url') . '/faqs/edit/' . $row->faqId . '" class="btn waves-effect waves-light btn-primary btn-sm"><i class="icofont icofont-edit"></i></a>
+										<a href="javascript:;" onclick="del(this,' . $row->relationId . ')" class="btn waves-effect waves-light btn-danger btn-sm"><i class="icofont icofont-trash"></i></a> ';
 				$data[] = $nestedData;
 			}
 		}
@@ -731,35 +721,35 @@ class Items extends CI_Controller {
 
 
 
-	public function rel_faq_code() {
+	public function rel_faq_code()
+	{
 
 		$this->check_ajax_login();
-		$testId=$this->input->post('testId');
-		
-		if(isset($_POST['rfaqId']) && $testId>0) {
+		$testId = $this->input->post('testId');
 
-			$faqId=$this->input->post('rfaqId');
-			
+		if (isset($_POST['rfaqId']) && $testId > 0) {
+
+			$faqId = $this->input->post('rfaqId');
+
 			foreach ($faqId as $faq) {
-				
-				$ins=array();
-				$ins['faqId']=$faq;
-				$ins['testId']=$testId;
-				$ins['relationTestType']='General items';
-				$this->db->insert('faq_relations',$ins);
+
+				$ins = array();
+				$ins['faqId'] = $faq;
+				$ins['testId'] = $testId;
+				$ins['relationTestType'] = 'General items';
+				$this->db->insert('faq_relations', $ins);
 			}
 
-			$response=array();
-			$response['code']=1;
-			$response['message']='Faq added successfully';
+			$response = array();
+			$response['code'] = 1;
+			$response['message'] = 'Faq added successfully';
 			echo json_encode($response);
 			exit();
-		}
-		else {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']='Please select faq';
+		} else {
+
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = 'Please select faq';
 			echo json_encode($response);
 			exit();
 		}
@@ -767,59 +757,59 @@ class Items extends CI_Controller {
 
 
 
-	public function edit_faq_code() {
+	public function edit_faq_code()
+	{
 
 		$this->check_ajax_login();
 		$this->form_validation->set_rules('faqTitle', 'Title', 'required');
 		$this->form_validation->set_rules('faqDescription', 'Detail', 'required');
 		$this->form_validation->set_rules('testId', 'Test', 'required');
-		
+
 		if ($this->form_validation->run() == FALSE) {
-			
-			$response=array();
-			$response['code']=0;
-			$response['message']=validation_errors();
+
+			$response = array();
+			$response['code'] = 0;
+			$response['message'] = validation_errors();
 			echo json_encode($response);
 			exit();
-		}
-		else {
+		} else {
 
-			$faqTitle=$this->input->post('faqTitle');
-			$faqDescription=$this->input->post('faqDescription');
-			$testId=$this->input->post('testId');
+			$faqTitle = $this->input->post('faqTitle');
+			$faqDescription = $this->input->post('faqDescription');
+			$testId = $this->input->post('testId');
 
 			// check slug //
-			$slug=slug($faqTitle);
-			$slug_chk=$this->general_model->role_exists('faqSlug',$slug,'faqs');
-			
-			if($slug_chk==false) {
+			$slug = slug($faqTitle);
+			$slug_chk = $this->general_model->role_exists('faqSlug', $slug, 'faqs');
 
-				$response=array();
-				$response['code']=0;
-				$response['message']='Faq with same title already exist';
+			if ($slug_chk == false) {
+
+				$response = array();
+				$response['code'] = 0;
+				$response['message'] = 'Faq with same title already exist';
 				echo json_encode($response);
 				exit();
 			}
 
-			$ins=array();
-			$ins['faqTitle']=$faqTitle;
-			$ins['faqDescription']=$faqDescription;
-			$ins['faqSlug']=$slug;
-			$ins['faqType']='General items';
-			$ins['createdAt']=current_datetime();
-			$ins['updatedAt']=current_datetime();
-			$this->db->insert('faqs',$ins);
-			$faqId=$this->db->insert_id();
+			$ins = array();
+			$ins['faqTitle'] = $faqTitle;
+			$ins['faqDescription'] = $faqDescription;
+			$ins['faqSlug'] = $slug;
+			$ins['faqType'] = 'General items';
+			$ins['createdAt'] = current_datetime();
+			$ins['updatedAt'] = current_datetime();
+			$this->db->insert('faqs', $ins);
+			$faqId = $this->db->insert_id();
 
-			$ins=array();
-			$ins['faqId']=$faqId;
-			$ins['testId']=$testId;
-			$ins['relationTestType']='General items';
-			$this->db->insert('faq_relations',$ins);
+			$ins = array();
+			$ins['faqId'] = $faqId;
+			$ins['testId'] = $testId;
+			$ins['relationTestType'] = 'General items';
+			$this->db->insert('faq_relations', $ins);
 
-			$response=array();
-			$response['code']=1;
-			$response['message']='Faq added successfully';
+			$response = array();
+			$response['code'] = 1;
+			$response['message'] = 'Faq added successfully';
 			echo json_encode($response);
 			exit();
 		}
@@ -827,20 +817,22 @@ class Items extends CI_Controller {
 
 
 
-	public function check_login() {
-		
+	public function check_login()
+	{
+
 		if (!isset($this->session_data->adminID)) {
-			
+
 			redirect('admin/login');
 		}
 	}
 
 
 
-	public function check_ajax_login() {
+	public function check_ajax_login()
+	{
 
-		if(!isset($this->session_data->adminID)) {
-			
+		if (!isset($this->session_data->adminID)) {
+
 			$response = array();
 			$response['code'] = 0;
 			$response['message'] = 'Login required!';
@@ -851,10 +843,11 @@ class Items extends CI_Controller {
 
 
 
-	public function check_ajax_datatable() {
-		
+	public function check_ajax_datatable()
+	{
+
 		if (!isset($this->session_data->adminID)) {
-			
+
 			$json_data = array(
 				"draw"            => intval($this->input->post('draw')),
 				"recordsTotal"    => intval(0),
@@ -867,4 +860,3 @@ class Items extends CI_Controller {
 		}
 	}
 }
-

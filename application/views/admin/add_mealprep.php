@@ -1,648 +1,643 @@
 <?php $this->load->view('admin/includes/head'); ?>
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/admin/assets/pages/j-pro/css/j-pro-modern.css">
-<link rel="stylesheet" href="<?=base_url()?>assets/admin/bower_components/select2/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/admin/assets/pages/j-pro/css/j-pro-modern.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/admin/bower_components/select2/css/select2.min.css" />
 
 <!-- jquery file upload Frame work -->
-<link href="<?=base_url()?>assets/admin/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
-<link href="<?=base_url()?>assets/admin/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+<link href="<?= base_url() ?>assets/admin/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+<link href="<?= base_url() ?>assets/admin/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
 <!-- Style.css -->
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/admin/assets/css/style.css">
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/admin/assets/css/pages.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/admin/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/admin/assets/css/pages.css">
 </head>
-<body>
-<!-- [ Pre-loader ] start -->
-<div class="loader-bg">
-	<div class="loader-bar"></div>
-</div>
-<!-- [ Pre-loader ] end -->
-<div id="pcoded" class="pcoded">
-	<div class="pcoded-overlay-box"></div>
-	<div class="pcoded-container navbar-wrapper">
-		<!-- [ Header ] start -->
-		<?php $this->load->view('admin/includes/menu'); ?>
-		<!-- [ Header ] end -->
-		<div class="pcoded-main-container">
-			<div class="pcoded-wrapper">
-				<!-- [ navigation menu ] start -->
-				<?php $this->load->view('admin/includes/sidebar'); ?>
-				<!-- [ navigation menu ] end -->
 
-				<div class="pcoded-content">
-					<!-- [ breadcrumb ] start -->
-					<div class="page-header">
-						<div class="page-block">
-							<div class="row align-items-center">
-								<div class="col-md-8">
-									<div class="page-header-title">
-										<h4 class="m-b-10">Add Meal Prep</h4>
+<body>
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-bar"></div>
+	</div>
+	<!-- [ Pre-loader ] end -->
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- [ Header ] start -->
+			<?php $this->load->view('admin/includes/menu'); ?>
+			<!-- [ Header ] end -->
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- [ navigation menu ] start -->
+					<?php $this->load->view('admin/includes/sidebar'); ?>
+					<!-- [ navigation menu ] end -->
+
+					<div class="pcoded-content">
+						<!-- [ breadcrumb ] start -->
+						<div class="page-header">
+							<div class="page-block">
+								<div class="row align-items-center">
+									<div class="col-md-8">
+										<div class="page-header-title">
+											<h4 class="m-b-10">Add Meal Prep</h4>
+										</div>
+										<ul class="breadcrumb">
+											<li class="breadcrumb-item">
+												<a href="<?= $this->config->item('admin_url') ?>">
+													<i class="feather icon-home"></i>
+												</a>
+											</li>
+											<li class="breadcrumb-item">
+												<a href="<?= $this->config->item('admin_url') ?>/mealprep">
+													Meal Prep
+												</a>
+											</li>
+											<li class="breadcrumb-item">
+												<a href="javascript:;">Add meal prep</a>
+											</li>
+										</ul>
 									</div>
-									<ul class="breadcrumb">
-										<li class="breadcrumb-item">
-											<a href="<?=$this->config->item('admin_url')?>">
-												<i class="feather icon-home"></i>
-											</a>
-										</li>
-										<li class="breadcrumb-item">
-											<a href="<?=$this->config->item('admin_url')?>/mealprep">
-												Meal Prep
-											</a>
-										</li>
-										<li class="breadcrumb-item">
-											<a href="javascript:;">Add meal prep</a>
-										</li>
-									</ul>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- [ breadcrumb ] end -->
-					<div class="pcoded-inner-content">
-						<div class="main-body">
-							<div class="page-wrapper">
-								<!-- Page body start -->
-								<div class="page-body">
-									<div class="row">
-										<div class="col-sm-12">
-											<div class="card">
-												<div class="card-header">
-													<h5>Add Meal Prep</h5>
-													<span>add Meal Prep information</span>
-												</div>
-												<div class="card-block">
-													<div class="j-wrapper j-wrapper-640">
-														<form id="frm_1" action="<?=$this->config->item('admin_url')?>/mealprep/add_process" method="post" class="j-pro j-multistep" novalidate>
-															<div class="j-content">
-																<fieldset>
-																	<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-																		<span>Step 1/3 - Basic information</span>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label">Name</label>
-																		<div class="j-input">
-																			<label class="j-icon-right" for="testName">
-																				<i class="icofont icofont-blood-test"></i>
-																			</label>
-																			<input type="text" id="testName" name="testName">
-																			<span class="j-tooltip j-tooltip-right-top">Enter  name</span>
+						<!-- [ breadcrumb ] end -->
+						<div class="pcoded-inner-content">
+							<div class="main-body">
+								<div class="page-wrapper">
+									<!-- Page body start -->
+									<div class="page-body">
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="card">
+													<div class="card-header">
+														<h5>Add Meal Prep</h5>
+														<span>add Meal Prep information</span>
+													</div>
+													<div class="card-block">
+														<div class="j-wrapper j-wrapper-640">
+															<form id="frm_1" action="<?= $this->config->item('admin_url') ?>/mealprep/add_process" method="post" class="j-pro j-multistep" novalidate>
+																<div class="j-content">
+																	<fieldset>
+																		<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
+																			<span>Step 1/3 - Basic information</span>
 																		</div>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label">Original Price</label>
-																		<div class="j-input">
-																			<label class="j-icon-right" for="originalPrice">
-																				<i class="icofont icofont-cur-pound"></i>
-																			</label>
-																			<input type="email" id="originalPrice" name="originalPrice">
-																			<span class="j-tooltip j-tooltip-right-top">Enter original price</span>
-																		</div>
-																	</div>
-																	<div class="j-row">
-
-																		<div class="j-span6 j-unit">
-																			<label class="j-label">Discount Price</label>
+																		<div class="j-unit">
+																			<label class="j-label">Name</label>
 																			<div class="j-input">
-																				<label class="j-icon-right" for="discountPrice">
-																					<i class="icofont icofont-sale-discount"></i>
+																				<label class="j-icon-right" for="testName">
+																					<i class="icofont icofont-blood-test"></i>
 																				</label>
-																				<input type="email" id="discountPrice" name="discountPrice">
-																				<span class="j-tooltip j-tooltip-right-top">Enter discount price</span>
+																				<input type="text" id="testName" name="testName">
+																				<span class="j-tooltip j-tooltip-right-top">Enter name</span>
 																			</div>
 																		</div>
-																		<div class="j-span6 j-unit">
-																			<label class="j-label">Percentage</label>
-																			<div class="j-input form-radio" style="margin-top: 15px;">
-																				<div class="radio radio-inline">
-																					<label>
-																						<input type="radio" name="discountPercentage" value="Yes" checked>
-																						<i class="helper"></i>Yes
+																		<div class="j-unit">
+																			<label class="j-label">Original Price</label>
+																			<div class="j-input">
+																				<label class="j-icon-right" for="originalPrice">
+																					<i class="icofont icofont-cur-pound"></i>
+																				</label>
+																				<input type="email" id="originalPrice" name="originalPrice">
+																				<span class="j-tooltip j-tooltip-right-top">Enter original price</span>
+																			</div>
+																		</div>
+																		<div class="j-row">
+
+																			<div class="j-span6 j-unit">
+																				<label class="j-label">Discount Price</label>
+																				<div class="j-input">
+																					<label class="j-icon-right" for="discountPrice">
+																						<i class="icofont icofont-sale-discount"></i>
 																					</label>
+																					<input type="email" id="discountPrice" name="discountPrice">
+																					<span class="j-tooltip j-tooltip-right-top">Enter discount price</span>
 																				</div>
-																				<div class="radio radio-inline">
-																					<label>
-																						<input type="radio" name="discountPercentage" value="No">
-																						<i class="helper"></i>No
-																					</label>
+																			</div>
+																			<div class="j-span6 j-unit">
+																				<label class="j-label">Percentage</label>
+																				<div class="j-input form-radio" style="margin-top: 15px;">
+																					<div class="radio radio-inline">
+																						<label>
+																							<input type="radio" name="discountPercentage" value="Yes" checked>
+																							<i class="helper"></i>Yes
+																						</label>
+																					</div>
+																					<div class="radio radio-inline">
+																						<label>
+																							<input type="radio" name="discountPercentage" value="No">
+																							<i class="helper"></i>No
+																						</label>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label">Description</label>
-																		<div class="j-input">
-																			<textarea spellcheck="false" id="testDescription" name="testDescription"></textarea>
+																		<div class="j-unit">
+																			<label class="j-label">Description</label>
+																			<div class="j-input">
+																				<textarea spellcheck="false" id="testDescription" name="testDescription"></textarea>
+																			</div>
 																		</div>
-																	</div>
-																</fieldset>
-																<fieldset>
-																	<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-																		<span>Step 2/3 - Tabs information</span>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label">Details</label>
-																		<div class="j-input">
-																			<textarea spellcheck="false" id="testDetails" name="testDetails"></textarea>
+																	</fieldset>
+																	<fieldset>
+																		<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
+																			<span>Step 2/3 - Tabs information</span>
 																		</div>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label">Menu</label>
-																		<div class="j-input">
-																			<textarea spellcheck="false" id="menu" name="menu"></textarea>
+																		<div class="j-unit">
+																			<label class="j-label">Details</label>
+																			<div class="j-input">
+																				<textarea spellcheck="false" id="testDetails" name="testDetails"></textarea>
+																			</div>
 																		</div>
-																	</div>
-																	<div class="j-unit">
-																		<label class="j-label"> How Its Work </label>
-																		<div class="j-input j-select">
-																			<select class="js-example-tags col-sm-12" id="howItsWork" name="howItsWork"  style="width: 100% !important; height:30px!important">
-																			</select>
+																		<div class="j-unit">
+																			<label class="j-label">Menu</label>
+																			<div class="j-input">
+																				<textarea spellcheck="false" id="menu" name="menu"></textarea>
+																			</div>
 																		</div>
-																	</div>
-																</fieldset>
-																<fieldset>
-																	<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-																		<span>Step 3/3 - Images</span>
-																	</div>
-																	<div class="card">
-																		<div class="card-header">
-																			<h5>Logo</h5>
+																		<div class="j-unit">
+																			<label class="j-label"> How Its Work </label>
+																			<div class="j-input j-select">
+																				<select class="js-example-tags col-sm-12" id="howItsWork" name="howItsWork" style="width: 100% !important; height:30px!important">
+																				</select>
+																			</div>
 																		</div>
-																		<div class="card-block">
-																			<input type="file" name="testLogo" id="testLogo" >
+																	</fieldset>
+																	<fieldset>
+																		<div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
+																			<span>Step 3/3 - Images</span>
 																		</div>
-																	</div>
-																	<div class="card">
-																		<div class="card-header">
-																			<h5>Other Images</h5>
+																		<div class="card">
+																			<div class="card-header">
+																				<h5>Logo</h5>
+																			</div>
+																			<div class="card-block">
+																				<input type="file" name="testLogo" id="testLogo">
+																			</div>
 																		</div>
-																		<div class="card-block">
-																			<input type="file" name="moreImages[]" id="moreImages" multiple="multiple">
+																		<div class="card">
+																			<div class="card-header">
+																				<h5>Other Images</h5>
+																			</div>
+																			<div class="card-block">
+																				<input type="file" name="moreImages[]" id="moreImages" multiple="multiple">
+																			</div>
 																		</div>
-																	</div>
-																</fieldset>
-																<div class="j-response"></div>
-															</div>
-															<!-- end /.content -->
-															<div class="j-footer">
-																<button type="submit" class="btn btn-primary">Add</button>
-																<button type="button" class="btn btn-primary j-multi-next-btn">Next</button>
-																<button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Back</button>
-															</div>
-															<!-- end /.footer -->
-														</form>
+																	</fieldset>
+																	<div class="j-response"></div>
+																</div>
+																<!-- end /.content -->
+																<div class="j-footer">
+																	<button type="submit" class="btn btn-primary">Add</button>
+																	<button type="button" class="btn btn-primary j-multi-next-btn">Next</button>
+																	<button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Back</button>
+																</div>
+																<!-- end /.footer -->
+															</form>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									<!-- Page body end -->
 								</div>
-								<!-- Page body end -->
 							</div>
 						</div>
 					</div>
+					<!-- Main-body end -->
 				</div>
-				<!-- Main-body end -->
 			</div>
 		</div>
 	</div>
-</div>
-<!-- Warning Section Starts -->
-<?php $this->load->view('admin/includes/scripts'); ?>
-<script type="text/javascript" src="<?=base_url()?>assets/admin/bower_components/select2/js/select2.full.min.js"></script>
-<script src="<?=base_url()?>assets/admin/assets/pages/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?=base_url()?>assets/admin/assets/pages/j-pro/js/jquery.j-pro.js"></script>
-<!-- jquery file upload js -->
-<script src="<?=base_url()?>assets/admin/assets/pages/jquery.filer/js/jquery.filer.min.js"></script>
-<script src="<?=base_url()?>assets/admin/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
+	<!-- Warning Section Starts -->
+	<?php $this->load->view('admin/includes/scripts'); ?>
+	<script type="text/javascript" src="<?= base_url() ?>assets/admin/bower_components/select2/js/select2.full.min.js"></script>
+	<script src="<?= base_url() ?>assets/admin/assets/pages/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="<?= base_url() ?>assets/admin/assets/pages/j-pro/js/jquery.j-pro.js"></script>
+	<!-- jquery file upload js -->
+	<script src="<?= base_url() ?>assets/admin/assets/pages/jquery.filer/js/jquery.filer.min.js"></script>
+	<script src="<?= base_url() ?>assets/admin/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
 
 
-<script type="text/javascript">
-	$('#testLogo').filer({
-		extensions: ['jpg', 'jpeg', 'png', 'gif'],
-		limit:1,
-		maxSize: 1,
-		changeInput: true,
-		showThumbs: true,
-		addMore: false
-	});
-	//Example 2
-	$('#moreImages').filer({
-		limit: 10,
-		maxSize: 10,
-		extensions: ['jpg', 'jpeg', 'png', 'gif'],
-		changeInput: true,
-		showThumbs: true,
-		addMore: true
-	});
-	/*document ckeditor*/
-	CKEDITOR.replace('testDetails', {
-		toolbar: [{
-			name: 'document',
-			items: ['Print']
-		}, {
-			name: 'clipboard',
-			items: ['Undo', 'Redo']
-		}, {
-			name: 'styles',
-			items: ['Format', 'Font', 'FontSize']
-		}, {
-			name: 'basicstyles',
-			items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
-		}, {
-			name: 'colors',
-			items: ['TextColor', 'BGColor']
-		}, {
-			name: 'align',
-			items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-		}, {
-			name: 'links',
-			items: ['Link', 'Unlink']
-		}, {
-			name: 'paragraph',
-			items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
-		}, {
-			name: 'insert',
-			items: ['Table']
-		}, {
-			name: 'tools',
-			items: ['Maximize']
-		}, {
-			name: 'editing',
-			items: ['Scayt']
-		}],
-		customConfig: '',
-		height: 200,
-		contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
-		bodyClass: 'document-editor',
-		format_tags: 'p;h1;h2;h3;pre',
-		removeDialogTabs: 'image:advanced;link:advanced',
-		stylesSet: [
-			/* Inline Styles */
-			{
-				name: 'Marker',
-				element: 'span',
-				attributes: {
-					'class': 'marker'
-				}
+	<script type="text/javascript">
+		$('#testLogo').filer({
+			extensions: ['jpg', 'jpeg', 'png', 'gif'],
+			limit: 1,
+			maxSize: 1,
+			changeInput: true,
+			showThumbs: true,
+			addMore: false
+		});
+		//Example 2
+		$('#moreImages').filer({
+			limit: 10,
+			maxSize: 10,
+			extensions: ['jpg', 'jpeg', 'png', 'gif'],
+			changeInput: true,
+			showThumbs: true,
+			addMore: true
+		});
+		/*document ckeditor*/
+		CKEDITOR.replace('testDetails', {
+			toolbar: [{
+				name: 'document',
+				items: ['Print']
 			}, {
-				name: 'Cited Work',
-				element: 'cite'
+				name: 'clipboard',
+				items: ['Undo', 'Redo']
 			}, {
-				name: 'Inline Quotation',
-				element: 'q'
-			},
-
-			/* Object Styles */
-			{
-				name: 'Special Container',
-				element: 'div',
-				styles: {
-					padding: '5px 10px',
-					background: '#eee',
-					border: '1px solid #ccc'
-				}
+				name: 'styles',
+				items: ['Format', 'Font', 'FontSize']
 			}, {
-				name: 'Compact table',
-				element: 'table',
-				attributes: {
-					cellpadding: '5',
-					cellspacing: '0',
-					border: '1',
-					bordercolor: '#ccc'
-				},
-				styles: {
-					'border-collapse': 'collapse'
-				}
+				name: 'basicstyles',
+				items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
 			}, {
-				name: 'Borderless Table',
-				element: 'table',
-				styles: {
-					'border-style': 'hidden',
-					'background-color': '#E6E6FA'
-				}
+				name: 'colors',
+				items: ['TextColor', 'BGColor']
 			}, {
-				name: 'Square Bulleted List',
-				element: 'ul',
-				styles: {
-					'list-style-type': 'square'
-				}
-			}
-		]
-	});
-	CKEDITOR.replace('menu', {
-		toolbar: [{
-			name: 'document',
-			items: ['Print']
-		}, {
-			name: 'clipboard',
-			items: ['Undo', 'Redo']
-		}, {
-			name: 'styles',
-			items: ['Format', 'Font', 'FontSize']
-		}, {
-			name: 'basicstyles',
-			items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
-		}, {
-			name: 'colors',
-			items: ['TextColor', 'BGColor']
-		}, {
-			name: 'align',
-			items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-		}, {
-			name: 'links',
-			items: ['Link', 'Unlink']
-		}, {
-			name: 'paragraph',
-			items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
-		}, {
-			name: 'insert',
-			items: ['Table']
-		}, {
-			name: 'tools',
-			items: ['Maximize']
-		}, {
-			name: 'editing',
-			items: ['Scayt']
-		}],
-		customConfig: '',
-		height: 200,
-		contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
-		bodyClass: 'document-editor',
-		format_tags: 'p;h1;h2;h3;pre',
-		removeDialogTabs: 'image:advanced;link:advanced',
-		stylesSet: [
-			/* Inline Styles */
-			{
-				name: 'Marker',
-				element: 'span',
-				attributes: {
-					'class': 'marker'
-				}
+				name: 'align',
+				items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
 			}, {
-				name: 'Cited Work',
-				element: 'cite'
+				name: 'links',
+				items: ['Link', 'Unlink']
 			}, {
-				name: 'Inline Quotation',
-				element: 'q'
-			},
-
-			/* Object Styles */
-			{
-				name: 'Special Container',
-				element: 'div',
-				styles: {
-					padding: '5px 10px',
-					background: '#eee',
-					border: '1px solid #ccc'
-				}
+				name: 'paragraph',
+				items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
 			}, {
-				name: 'Compact table',
-				element: 'table',
-				attributes: {
-					cellpadding: '5',
-					cellspacing: '0',
-					border: '1',
-					bordercolor: '#ccc'
-				},
-				styles: {
-					'border-collapse': 'collapse'
-				}
+				name: 'insert',
+				items: ['Table']
 			}, {
-				name: 'Borderless Table',
-				element: 'table',
-				styles: {
-					'border-style': 'hidden',
-					'background-color': '#E6E6FA'
-				}
+				name: 'tools',
+				items: ['Maximize']
 			}, {
-				name: 'Square Bulleted List',
-				element: 'ul',
-				styles: {
-					'list-style-type': 'square'
-				}
-			}
-		]
-	});
-	CKEDITOR.replace('howItsWork', {
-		toolbar: [{
-			name: 'document',
-			items: ['Print']
-		}, {
-			name: 'clipboard',
-			items: ['Undo', 'Redo']
-		}, {
-			name: 'styles',
-			items: ['Format', 'Font', 'FontSize']
-		}, {
-			name: 'basicstyles',
-			items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
-		}, {
-			name: 'colors',
-			items: ['TextColor', 'BGColor']
-		}, {
-			name: 'align',
-			items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-		}, {
-			name: 'links',
-			items: ['Link', 'Unlink']
-		}, {
-			name: 'paragraph',
-			items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
-		}, {
-			name: 'insert',
-			items: ['Table']
-		}, {
-			name: 'tools',
-			items: ['Maximize']
-		}, {
-			name: 'editing',
-			items: ['Scayt']
-		}],
-		customConfig: '',
-		height: 200,
-		contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
-		bodyClass: 'document-editor',
-		format_tags: 'p;h1;h2;h3;pre',
-		removeDialogTabs: 'image:advanced;link:advanced',
-		stylesSet: [
-			/* Inline Styles */
-			{
-				name: 'Marker',
-				element: 'span',
-				attributes: {
-					'class': 'marker'
-				}
-			}, {
-				name: 'Cited Work',
-				element: 'cite'
-			}, {
-				name: 'Inline Quotation',
-				element: 'q'
-			},
-
-			/* Object Styles */
-			{
-				name: 'Special Container',
-				element: 'div',
-				styles: {
-					padding: '5px 10px',
-					background: '#eee',
-					border: '1px solid #ccc'
-				}
-			}, {
-				name: 'Compact table',
-				element: 'table',
-				attributes: {
-					cellpadding: '5',
-					cellspacing: '0',
-					border: '1',
-					bordercolor: '#ccc'
-				},
-				styles: {
-					'border-collapse': 'collapse'
-				}
-			}, {
-				name: 'Borderless Table',
-				element: 'table',
-				styles: {
-					'border-style': 'hidden',
-					'background-color': '#E6E6FA'
-				}
-			}, {
-				name: 'Square Bulleted List',
-				element: 'ul',
-				styles: {
-					'list-style-type': 'square'
-				}
-			}
-		]
-	});
-</script>
-<!-- data-table js -->
-<script type="text/javascript">
-
-
-	$("#frm_1").justFormsPro({
-		rules: {
-			testName: {
-				required: true
-			},
-			originalPrice:{
-				required: true,
-				number: true
-			},
-			discountPrice:{
-				required: true,
-				number: true
-			},
-			testDescription:{
-				required: true
-			}
-		},
-		messages: {
-			testName: {
-				required: "Enter  name"
-			},
-			originalPrice: {
-				required: "Enter original price",
-				number: "Field only numbers allowed"
-			},
-			discountPrice: {
-				required: "Enter Discount Price",
-				number: "Field only numbers allowed"
-			},
-			testDescription: {
-				required: "Enter Description"
-			}
-		},
-		formType: {
-			multistep: true
-		},
-		submit: false,
-		afterSubmitHandler: function(result) {
-			//$('#');
-			return true;
-		}
-	});
-	$('#frm_1').submit(function(evt){
-		var frm=$(this);
-		var formData = new FormData($('form#frm_1').get(0));
-		var testDetails=CKEDITOR.instances.testDetails.getData();
-		var menu=CKEDITOR.instances.menu.getData();
-		var howItsWork=CKEDITOR.instances.howItsWork.getData();
-		formData.set('testDetails',testDetails);
-		formData.set('menu',menu);
-		formData.set('howItsWork',howItsWork);
-		$.confirm({
-			icon: 'fa fa-spinner fa-spin',
-			title: 'Working!',
-			content: function () {
-				var self = this;
-				return $.ajax({
-					url: frm.attr('action'),
-					dataType: 'json',
-					data: formData,
-					processData: false,
-					contentType: false,
-					method: 'post',
-					cache: false,
-				}).done(function (response) {
-					self.close();
-					if(response.code==0)
-					{
-						$.confirm({
-							title: 'Error!',
-							icon:  'fa fa-warning',
-							closeIcon: true,
-							content: response.message,
-							type: 'red',
-							autoClose: 'close|10000',
-							typeAnimated: true,
-							buttons: {
-								close: function () {
-								}
-							}
-						});
+				name: 'editing',
+				items: ['Scayt']
+			}],
+			customConfig: '',
+			height: 200,
+			contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
+			bodyClass: 'document-editor',
+			format_tags: 'p;h1;h2;h3;pre',
+			removeDialogTabs: 'image:advanced;link:advanced',
+			stylesSet: [
+				/* Inline Styles */
+				{
+					name: 'Marker',
+					element: 'span',
+					attributes: {
+						'class': 'marker'
 					}
-					else
-					{
-						$.confirm({
-							title: 'Success!',
-							icon:  'fa fa-check',
-							content: response.message,
-							type: 'green',
-							typeAnimated: true,
-							buttons: {
-								ok: {
-									text: 'Ok',
-									btnClass: 'btn-green',
-									action: function(){
-										location.reload();
-									}
+				}, {
+					name: 'Cited Work',
+					element: 'cite'
+				}, {
+					name: 'Inline Quotation',
+					element: 'q'
+				},
 
-								}
-							}
-						});
+				/* Object Styles */
+				{
+					name: 'Special Container',
+					element: 'div',
+					styles: {
+						padding: '5px 10px',
+						background: '#eee',
+						border: '1px solid #ccc'
 					}
-				}).fail(function(){
-					self.close();
-					$.confirm({
-						title: 'Encountered an error!',
-						content: 'Something went wrong.',
-						type: 'red',
-						typeAnimated: true,
-						buttons: {
-							close: function () {
-							}
-						}
-					});
-				});
+				}, {
+					name: 'Compact table',
+					element: 'table',
+					attributes: {
+						cellpadding: '5',
+						cellspacing: '0',
+						border: '1',
+						bordercolor: '#ccc'
+					},
+					styles: {
+						'border-collapse': 'collapse'
+					}
+				}, {
+					name: 'Borderless Table',
+					element: 'table',
+					styles: {
+						'border-style': 'hidden',
+						'background-color': '#E6E6FA'
+					}
+				}, {
+					name: 'Square Bulleted List',
+					element: 'ul',
+					styles: {
+						'list-style-type': 'square'
+					}
+				}
+			]
+		});
+		CKEDITOR.replace('menu', {
+			toolbar: [{
+				name: 'document',
+				items: ['Print']
+			}, {
+				name: 'clipboard',
+				items: ['Undo', 'Redo']
+			}, {
+				name: 'styles',
+				items: ['Format', 'Font', 'FontSize']
+			}, {
+				name: 'basicstyles',
+				items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
+			}, {
+				name: 'colors',
+				items: ['TextColor', 'BGColor']
+			}, {
+				name: 'align',
+				items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+			}, {
+				name: 'links',
+				items: ['Link', 'Unlink']
+			}, {
+				name: 'paragraph',
+				items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
+			}, {
+				name: 'insert',
+				items: ['Table']
+			}, {
+				name: 'tools',
+				items: ['Maximize']
+			}, {
+				name: 'editing',
+				items: ['Scayt']
+			}],
+			customConfig: '',
+			height: 200,
+			contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
+			bodyClass: 'document-editor',
+			format_tags: 'p;h1;h2;h3;pre',
+			removeDialogTabs: 'image:advanced;link:advanced',
+			stylesSet: [
+				/* Inline Styles */
+				{
+					name: 'Marker',
+					element: 'span',
+					attributes: {
+						'class': 'marker'
+					}
+				}, {
+					name: 'Cited Work',
+					element: 'cite'
+				}, {
+					name: 'Inline Quotation',
+					element: 'q'
+				},
+
+				/* Object Styles */
+				{
+					name: 'Special Container',
+					element: 'div',
+					styles: {
+						padding: '5px 10px',
+						background: '#eee',
+						border: '1px solid #ccc'
+					}
+				}, {
+					name: 'Compact table',
+					element: 'table',
+					attributes: {
+						cellpadding: '5',
+						cellspacing: '0',
+						border: '1',
+						bordercolor: '#ccc'
+					},
+					styles: {
+						'border-collapse': 'collapse'
+					}
+				}, {
+					name: 'Borderless Table',
+					element: 'table',
+					styles: {
+						'border-style': 'hidden',
+						'background-color': '#E6E6FA'
+					}
+				}, {
+					name: 'Square Bulleted List',
+					element: 'ul',
+					styles: {
+						'list-style-type': 'square'
+					}
+				}
+			]
+		});
+		CKEDITOR.replace('howItsWork', {
+			toolbar: [{
+				name: 'document',
+				items: ['Print']
+			}, {
+				name: 'clipboard',
+				items: ['Undo', 'Redo']
+			}, {
+				name: 'styles',
+				items: ['Format', 'Font', 'FontSize']
+			}, {
+				name: 'basicstyles',
+				items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting']
+			}, {
+				name: 'colors',
+				items: ['TextColor', 'BGColor']
+			}, {
+				name: 'align',
+				items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+			}, {
+				name: 'links',
+				items: ['Link', 'Unlink']
+			}, {
+				name: 'paragraph',
+				items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
+			}, {
+				name: 'insert',
+				items: ['Table']
+			}, {
+				name: 'tools',
+				items: ['Maximize']
+			}, {
+				name: 'editing',
+				items: ['Scayt']
+			}],
+			customConfig: '',
+			height: 200,
+			contentsCss: ['assets/pages/ckeditor/contents.css', 'assets/pages/ckeditor/document.css'],
+			bodyClass: 'document-editor',
+			format_tags: 'p;h1;h2;h3;pre',
+			removeDialogTabs: 'image:advanced;link:advanced',
+			stylesSet: [
+				/* Inline Styles */
+				{
+					name: 'Marker',
+					element: 'span',
+					attributes: {
+						'class': 'marker'
+					}
+				}, {
+					name: 'Cited Work',
+					element: 'cite'
+				}, {
+					name: 'Inline Quotation',
+					element: 'q'
+				},
+
+				/* Object Styles */
+				{
+					name: 'Special Container',
+					element: 'div',
+					styles: {
+						padding: '5px 10px',
+						background: '#eee',
+						border: '1px solid #ccc'
+					}
+				}, {
+					name: 'Compact table',
+					element: 'table',
+					attributes: {
+						cellpadding: '5',
+						cellspacing: '0',
+						border: '1',
+						bordercolor: '#ccc'
+					},
+					styles: {
+						'border-collapse': 'collapse'
+					}
+				}, {
+					name: 'Borderless Table',
+					element: 'table',
+					styles: {
+						'border-style': 'hidden',
+						'background-color': '#E6E6FA'
+					}
+				}, {
+					name: 'Square Bulleted List',
+					element: 'ul',
+					styles: {
+						'list-style-type': 'square'
+					}
+				}
+			]
+		});
+	</script>
+	<!-- data-table js -->
+	<script type="text/javascript">
+		$("#frm_1").justFormsPro({
+			rules: {
+				testName: {
+					required: true
+				},
+				originalPrice: {
+					required: true,
+					number: true
+				},
+				discountPrice: {
+					required: true,
+					number: true
+				},
+				testDescription: {
+					required: true
+				}
 			},
-			buttons: {
-				close: function () { }
+			messages: {
+				testName: {
+					required: "Enter  name"
+				},
+				originalPrice: {
+					required: "Enter original price",
+					number: "Field only numbers allowed"
+				},
+				discountPrice: {
+					required: "Enter Discount Price",
+					number: "Field only numbers allowed"
+				},
+				testDescription: {
+					required: "Enter Description"
+				}
+			},
+			formType: {
+				multistep: true
+			},
+			submit: false,
+			afterSubmitHandler: function(result) {
+				//$('#');
+				return true;
 			}
 		});
-		return false;
-	});
-</script>
+		$('#frm_1').submit(function(evt) {
+			var frm = $(this);
+			var formData = new FormData($('form#frm_1').get(0));
+			var testDetails = CKEDITOR.instances.testDetails.getData();
+			var menu = CKEDITOR.instances.menu.getData();
+			var howItsWork = CKEDITOR.instances.howItsWork.getData();
+			formData.set('testDetails', testDetails);
+			formData.set('menu', menu);
+			formData.set('howItsWork', howItsWork);
+			$.confirm({
+				icon: 'fa fa-spinner fa-spin',
+				title: 'Working!',
+				content: function() {
+					var self = this;
+					return $.ajax({
+						url: frm.attr('action'),
+						dataType: 'json',
+						data: formData,
+						processData: false,
+						contentType: false,
+						method: 'post',
+						cache: false,
+					}).done(function(response) {
+						self.close();
+						if (response.code == 0) {
+							$.confirm({
+								title: 'Error!',
+								icon: 'fa fa-warning',
+								closeIcon: true,
+								content: response.message,
+								type: 'red',
+								autoClose: 'close|10000',
+								typeAnimated: true,
+								buttons: {
+									close: function() {}
+								}
+							});
+						} else {
+							$.confirm({
+								title: 'Success!',
+								icon: 'fa fa-check',
+								content: response.message,
+								type: 'green',
+								typeAnimated: true,
+								buttons: {
+									ok: {
+										text: 'Ok',
+										btnClass: 'btn-green',
+										action: function() {
+											location.reload();
+										}
+
+									}
+								}
+							});
+						}
+					}).fail(function() {
+						self.close();
+						$.confirm({
+							title: 'Encountered an error!',
+							content: 'Something went wrong.',
+							type: 'red',
+							typeAnimated: true,
+							buttons: {
+								close: function() {}
+							}
+						});
+					});
+				},
+				buttons: {
+					close: function() {}
+				}
+			});
+			return false;
+		});
+	</script>
 </body>
+
 </html>
