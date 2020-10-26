@@ -39,10 +39,10 @@ class Stripe_call extends CI_Controller
 					$data['StripeSubscriptionEnded'] = '';
 					$plan = $this->db->query('select * from membership_plan where mpId=' . $membership->mpId)->row();
 					if ($plan) {
-						$data['orders'] = $plan->planOrders;
+						$data['orders'] = 1000;
 						$data['ordersPeriod'] = $plan->planOrderPeriod;
 					} else {
-						$data['orders'] = 3;
+						$data['orders'] = 1000;
 						$data['ordersPeriod'] = $membership->ordersPeriod;
 					}
 					$this->db->update('memberships', $data, array('StripeCustomerID' => $coustomer, 'StripeSubscriptionID' => $sub_id));

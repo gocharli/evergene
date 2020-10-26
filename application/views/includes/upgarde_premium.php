@@ -1,4 +1,4 @@
-<div class="upgrade_to_premium">
+<div class="upgrade_to_premium" style="display: none;">
 	<?php if ($this->membership_data->expire == true) { ?>
 		<a href="<?= base_url('memberships') ?>" class="tran3s custom-btn small-btn pull-right">Upgrade to Premium</a>
 	<?php } else {

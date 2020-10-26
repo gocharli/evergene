@@ -314,7 +314,7 @@ class Memberships extends CI_Controller
 				$data['StripeCustomerID'] = "Free_" . $this->session_data->userId . "_" . date('ymdhis');
 				$data['StripeSubscriptionID'] = date('ymdhis');
 				$data['StripeSubscriptionEnded'] = '';
-				$data['orders'] = $plan->planOrders;
+				$data['orders'] = 1000;
 				$data['ordersPeriod'] = $plan->planOrderPeriod;
 				$this->db->update('memberships', $data, array('userId' => $this->session_data->userId));
 				$subb = 1;
@@ -328,7 +328,7 @@ class Memberships extends CI_Controller
 				$data['StripeCustomerID'] = "Free_" . $this->session_data->userId . "_" . date('ymdhis');
 				$data['StripeSubscriptionID'] = date('ymdhis');
 				$data['StripeSubscriptionEnded'] = '';
-				$data['orders'] = $plan->planOrders;
+				$data['orders'] = 1000;
 				$data['ordersPeriod'] = $plan->planOrderPeriod;
 				$this->db->insert('memberships', $data);
 				$subb = 1;
@@ -539,7 +539,7 @@ class Memberships extends CI_Controller
 						$data['StripeCustomerID'] = $coustomer;
 						$data['StripeSubscriptionID'] = $sub_id;
 						$data['StripeSubscriptionEnded'] = '';
-						$data['orders'] = $plan->planOrders;
+						$data['orders'] = 1000;
 						$data['ordersPeriod'] = $plan->planOrderPeriod;
 						$this->db->update('memberships', $data, array('userId' => $this->session_data->userId));
 
@@ -590,7 +590,7 @@ class Memberships extends CI_Controller
 						$data['StripeCustomerID'] = $coustomer;
 						$data['StripeSubscriptionID'] = $sub_id;
 						$data['StripeSubscriptionEnded'] = '';
-						$data['orders'] = $plan->planOrders;
+						$data['orders'] = 1000;
 						$data['ordersPeriod'] = $plan->planOrderPeriod;
 						$this->db->insert('memberships', $data);
 
