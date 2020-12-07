@@ -327,12 +327,7 @@
 
 													<?php } ?>
 
-														<div id="chart_div" style="height: 400px;"></div>
-													<div class="boxstyle text-left margin-bottom text-center">
-													    
-													</div>
-
-												<?php } ?>	
+													
 
 
 
