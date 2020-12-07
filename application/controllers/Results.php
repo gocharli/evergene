@@ -123,6 +123,28 @@ class Results extends CI_Controller
 
 		$test_results = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.detailId=' . $detailId)->result();
 
+		//echo '<pre>'; print_r($test_results); exit;
+
+		// Added by david 
+
+		$test_marker_res = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.marker_title = "'.$test_results[0]->marker_title.'" and results.testId="'. $test_results[0]->testId.'" and results.userId="'. $test_results[0]->userId.'" ')->result();
+		$response['test_marker_res'] = $test_marker_res;
+		
+		//echo '<pre>'; print_r($test_marker_res); 
+		$test_marker_results = [];
+
+		for($i=0; $i<=count($test_marker_res); $i++){
+
+			$test_marker_results[$i] = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.marker_title = "'.$test_results[$i]->marker_title.'" and results.testId="'. $test_results[$i]->testId.'" and results.userId="'. $test_results[$i]->userId.'" ')->result();
+			//echo '<pre>'; print_r($test_marker_results); 
+		}
+
+		$response['test_marker_results'] = $test_marker_results;
+
+		//exit;
+
+		// End added by david
+
 		$data = array(
 			'orderViewStatus' => '1'
 		);
@@ -138,7 +160,10 @@ class Results extends CI_Controller
 		$previous_results = $this->db->query('select order_details.*,tests.testName,tests.testLogo from order_details
 		LEFT JOIN tests on order_details.testId=tests.testId
  		WHERE userId=' . $this->session_data->userId . ' and order_details.productType="Test" and order_details.detailStatus="Completed" and testName="' . $order_details->testName . '" order by detailId DESC ')->result();
-		$response['previous_results'] = $previous_results;
+		
+		 //echo '<pre>'; print_r($test_results); exit;
+		
+		 $response['previous_results'] = $previous_results;
 
 		$response['page_title'] = 'Evergene - ' . $order_details->testName . ' - Health Testing ';
 		$response['meta_description'] = $test_results[0]->testDescription;
@@ -158,7 +183,85 @@ class Results extends CI_Controller
 		}
 	}
 
-	public function filter_chart()
+	public function filter_chart(){
+
+		$testId = $this->input->post('testId');
+		$marker_title = $this->input->post('marker_title');
+		
+		$test_marker_results = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.marker_title = "'.$marker_title.'" and results.testId="'. $testId.'" ')->result();
+		
+		$data = "[";
+			$data .="['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
+
+			$is_max = 0;
+			$is_upper = 0;
+			$is_lower = 0;
+			$is_true = false;
+			$no = 0;
+			foreach ($test_marker_results as $res) {
+
+				$no++;
+
+				if($no == 1){
+					
+					$is_max = $res->max_value;
+					$is_upper = $res->upper_value;
+					$is_lower = $res->lower_value;
+				}
+				
+				if($is_max == $res->max_value && $is_upper == $res->upper_value && $is_lower == $res->lower_value){
+
+					$is_true = true;
+				}
+
+				if($is_max < $res->max_value){
+
+					$is_true = false;
+
+					$is_max = $res->max_value;
+				}
+				if($is_upper < $res->upper_value){
+
+					$is_true = false;
+
+					$is_upper = $res->upper_value;
+				}
+				if($is_lower < $res->lower_value){
+
+					$is_true = false;
+					
+					$is_lower = $res->lower_value;
+				}
+			}
+
+			if($is_true == true){
+				foreach ($test_marker_results as $res) {
+
+					$upper_value = $res->upper_value - $res->lower_value;
+					$max_value = $res->max_value - $res->upper_value;
+
+					//$data .="['',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+					$data .="['".date('Y-m-d', strtotime($res->createdAt))."',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+				}
+			}
+			else{
+
+				foreach ($test_marker_results as $res) {
+
+					$upper_value = $is_upper - $is_lower;
+					$max_value = $is_max - $is_upper;
+
+					$data .="['".date('Y-m-d', strtotime($res->createdAt))."',".$is_lower.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+				}
+			}
+
+		$data .= "]";
+
+		echo $data;
+
+	}
+
+	public function filter_chart_bk()
 	{
 
 		$testId = $this->input->post('testId');
