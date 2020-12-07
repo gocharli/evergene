@@ -307,7 +307,8 @@
 													<div class="boxstyle text-left margin-bottom text-center">
 													    
 													</div>
-													
+
+												<?php } ?>	
 
 
 
