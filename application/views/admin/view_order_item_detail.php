@@ -558,9 +558,12 @@
 																						</div>
 																					</div>
 
+
+
+
 																					<?php if ($results[0]->testResultType == 'Result 2'  && count($results) > 1) { ?>
 																						<div class="col-lg-11">
-																							<select id="m_report" name="m_report" class="form-control d-print-none" style="width: 20%; margin: 10px; margin-left: 80%;" onchange="drawVisualization(this.value)">
+																							<select id="m_report" name="m_report" class="form-control d-print-none" style="width: 20%; margin: 10px; margin-left: 80%;" onchange="get_report(this.value, '<?php echo $order_details->testId; ?>')" >
 
 																								<option value="">Result Value</option>
 
@@ -568,7 +571,7 @@
 																								$m = 1;
 																								foreach ($results as $r) { ?>
 
-																									<option class="<?php echo $res_unit[$ii]; ?>" value="<?php echo $r->resultId; ?>"> <?php echo $r->marker_title; ?></option>
+																									<option class="<?php echo $res_unit[$ii]; ?>" value="<?php echo str_replace(" ", "_", $r->marker_title); ?>"> <?php echo $r->marker_title; ?></option>
 
 																								<?php $m++;
 																									$ii++;
@@ -587,11 +590,40 @@
 
 																				<!--   Added by daivid for Graph 19-May-2020 -->
 
-																				<div class="row">
+																				<!-- <div class="row">
 																					<div class="col-lg-12">
 																						<div id="chart_div" style="height: 400px;"></div>
 																					</div>
-																				</div>
+																				</div> -->
+
+
+																					<?php if ($results[0]->testResultType == 'Result 2'  && count($results) > 1) { ?>
+
+																						<!-- <div id="chart_div" style="height: 400px;"></div> -->
+
+																						<?php $o=1; foreach($test_marker_results as $t){  ?>
+
+																							<div style="display: block" class="<?php echo str_replace(" ", "_", $t[0]->marker_title); ?> chart_div single-service" >
+
+
+																								<div id="chart_div<?php echo $o; ?>" style="height: 400px;" ></div>
+																							
+																								<!-- <div id="chart_div" style="height: 400px;"></div> -->
+																								<div class="boxstyle text-left margin-bottom text-center">	
+																								</div>
+
+																								<div class="clearfix"></div>
+
+																							</div>
+
+																						<?php $o++; } ?> 
+
+
+																					<?php } ?>
+
+
+
+
 
 																				<?php if ($results[0]->testResultType == 'Result 2') { ?>
 
@@ -684,95 +716,110 @@
 																					<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 																					<script>
-																						$(document).ready(function() {
-																							get_report('', '<?php echo $order_details->testId; ?>');
+																						// $(document).ready(function() {
+																						// 	get_report('', '<?php echo $order_details->testId; ?>');
+																						// });
+
+																						$( window ).on( "load", function() {
+
+																							var m11 = '<?php echo str_replace(" ", "_", $test_marker_results[0][0]->marker_title); ?>';
+																							//alert(m11);
+																							setTimeout(function(){ 
+																								$("#m_report").val(m11).trigger("change");
+																							}, 0);
+
+																							// $(".chart_div").attr("style", "display:none");
+																							// $('.chart_div:first').attr("style", "display:block");
 																						});
 
 
 																						function get_report(marker_title, testId) {
 
-																							var user_id = '<?php echo $order_details->userId; ?>';
-																							var m_unit = $('select[name="m_report"] :selected').attr('class');
+																							$(".chart_div").attr("style", "display:none");
+																							$("."+marker_title).attr("style", "display:block");
 
-																							$.ajax({
-																								url: '<?= base_url('admin/orders_items/filter_chart') ?>',
-																								dataType: 'json',
-																								data: {
-																									'marker_title': marker_title,
-																									'testId': testId,
-																									'user_id': user_id
-																								},
-																								method: 'post'
-																							}).done(function(response) {
+																							// var user_id = '<?php //echo $order_details->userId; ?>';
+																							// var m_unit = $('select[name="m_report"] :selected').attr('class');
 
-
-
-																								$("#graph").empty();
-
-																								if (marker_title == "") {
-																									Morris.Line({
-																										element: 'graph',
-																										data: response, //[{"y":"2019-04-18","x":10,"x1":20},{"y":"2019-05-18","x":20,"x1":33},{"y":"2020-03-18","x":37,"x1":42}],  //response,
-
-																										xkey: 'y',
-
-																										<?php
-
-																										$ykeys = "['x'";
-
-																										for ($i = 1; $i < $results[0]->no_of_markers; $i++) {
-
-																											$ykeys .= ", 'x" . $i . "'";
-																										}
-
-																										$ykeys .= "]";
-																										//$labels.="]";
-
-																										?>
-
-																										ykeys: <?php echo $ykeys; ?>,
-																										labels: <?php echo $lbls; ?>,
-
-																										padding: 100,
-
-																										xLabelFormat: function(x) {
-																											return formatDate(new Date(x));
-																										},
-																										dateFormat: function(x) {
-																											return formatDate(new Date(x));
-																										},
-																										resize: true
-
-																									});
-																								} else {
-
-																									Morris.Line({
-																										element: 'graph',
-																										data: response, //[{"y":"2019-04-18","x":10,"x1":20},{"y":"2019-05-18","x":20,"x1":33},{"y":"2020-03-18","x":37,"x1":42}],  //response,
-
-																										xkey: 'y',
-																										ykeys: ['x'],
-																										labels: [marker_title + ' (' + m_unit + ')'], //['Result Vlaue'] ,
-
-																										padding: 100,
-
-																										xLabelFormat: function(x) {
-																											return formatDate(new Date(x));
-																										},
-																										dateFormat: function(x) {
-
-																											return formatDate(new Date(x));
-																										},
-																										resize: true
-
-																									});
-																								}
+																							// $.ajax({
+																							// 	url: '<?php // echo base_url('admin/orders_items/filter_chart'); ?>',
+																							// 	dataType: 'json',
+																							// 	data: {
+																							// 		'marker_title': marker_title,
+																							// 		'testId': testId,
+																							// 		'user_id': user_id
+																							// 	},
+																							// 	method: 'post'
+																							// }).done(function(response) {
 
 
 
-																							}).fail(function() {
+																							// 	$("#graph").empty();
 
-																							});
+																							// 	if (marker_title == "") {
+																							// 		Morris.Line({
+																							// 			element: 'graph',
+																							// 			data: response, //[{"y":"2019-04-18","x":10,"x1":20},{"y":"2019-05-18","x":20,"x1":33},{"y":"2020-03-18","x":37,"x1":42}],  //response,
+
+																							// 			xkey: 'y',
+
+																							// 			<?php
+
+																							// 			$ykeys = "['x'";
+
+																							// 			for ($i = 1; $i < $results[0]->no_of_markers; $i++) {
+
+																							// 				$ykeys .= ", 'x" . $i . "'";
+																							// 			}
+
+																							// 			$ykeys .= "]";
+																							// 			//$labels.="]";
+
+																							// 			?>
+
+																							// 			ykeys: <?php //echo $ykeys; ?>,
+																							// 			labels: <?php //echo $lbls; ?>,
+
+																							// 			padding: 100,
+
+																							// 			xLabelFormat: function(x) {
+																							// 				return formatDate(new Date(x));
+																							// 			},
+																							// 			dateFormat: function(x) {
+																							// 				return formatDate(new Date(x));
+																							// 			},
+																							// 			resize: true
+
+																							// 		});
+																							// 	} else {
+
+																							// 		Morris.Line({
+																							// 			element: 'graph',
+																							// 			data: response, //[{"y":"2019-04-18","x":10,"x1":20},{"y":"2019-05-18","x":20,"x1":33},{"y":"2020-03-18","x":37,"x1":42}],  //response,
+
+																							// 			xkey: 'y',
+																							// 			ykeys: ['x'],
+																							// 			labels: [marker_title + ' (' + m_unit + ')'], //['Result Vlaue'] ,
+
+																							// 			padding: 100,
+
+																							// 			xLabelFormat: function(x) {
+																							// 				return formatDate(new Date(x));
+																							// 			},
+																							// 			dateFormat: function(x) {
+
+																							// 				return formatDate(new Date(x));
+																							// 			},
+																							// 			resize: true
+
+																							// 		});
+																							// 	}
+
+
+
+																							// }).fail(function() {
+
+																							// });
 
 																						}
 
@@ -1744,174 +1791,104 @@
 		});
 	</script>
 	<script type="text/javascript">
-		function drawVisualization(is_called) {
 
-			document.cookie = "is_called = " + is_called;
-			if (is_called) {
-
+		function drawVisualization() {
 				<?php
-				$data = "[";
-				$data .= "['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
-				foreach ($results as $res) {
 
-					if ($res->resultId == $_COOKIE['is_called']) {
-						$upper_value = $res->upper_value - $res->lower_value;
-						$max_value = $res->max_value - $res->upper_value;
+				$q=1;
+				foreach($test_marker_results as $test_marker_res){
 
-						$data .= "[''," . $res->lower_value . "," . $upper_value . "," . $max_value . "," . $res->resultValue . "],";
+					$data = "[";
+					$data .="['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
+
+					$is_max = 0;
+					$is_upper = 0;
+					$is_lower = 0;
+					$is_true = false;
+					$no = 0;
+					foreach ($test_marker_res as $res) {
+
+						$no++;
+
+						if($no == 1){
+							
+							$is_max = $res->max_value;
+							$is_upper = $res->upper_value;
+							$is_lower = $res->lower_value;
+						}
+						
+						if($is_max == $res->max_value && $is_upper == $res->upper_value && $is_lower == $res->lower_value){
+
+							$is_true = true;
+						}
+
+						if($is_max < $res->max_value){
+
+							$is_true = false;
+
+							$is_max = $res->max_value;
+						}
+						if($is_upper < $res->upper_value){
+
+							$is_true = false;
+
+							$is_upper = $res->upper_value;
+						}
+						if($is_lower < $res->lower_value){
+
+							$is_true = false;
+							
+							$is_lower = $res->lower_value;
+						}
 					}
-				}
-				$data .= "]";
+
+					if($is_true == true){
+						foreach ($test_marker_res as $res) {
+
+							$upper_value = $res->upper_value - $res->lower_value;
+							$max_value = $res->max_value - $res->upper_value;
+		
+							//$data .="['',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+							$data .="['".date('Y-m-d', strtotime($res->createdAt))."',".$res->lower_value.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+					else{
+
+						foreach ($test_marker_res as $res) {
+
+							$upper_value = $is_upper - $is_lower;
+							$max_value = $is_max - $is_upper;
+		
+							$data .="['".date('Y-m-d', strtotime($res->createdAt))."',".$is_lower.",".$upper_value.",".$max_value.",".$res->resultValue."],";
+						}
+					}
+
+					$data .= "]";
 				?>
 
 				//Raw data
 				var data = google.visualization.arrayToDataTable(<?php echo $data; ?>);
 
 				var options = {
-					title: 'Test Results Comparison',
-					vAxis: {
-						title: ""
-					},
-					//Horizontal axis text vertical
-					hAxis: {
-						title: ""
-					},
-					seriesType: "bars",
-					series: {
-						0: {
-							color: 'red'
-						},
-						1: {
-							color: 'green'
-						},
-						2: {
-							color: 'red'
-						},
-						3: {
-							type: "line",
-							color: "yellow",
-							pointShape: 'circle',
-							pointSize: 10
-						}
-					},
-					isStacked: true,
-					bar: {
-						groupWidth: '100%'
-					},
+				title : 'Test Results Comparison',
+				vAxis: {title: ""},
+				//Horizontal axis text vertical
+				hAxis: {title: ""},
+				seriesType: "bars",
+				series: {
+					0:{color:'red'},
+					1:{color:'green'},
+					2:{color:'red'},
+					3: {type: "line", color: "yellow",pointShape: 'circle',pointSize: 10}
+				},
+				isStacked: true,
+				bar: { groupWidth: '100%' },
 				};
 
-				var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+				var chart = new google.visualization.ComboChart(document.getElementById('chart_div<?php echo $q; ?>'));
 				chart.draw(data, options);
-			} else {
-				<?php
-				$data = "[";
-				$data .= "['No Value', 'Abnormal Range','Normal Range','Abnormal Range','Your Result Value'],";
-
-				$is_max = 0;
-				$is_upper = 0;
-				$is_lower = 0;
-				$is_true = false;
-				$no = 0;
-				foreach ($results as $res) {
-
-					$no++;
-
-					if ($no == 1) {
-
-						$is_max = $res->max_value;
-						$is_upper = $res->upper_value;
-						$is_lower = $res->lower_value;
-					}
-
-					if ($is_max == $res->max_value && $is_upper == $res->upper_value && $is_lower == $res->lower_value) {
-
-						$is_true = true;
-					}
-
-					if ($is_max < $res->max_value) {
-
-						$is_true = false;
-
-						$is_max = $res->max_value;
-					}
-					if ($is_upper < $res->upper_value) {
-
-						$is_true = false;
-
-						$is_upper = $res->upper_value;
-					}
-					if ($is_lower < $res->lower_value) {
-
-						$is_true = false;
-
-						$is_lower = $res->lower_value;
-					}
-				}
-
-				if ($is_true == true) {
-					foreach ($results as $res) {
-
-						$upper_value = $res->upper_value - $res->lower_value;
-						$max_value = $res->max_value - $res->upper_value;
-
-						$data .= "[''," . $res->lower_value . "," . $upper_value . "," . $max_value . "," . $res->resultValue . "],";
-					}
-				} else {
-
-					foreach ($results as $res) {
-
-						$upper_value = $is_upper - $is_lower;
-						$max_value = $is_max - $is_upper;
-
-						$data .= "[''," . $is_lower . "," . $upper_value . "," . $max_value . "," . $res->resultValue . "],";
-					}
-				}
-
-				$data .= "]";
-				?>
-
-				//Raw data
-				var data = google.visualization.arrayToDataTable(<?php echo $data; ?>);
-
-				var options = {
-					title: 'Test Results Comparison',
-					vAxis: {
-						title: ""
-					},
-					//Horizontal axis text vertical
-					hAxis: {
-						title: ""
-					},
-					seriesType: "bars",
-					series: {
-						0: {
-							color: 'red'
-						},
-						1: {
-							color: 'green'
-						},
-						2: {
-							color: 'red'
-						},
-						3: {
-							type: "line",
-							color: "yellow",
-							pointShape: 'circle',
-							pointSize: 10
-						}
-					},
-					isStacked: true,
-					bar: {
-						groupWidth: '100%'
-					},
-				};
-
-				var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-				chart.draw(data, options);
-			}
-
-
-
+			<?php $q++; } ?>
+			
 		}
 		google.setOnLoadCallback(drawVisualization);
 	</script>

@@ -484,6 +484,33 @@ class Orders_items extends CI_Controller
 			exit();
 		}
 
+
+
+
+		// Added by david  10 December
+
+		$test_marker_res = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.marker_title = "'.$test_results[0]->marker_title.'" and results.testId="'. $test_results[0]->testId.'" and results.userId="'. $test_results[0]->userId.'" ')->result();
+		$this->data['test_marker_res'] = $test_marker_res;
+		
+		//echo '<pre>'; print_r($test_marker_res); 
+		$test_marker_results = [];
+
+		for($i=0; $i<=count($test_marker_res); $i++){
+
+			$test_marker_results[$i] = $this->db->query('select tests.* , results.* from tests LEFT JOIN results on results.testId=tests.testId WHERE results.marker_title = "'.$test_results[$i]->marker_title.'" and results.testId="'. $test_results[$i]->testId.'" and results.userId="'. $test_results[$i]->userId.'" ')->result();
+			//echo '<pre>'; print_r($test_marker_results); 
+		}
+
+		$this->data['test_marker_results'] = $test_marker_results;
+		//echo '<pre>'; print_r($test_marker_results); exit;
+
+		// End added by david
+
+
+
+
+
+
 		// Added by david 
 		$this->data['marker'] = $this->db->query("select * from test_markers_value where tm_test_id = '" . $order_details->testId . "'")->row();
 
